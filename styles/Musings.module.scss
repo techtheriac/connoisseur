@@ -1,3 +1,35 @@
 .containerMusings {
   background-color: var(--durag-bg-offwhite);
+  padding-left: calc(var(--space-lg) * 2);
+  padding-right: calc(var(--space-lg) * 2);
+}
+
+.musingsList {
+  margin-top: 3rem;
+}
+
+.musingItem {
+  font-size: 3.5rem;
+
+  > * {
+    display: inline;
+    text-align: center;
+    color: #1d8883;
+  }
+
+  ::after {
+    content: " ";
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.musingTitle {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.musingSummary {
+  font-size: 75%;
+  font-family: "Rosat Text Italic";
 }

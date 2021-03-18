@@ -18,15 +18,137 @@ export default function Musings({ posts }) {
   return (
     <div className={styles.containerMusings}>
       <AltNavigation />
-      {S.map(BlogListing)(posts)}
+      <div className={styles.musingsList}>
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Parametricism</div>
+          <div className={styles.musingSummary}>
+            This is just a minor accumulation of fuck ups and madness
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Oatmeal and Wheat</div>
+          <div className={styles.musingSummary}>
+            I stand in the chambers of Secrets and the unknown for eternity
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Parametricism</div>
+          <div className={styles.musingSummary}>
+            This is just a minor accumulation of fuck ups and madness
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Oatmeal and Wheat</div>
+          <div className={styles.musingSummary}>
+            I stand in the chambers of Secrets and the unknown for eternity
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Parametricism</div>
+          <div className={styles.musingSummary}>
+            This is just a minor accumulation of fuck ups and madness
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Oatmeal and Wheat</div>
+          <div className={styles.musingSummary}>
+            I stand in the chambers of Secrets and the unknown for eternity
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Anahilation</div>
+          <div className={styles.musingSummary}>
+            Life will hold you unresponsible for the longest until you give in
+            to the darkness
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Parametricism</div>
+          <div className={styles.musingSummary}>
+            This is just a minor accumulation of fuck ups and madness
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Oatmeal and Wheat</div>
+          <div className={styles.musingSummary}>
+            I stand in the chambers of Secrets and the unknown for eternity
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Anahilation</div>
+          <div className={styles.musingSummary}>
+            Life will hold you unresponsible for the longest until you give in
+            to the darkness
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Parametricism</div>
+          <div className={styles.musingSummary}>
+            This is just a minor accumulation of fuck ups and madness
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Oatmeal and Wheat</div>
+          <div className={styles.musingSummary}>
+            I stand in the chambers of Secrets and the unknown for eternity
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Erstwhile</div>
+          <div className={styles.musingSummary}>
+            On the shoulders of mad men I stand and bring to you all that the
+            devil whispers to my asshole forever
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Parametricism</div>
+          <div className={styles.musingSummary}>
+            This is just a minor accumulation of fuck ups and madness
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Oatmeal and Wheat</div>
+          <div className={styles.musingSummary}>
+            I stand in the chambers of Secrets and the unknown for eternity
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Parametricism</div>
+          <div className={styles.musingSummary}>
+            This is just a minor accumulation of fuck ups and madness
+          </div>
+        </a>
+
+        <a className={styles.musingItem}>
+          <div className={styles.musingTitle}>Oatmeal and Wheat</div>
+          <div className={styles.musingSummary}>
+            I stand in the chambers of Secrets and the unknown for eternity
+          </div>
+        </a>
+      </div>
     </div>
   );
 }
 
-export async function getStaticProps() {
-  const res = await fetch(`${process.env.URL}/posts`);
-  const posts = await res.json();
-  return {
-    props: { posts },
-  };
-}
+// export async function getStaticProps() {
+//   const res = await fetch(`${process.env.URL}/posts`);
+//   const posts = await res.json();
+//   return {
+//     props: { posts },
+//   };
+// }
