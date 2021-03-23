@@ -18,22 +18,3 @@
     }
   }
 }
-
-.altNavItems {
-  display: flex;
-  li {
-    color: var(--durag-blue);
-    font-size: 1.6rem;
-    font-family: "Rosat Display Light";
-    a {
-      color: inherit;
-    }
-    span {
-      margin: 0 2rem 0 2rem;
-    }
-  }
-}
-
-.marginOverrides {
-  margin-bottom: 1px solid var(--durag-tomato);
-}
