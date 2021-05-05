@@ -1,11 +1,28 @@
+import { useLayoutEffect, useEffect } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.scss";
-// import Header from "../components/Header";
+import MainNavigation from "@/components/navigation/MainNavigation";
+// import Asshole from "@/components/Asshole";
+import Split from "@/components/Split";
 
 export default function Home() {
+  useLayoutEffect(() => {
+    setVh();
+    window.addEventListener("onresize", () => {
+      setVh();
+    });
+  });
+
+  function setVh() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+
   return (
-    <div className={styles.underConstruction}>
-      <h2>Chill out 🥴 Under construction</h2>
-    </div>
+    <main className={styles.containerMain}>
+      <MainNavigation />
+
+      <Split />
+    </main>
   );
 }

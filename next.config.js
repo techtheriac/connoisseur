@@ -1,6 +1,10 @@
 const path = require("path");
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx$/,
+});
 
-module.exports = {
+module.exports = withMDX({
+  pageExtensions: ["js", "mdx"],
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
@@ -9,4 +13,4 @@ module.exports = {
     config.module.rules.push({ test: /\.yml$/, use: "raw-loader" });
     return config;
   },
-};
+});

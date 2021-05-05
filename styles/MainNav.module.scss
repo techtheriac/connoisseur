@@ -1,20 +1,28 @@
+@import "./util/include-media";
+@import "./util/breakpoints";
+
 .containerNav {
   display: flex;
   justify-content: space-between;
-  padding: var(--space-sm);
 }
 
 .navItems {
   display: flex;
   li {
     color: var(--durag-meadow);
-    font-size: 1.6rem;
+    font-size: var(--step--1);
     font-family: "Rosat Display Light";
     a {
       color: inherit;
     }
     span {
-      margin: 0 2rem 0 2rem;
+      margin: 0 var(--space-m) 0 var(--space-m);
     }
+  }
+}
+
+.icon {
+  @include media("<=375px") {
+    display: none;
   }
 }

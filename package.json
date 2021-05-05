@@ -10,12 +10,19 @@
   },
   "dependencies": {
     "@emotion/react": "^11.1.5",
-    "@next/mdx": "^10.0.8",
+    "@mdx-js/loader": "^1.6.22",
+    "@next/mdx": "^10.2.0",
+    "framer-motion": "^4.0.3",
+    "gray-matter": "^4.0.3",
+    "gsap": "^3.6.0",
+    "include-media": "^1.4.9",
     "next": "10.0.7",
+    "next-mdx-remote": "^3.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "sanctuary": "^3.1.0",
-    "sass": "^1.32.8"
+    "sass": "^1.32.8",
+    "three": "^0.127.0"
   },
   "devDependencies": {
     "js-yaml": "^3.14.1",

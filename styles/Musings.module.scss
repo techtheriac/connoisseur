@@ -1,35 +1,77 @@
+@import "./util/include-media";
+@import "./util/breakpoints";
+
 .containerMusings {
   background-color: var(--durag-bg-offwhite);
-  padding-left: calc(var(--space-lg) * 2);
-  padding-right: calc(var(--space-lg) * 2);
-}
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+  padding-top: var(--space-m);
+  min-height: 100vh;
 
-.musingsList {
-  margin-top: 3rem;
-}
-
-.musingItem {
-  font-size: 3.5rem;
-
-  > * {
-    display: inline;
-    text-align: center;
-    color: #1d8883;
+  > * + * {
+    margin-top: var(--space-l-xl);
   }
 
-  ::after {
-    content: " ";
-    width: 20px;
-    height: 20px;
+  @include media("<=tablet") {
+    padding-left: var(--space-m);
+    padding-right: var(--space-m);
   }
 }
 
-.musingTitle {
-  font-weight: bold;
-  text-transform: capitalize;
+.contentMusing {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  // grid-template-rows: 200px, 1fr;
+  font-family: Aventa;
+  grid-template-areas: "title title" "social musing";
+
+  @include media("<=tablet") {
+    grid-template-columns: auto;
+    grid-template-areas: "title" "musing" "social";
+
+    > * + * {
+      margin-top: var(--space-m);
+    }
+  }
 }
 
-.musingSummary {
-  font-size: 75%;
-  font-family: "Rosat Text Italic";
+.containerTitleMusing {
+  grid-area: title;
+
+  h1 {
+    text-transform: capitalize;
+    font-size: var(--step-0);
+    margin-bottom: var(--space-3xs-2xs);
+  }
+
+  p {
+    font-family: "Rosat Text Italic";
+  }
+}
+
+.socialMusing {
+  grid-area: social;
+  margin-top: var(--space-s-m);
+
+  li + li {
+    margin-top: var(--space-3xs-2xs);
+  }
+}
+
+.paragraphsMusing {
+  grid-area: musing;
+
+  p {
+    font-family: inherit;
+    font-size: var(--step--1);
+    color: var(--durag-blue);
+
+    @include media(">tablet") {
+      font-size: 1rem;
+    }
+  }
+
+  p + p {
+    margin-top: var(--space-2xs);
+  }
 }

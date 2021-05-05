@@ -4,9 +4,11 @@ import styles from "../../styles/AltNav.module.scss";
 
 const AltNavigation = () => (
   <nav className={styles.containerNav}>
-    <div className={styles.icon}>
-      <Logo fill="#e0998e" />
-    </div>
+    <Link href="/" className={styles.icon}>
+      <a>
+        <Logo fill="#e0998e" />
+      </a>
+    </Link>
     <ul className={styles.navItems}>
       <li>
         <Link href="/">

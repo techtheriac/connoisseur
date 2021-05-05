@@ -1,11 +1,33 @@
-.underConstruction {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+@import "./util/include-media";
+@import "./util/breakpoints";
 
-  h2 {
-    font-family: Aventa;
-    font-size: 2rem;
+.containerMain {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--durag-blue);
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+  padding-top: var(--space-m);
+  width: 100%;
+  min-height: calc(var(--vh) * 100);
+  overflow-y: hidden;
+  position: relative;
+}
+
+.containerContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapperHeader {
+  width: 100%;
+  display: flex;
+  margin-top: var(--space-2xl);
+  justify-content: space-between;
+
+  h1 {
+    font-size: var(--step-5);
+    color: var(--durag-tomato);
+    text-transform: capitalize;
   }
 }
