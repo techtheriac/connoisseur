@@ -11,7 +11,7 @@ void main() {
 
   vec2 newUv = vUv;
 
-  newUv = vec2(newUv.x, newUv.y + 0.1 * sin(newUv.x * 10.0 + time / 20.0));
+  newUv = vec2(newUv.x, newUv.y + 0.1 * sin(newUv.x * 10.0 + time / 30.0));
 
   vec4 uImageView = texture2D(uImage, vUv);
 

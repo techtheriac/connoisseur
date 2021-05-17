@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as THREE from "three";
 import { PlaneBufferGeometry } from "three";
+import gsap from "gsap";
 import OrbitControls from "three-orbitcontrols";
 import fragment from "../shaders/fragment.glsl";
 import vertex from "../shaders/vertex.glsl";
@@ -71,6 +72,20 @@ export default class ThreeWrapper extends Component {
       this.materials.push(material);
       material.uniforms.uImage.value = texture;
 
+      image.addEventListener("mouseenter", () => {
+        gsap.to(material.uniforms.hoverState, {
+          duration: 1,
+          value: 1,
+        });
+      });
+
+      image.addEventListener("mouseout", () => {
+        gsap.to(material.uniforms.hoverState, {
+          duration: 1,
+          value: 0,
+        });
+      });
+
       let mesh = new THREE.Mesh(geometry, material);
       this.scene.add(mesh);
 
@@ -96,14 +111,7 @@ export default class ThreeWrapper extends Component {
   renderScene() {
     this.time += 0.25;
 
-    // Smooth scroll to avoid mesh lag on scroll
-    // Keeping the scroll logic here means the meshes
-    // and page scroll are rendered at the same requestAnimation frame
-    //this.scroll.render();
-    //this.currentScroll = this.scroll.scrollToRender;
     this.setPosition();
-    // this.mesh.rotation.x = this.time / 2000;
-    // this.mesh.rotation.y = this.time / 1000;
     this.materials.forEach((m) => {
       m.uniforms.time.value = this.time;
     });
@@ -130,7 +138,6 @@ export default class ThreeWrapper extends Component {
         style={{
           width: "100%",
           minHeight: "100vh",
-          // backgroundColor: "var(--durag-blue)",
         }}
       >
         {this.props.children}
