@@ -2,27 +2,25 @@
 @import "./util/breakpoints";
 
 .containerNav {
-  display: flex;
-  justify-content: space-between;
+  margin-top: var(--space-2xs-xs);
+  width: calc(100% - calc(2 * var(--space-xl)));
+  align-self: center;
+  position: fixed;
 }
-
 .navItems {
   display: flex;
+  justify-content: space-between;
+
   li {
     color: var(--durag-meadow);
-    font-size: var(--step--1);
-    font-family: "Rosat Display Light";
+    font-size: var(--step--2);
+    font-family: "Neue Grotesk Book";
     a {
       color: inherit;
+      text-transform: uppercase;
     }
     span {
       margin: 0 var(--space-m) 0 var(--space-m);
     }
-  }
-}
-
-.icon {
-  @include media("<=375px") {
-    display: none;
   }
 }

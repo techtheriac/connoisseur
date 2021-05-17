@@ -7,6 +7,7 @@ export default class ThreeWrapper extends Component {
     this.initializeThree();
     this.addObject();
     this.renderScene();
+    this.triggerResize();
   }
 
   initializeThree() {
@@ -43,13 +44,23 @@ export default class ThreeWrapper extends Component {
     window.requestAnimationFrame(this.renderScene.bind(this));
   }
 
+  resize(e) {
+    this.height = this.container.offsetHeight;
+    this.width = this.container.offsetWidth;
+    console.log(e);
+  }
+
+  triggerResize() {
+    window.addEventListener("resize", this.resize.bind(this));
+  }
+
   render() {
     return (
       <div
         style={{
-          width: "100vw",
-          height: "100vh",
-          // backgroundColor: "var(--durag-blue)",
+          width: "100%",
+          minHeight: "100vh",
+          backgroundColor: "var(--durag-blue)",
         }}
       >
         {this.props.children}

@@ -12,6 +12,7 @@
     "@emotion/react": "^11.1.5",
     "@next/mdx": "^10.2.0",
     "framer-motion": "^4.0.3",
+    "glslify-loader": "^2.0.0",
     "gray-matter": "^4.0.3",
     "gsap": "^3.6.0",
     "include-media": "^1.4.9",
