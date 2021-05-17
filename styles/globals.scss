@@ -309,11 +309,6 @@ body {
 }
 
 @font-face {
-  font-family: "GT FLexa";
-  src: url("../fonts/gtflexa.woff2") format("woff2");
-}
-
-@font-face {
   font-family: "Cosi Azure";
   src: url("../fonts/CosiAzure-Bold.woff2") format("woff2");
 }
@@ -326,4 +321,8 @@ body {
 @font-face {
   font-family: "Neue Grotesk Regular";
   src: url("../fonts/NeueAlteGrotesk-Regular.woff2") format("woff2");
+}
+
+body {
+  background-color: var(--durag-blue);
 }

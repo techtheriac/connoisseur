@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import * as THREE from "three";
+import { PlaneBufferGeometry } from "three";
 import OrbitControls from "three-orbitcontrols";
-
+import fragment from "../shaders/fragment.glsl";
+import vertex from "../shaders/vertex.glsl";
 export default class ThreeWrapper extends Component {
   componentDidMount() {
     this.initializeThree();
-    this.addObject();
-    this.renderScene();
+    this.addImages();
+    this.setPosition();
+    this.resize();
     this.triggerResize();
+    this.renderScene();
+
+    window.addEventListener("scroll", () => {
+      this.currentScroll = window.scrollY;
+    });
   }
 
   initializeThree() {
@@ -30,16 +38,76 @@ export default class ThreeWrapper extends Component {
     this.container.appendChild(this.renderer.domElement);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+
+    this.images = [...document.querySelectorAll("img")];
+
+    this.raycaster = new THREE.Raycaster();
+    this.mouse = new THREE.Vector2();
+
+    this.currentScroll = 0;
   }
 
-  addObject() {
-    this.geometry = new THREE.PlaneBufferGeometry(200, 400, 10, 10);
-    this.material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.scene.add(this.mesh);
+  addImages() {
+    this.material = new THREE.ShaderMaterial({
+      uniforms: {
+        time: { value: 0 },
+        uImage: {},
+        hover: { value: new THREE.Vector2(0.5, 0.5) },
+        hoverState: { value: 0 },
+      },
+      fragmentShader: fragment,
+      vertexShader: vertex,
+    });
+
+    this.materials = [];
+
+    this.imageStore = this.images.map((image) => {
+      let { top, left, width, height } = image.getBoundingClientRect();
+      let geometry = new PlaneBufferGeometry(width, height, 10, 10);
+      let texture = new THREE.Texture(image);
+      texture.needsUpdate = true;
+
+      let material = this.material.clone();
+      this.materials.push(material);
+      material.uniforms.uImage.value = texture;
+
+      let mesh = new THREE.Mesh(geometry, material);
+      this.scene.add(mesh);
+
+      return {
+        image,
+        mesh,
+        top,
+        left,
+        width,
+        height,
+      };
+    });
+  }
+
+  setPosition() {
+    this.imageStore.forEach((o) => {
+      o.mesh.position.y =
+        this.currentScroll - o.top + this.height / 2 - o.height / 2;
+      o.mesh.position.x = o.left - this.width / 2 + o.width / 2;
+    });
   }
 
   renderScene() {
+    this.time += 0.25;
+
+    // Smooth scroll to avoid mesh lag on scroll
+    // Keeping the scroll logic here means the meshes
+    // and page scroll are rendered at the same requestAnimation frame
+    //this.scroll.render();
+    //this.currentScroll = this.scroll.scrollToRender;
+    this.setPosition();
+    // this.mesh.rotation.x = this.time / 2000;
+    // this.mesh.rotation.y = this.time / 1000;
+    this.materials.forEach((m) => {
+      m.uniforms.time.value = this.time;
+    });
+
     this.renderer.render(this.scene, this.camera);
     window.requestAnimationFrame(this.renderScene.bind(this));
   }
@@ -47,7 +115,9 @@ export default class ThreeWrapper extends Component {
   resize(e) {
     this.height = this.container.offsetHeight;
     this.width = this.container.offsetWidth;
-    console.log(e);
+    this.renderer.setSize(this.width, this.height);
+    this.camera.aspect = this.width / this.height;
+    this.camera.updateProjectionMatrix();
   }
 
   triggerResize() {
@@ -60,7 +130,7 @@ export default class ThreeWrapper extends Component {
         style={{
           width: "100%",
           minHeight: "100vh",
-          backgroundColor: "var(--durag-blue)",
+          // backgroundColor: "var(--durag-blue)",
         }}
       >
         {this.props.children}
