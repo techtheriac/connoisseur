@@ -1,11 +1,46 @@
+//import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import Head from "next/head";
+//import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import MainNavigation from "@/components/navigation/MainNavigation";
-import Split from "@/components/Split";
+//import Split from "@/components/Split";
 import ThreeWrapper from "@/components/wrappers/ThreeWrapper";
 
 export default function Home() {
+  const [works, setWorks] = useState([
+    {
+      company: "Intelligent Innovations",
+      role: "Frontend Developer",
+      year: "2020",
+      projects: [
+        {
+          title: "9Pay",
+          description: "A Multi-Merchant eCommerce Plarform",
+          url: "https://9pay.com.ng",
+        },
+        {
+          title: "9id",
+          description:
+            "9Mobile backed merchant verification system for small businesses.",
+          url: "https://9id.com.ng",
+        },
+      ],
+    },
+    {
+      company: "KiakiaPrints",
+      role: "Frontend Developer",
+      year: "2021",
+      projects: [
+        {
+          title: "KiakiaPrints",
+          description:
+            "Shop for and customize prints on apparels, mugs, banners etc.",
+          url: "https://kiakiaprints.com",
+        },
+      ],
+    },
+  ]);
+
   useEffect(() => {
     setVh();
     window.addEventListener("resize", setVh);
@@ -40,7 +75,32 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* <Split /> */}
+        <section className={styles.containerWork}>
+          <h2>Resume</h2>
+          {works.map(({ role, year, company, projects }) => {
+            return (
+              <div key={company} className={styles.wrapperWork}>
+                <div className={styles.wrapperCompany}>
+                  <p>{year}</p>
+                  <p>{company}</p>
+                </div>
+
+                <div className={styles.projectListing}>
+                  {projects.map(({ title, description, url }) => {
+                    return (
+                      <div className={styles.project} key={url}>
+                        <h3>
+                          <a href={url}>{title}</a>
+                        </h3>
+                        <p>{description}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </section>
       </main>
     </ThreeWrapper>
   );

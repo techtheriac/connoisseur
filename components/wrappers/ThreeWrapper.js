@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import * as THREE from "three";
 import { PlaneBufferGeometry } from "three";
 import gsap from "gsap";
-import OrbitControls from "three-orbitcontrols";
+//import locomotiveScroll from "locomotive-scroll";
+//import OrbitControls from "three-orbitcontrols";
 import fragment from "../shaders/fragment.glsl";
 import vertex from "../shaders/vertex.glsl";
 export default class ThreeWrapper extends Component {
@@ -18,6 +19,17 @@ export default class ThreeWrapper extends Component {
       this.currentScroll = window.scrollY;
     });
   }
+
+  // initializeLocomotive() {
+  //   setTimeout(() => {
+  //     if (typeof window === "object") {
+  //       const scroll = new locomotiveScroll({
+  //         el: this.scrollContainer,
+  //         smooth: true,
+  //       });
+  //     }
+  //   }, 100);
+  // }
 
   initializeThree() {
     this.container = this.mount;
@@ -38,7 +50,7 @@ export default class ThreeWrapper extends Component {
     this.renderer.setSize(this.width, this.height);
     this.container.appendChild(this.renderer.domElement);
 
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    //this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
     this.images = [...document.querySelectorAll("img")];
 
@@ -130,11 +142,13 @@ export default class ThreeWrapper extends Component {
 
   triggerResize() {
     window.addEventListener("resize", this.resize.bind(this));
+    this.setPosition();
   }
 
   render() {
     return (
       <div
+        ref={(scrollContainer) => (this.scrollContainer = scrollContainer)}
         style={{
           width: "100%",
           minHeight: "100vh",
@@ -150,7 +164,7 @@ export default class ThreeWrapper extends Component {
             top: 0,
             left: 0,
             zIndex: -12,
-            width: "100vw",
+            width: "100%",
             height: "100vh",
             position: "fixed",
           }}

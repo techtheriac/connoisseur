@@ -6,6 +6,10 @@
   width: calc(100% - calc(2 * var(--space-xl)));
   align-self: center;
   position: fixed;
+
+  @include media("<=tablet") {
+    width: calc(100% - calc(2 * var(--space-xs)));
+  }
 }
 .navItems {
   display: flex;
