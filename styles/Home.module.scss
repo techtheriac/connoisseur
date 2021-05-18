@@ -87,6 +87,10 @@
     display: block;
     grid-row: 1 / -1;
     grid-column: 1 / -1;
+
+    @include media("<tablet") {
+      opacity: 1;
+    }
   }
 }
 
