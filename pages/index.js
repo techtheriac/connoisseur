@@ -69,8 +69,13 @@ export default function Home() {
             </div>
 
             <div className={styles.connoisseurRant}>
-              <p>I don't sell durags</p>
-              <p>I make internet things.</p>
+              <p>I don't sell durags!</p>
+              <p>With a knack for aesthetics,</p>
+              <p>I make internet things that scale.</p>
+              <p>Wanna take your business online?</p>
+              <p>
+                <a href="mailto:techtheriac@outlook.com">Hit me up</a>
+              </p>
               <p>Cheers </p>
             </div>
           </div>

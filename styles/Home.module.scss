@@ -54,7 +54,7 @@
 
   @include media("<tablet") {
     grid-template-columns: calc(35rem / 2);
-    grid-template-rows: repeat(2, minmax(calc(44rem / 2), auto));
+    grid-template-rows: minmax(calc(44rem / 2), auto), auto;
   }
 }
 
@@ -63,11 +63,19 @@
   @include media("<tablet") {
     grid-column: 1;
     grid-row: 2 / -1;
+    margin-top: var(--space-m);
   }
   p {
-    font-family: "Neue Grotesk Regular";
+    font-family: "Neue Grotesk Book";
     color: var(--durag-meadow);
-    font-size: var(--step-1);
+    font-size: var(--step-0);
+  }
+
+  a {
+    color: var(--durag-tomato-01);
+    &:hover {
+      color: var(--durag-meadow);
+    }
   }
 }
 
@@ -85,12 +93,9 @@
   img {
     opacity: 0;
     display: block;
+    min-width: 100%;
     grid-row: 1 / -1;
     grid-column: 1 / -1;
-
-    @include media("<tablet") {
-      opacity: 1;
-    }
   }
 }
 

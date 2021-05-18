@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import * as THREE from "three";
 import { PlaneBufferGeometry } from "three";
 import gsap from "gsap";
-//import locomotiveScroll from "locomotive-scroll";
 //import OrbitControls from "three-orbitcontrols";
 import fragment from "../shaders/fragment.glsl";
 import vertex from "../shaders/vertex.glsl";
@@ -19,17 +18,6 @@ export default class ThreeWrapper extends Component {
       this.currentScroll = window.scrollY;
     });
   }
-
-  // initializeLocomotive() {
-  //   setTimeout(() => {
-  //     if (typeof window === "object") {
-  //       const scroll = new locomotiveScroll({
-  //         el: this.scrollContainer,
-  //         smooth: true,
-  //       });
-  //     }
-  //   }, 100);
-  // }
 
   initializeThree() {
     this.container = this.mount;
@@ -124,6 +112,7 @@ export default class ThreeWrapper extends Component {
     this.time += 0.25;
 
     this.setPosition();
+    this.triggerResize();
     this.materials.forEach((m) => {
       m.uniforms.time.value = this.time;
     });
