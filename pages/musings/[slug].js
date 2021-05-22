@@ -1,14 +1,13 @@
-import AltNavigation from "@/components/navigation/AltNavigation";
 import styles from "../../styles/Musings.module.scss";
 import { getAllPosts, getPostBySlug } from "api";
 import config from "blog.config";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
+import BlogLayout from "@/components/wrappers/BlogLayout";
 
 const Musing = ({ post, source }) => {
   return (
-    <div className={styles.containerMusings}>
-      <AltNavigation />
+    <BlogLayout>
       <div className={styles.contentMusing}>
         <section className={styles.containerTitleMusing}>
           <h1 className={styles.titleMusing}>{post.title}</h1>
@@ -25,10 +24,10 @@ const Musing = ({ post, source }) => {
         </ul>
         <main className={styles.paragraphsMusing}>
           {/* contents should be here */}
-          <MDXRemote {...source} />;
+          <MDXRemote {...source} />
         </main>
       </div>
-    </div>
+    </BlogLayout>
   );
 };
 

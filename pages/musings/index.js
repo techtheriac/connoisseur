@@ -1,9 +1,15 @@
+import BlogLayout from "@/components/wrappers/BlogLayout";
 import PostsLising from "@/components/PostsListing";
 import { getAllPosts } from "api";
 import config from "../../blog.config";
+import styles from "../../styles/BlogListing.module.scss";
 
 const PostsPage = ({ posts }) => {
-  return <PostsLising posts={posts} />;
+  return (
+    <BlogLayout>
+      <PostsLising posts={posts} />
+    </BlogLayout>
+  );
 };
 
 export async function getStaticProps() {

@@ -26,7 +26,7 @@ const SquirlyMesh = ({ meshGeometryDimension }) => {
         onPointerLeave={(e) => console.log(e)}
         onClick={(e) => console.log(e)}
       >
-        <planeBufferGeometry args={[width / 100, height / 100]} />
+        <planeBufferGeometry args={[width, height]} />
         <squirlyMaterial ref={ref} uImage={texture} />
       </mesh>
     </>
@@ -34,6 +34,9 @@ const SquirlyMesh = ({ meshGeometryDimension }) => {
 };
 
 const ThreeWrapper = ({ children, meshGeometryDimension }) => {
+  useEffect(() => {
+    console.log(meshGeometryDimension);
+  });
   return (
     <div>
       {children}
@@ -48,7 +51,7 @@ const ThreeWrapper = ({ children, meshGeometryDimension }) => {
           position: "fixed",
         }}
       >
-        <Canvas>
+        <Canvas camera={{ position: [0, 0, 600] }}>
           <Suspense fallback={null}>
             <Scene meshGeometryDimension={meshGeometryDimension} />
           </Suspense>

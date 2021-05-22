@@ -1,29 +1,12 @@
 @import "./util/include-media";
 @import "./util/breakpoints";
 
-.containerMusings {
-  background-color: var(--durag-bg-offwhite);
-  padding-left: var(--space-xl);
-  padding-right: var(--space-xl);
-  padding-top: var(--space-m);
-  min-height: 100vh;
-
-  > * + * {
-    margin-top: var(--space-l-xl);
-  }
-
-  @include media("<=tablet") {
-    padding-left: var(--space-m);
-    padding-right: var(--space-m);
-  }
-}
-
 .contentMusing {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  // grid-template-rows: 200px, 1fr;
-  font-family: Aventa;
+  font-family: "Neue Grotesk Book";
   grid-template-areas: "title title" "social musing";
+  margin-top: calc(var(--space-xl-2xl));
 
   @include media("<=tablet") {
     grid-template-columns: auto;
@@ -56,6 +39,11 @@
   li + li {
     margin-top: var(--space-3xs-2xs);
   }
+
+  @include media("<=tablet") {
+    padding-top: var(--space-s);
+    padding-bottom: var(--space-s);
+  }
 }
 
 .paragraphsMusing {
@@ -64,14 +52,30 @@
   p {
     font-family: inherit;
     font-size: var(--step--1);
-    color: var(--durag-blue);
+    color: inherit;
 
     @include media(">tablet") {
       font-size: 1rem;
+      line-height: var(--space-s);
+    }
+
+    @include media("<=tablet") {
+      // font-size: 1rem;
+      line-height: 1.5;
     }
   }
 
   p + p {
     margin-top: var(--space-2xs);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h4 {
+    font-weight: bold;
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-xs);
   }
 }

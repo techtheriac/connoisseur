@@ -53,6 +53,8 @@ export default function Home() {
       setImageMeshDimensions({
         height: node.getBoundingClientRect().height,
         width: node.getBoundingClientRect().width,
+        top: node.getBoundingClientRect().top,
+        left: node.getBoundingClientRect().left,
       });
     }
   }, []);
