@@ -2,8 +2,8 @@ const path = require("path");
 const R = require("ramda");
 
 const withImages = require("next-images");
-const withTM = require("next-transpile-modules")(["three"]);
-const composeConfig = R.compose(withImages, withTM);
+//const withTM = require("next-transpile-modules")(["three"]);
+const composeConfig = R.compose(withImages);
 
 module.exports = composeConfig({
   sassOptions: {
@@ -17,14 +17,6 @@ module.exports = composeConfig({
       use: ["raw-loader", "glslify-loader"],
       exclude: /node_modules/,
     });
-    // config.module.rules.push({
-    //   test: /\.(png|jpe?g|gif)$/i,
-    //   loader: "file-loader",
-    //   options: {
-    //     name: "[path][name].[ext]",
-    //   },
-    // });
-
     return config;
   },
 });
