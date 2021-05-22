@@ -1,10 +1,21 @@
 import * as THREE from "three";
-import React, { Children, Component, useRef, Suspense } from "react";
+import React, { useRef, Suspense, useEffect } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import "../shaderMaterials/SquirlyMaterial";
 import duotone from "../shaderMaterials/textures/duotone.png";
 
-const SquirlyMesh = () => {
+const Scene = ({ meshGeometryDimension }) => {
+  return (
+    <>
+      <ambientLight intensity={0.1} />
+      <directionalLight color="red" position={[0, 0, 5]} />
+      <SquirlyMesh meshGeometryDimension={meshGeometryDimension} />
+    </>
+  );
+};
+
+const SquirlyMesh = ({ meshGeometryDimension }) => {
+  const { width, height } = meshGeometryDimension;
   const ref = useRef();
   const [texture] = useLoader(THREE.TextureLoader, [duotone]);
 
@@ -15,24 +26,14 @@ const SquirlyMesh = () => {
         onPointerLeave={(e) => console.log(e)}
         onClick={(e) => console.log(e)}
       >
-        <planeGeometry />
+        <planeBufferGeometry args={[width / 100, height / 100]} />
         <squirlyMaterial ref={ref} uImage={texture} />
       </mesh>
     </>
   );
 };
 
-const Scene = () => {
-  return (
-    <>
-      <ambientLight intensity={0.1} />
-      <directionalLight color="red" position={[0, 0, 5]} />
-      <SquirlyMesh />
-    </>
-  );
-};
-
-const ThreeWrapper = ({ children }) => {
+const ThreeWrapper = ({ children, meshGeometryDimension }) => {
   return (
     <div>
       {children}
@@ -49,7 +50,7 @@ const ThreeWrapper = ({ children }) => {
       >
         <Canvas>
           <Suspense fallback={null}>
-            <Scene />
+            <Scene meshGeometryDimension={meshGeometryDimension} />
           </Suspense>
         </Canvas>
       </div>

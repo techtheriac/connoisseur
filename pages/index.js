@@ -1,13 +1,15 @@
-//import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-//import Head from "next/head";
+import dynamic from "next/dynamic";
+import { useEffect, useState, useRef, useCallback } from "react";
 import styles from "../styles/Home.module.scss";
 import MainNavigation from "@/components/navigation/MainNavigation";
-//import Split from "@/components/Split";
-import ThreeWrapper from "@/components/wrappers/ThreeWrapper";
+
+const ThreeWrapper = dynamic(
+  () => import("../components/wrappers/ThreeWrapper"),
+  { ssr: false }
+);
 
 export default function Home() {
-  const [works, setWorks] = useState([
+  const works = [
     {
       company: "Intelligent Innovations",
       role: "Frontend Developer",
@@ -39,20 +41,24 @@ export default function Home() {
         },
       ],
     },
-  ]);
+  ];
 
-  useEffect(() => {
-    setVh();
-    window.addEventListener("resize", setVh);
+  const [imageMeshDimensions, setImageMeshDimensions] = useState({
+    height: 0,
+    width: 0,
   });
 
-  function setVh() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  }
+  const imageMeshRef = useCallback((node) => {
+    if (node !== null) {
+      setImageMeshDimensions({
+        height: node.getBoundingClientRect().height,
+        width: node.getBoundingClientRect().width,
+      });
+    }
+  }, []);
 
   return (
-    <ThreeWrapper>
+    <ThreeWrapper meshGeometryDimension={imageMeshDimensions}>
       <main className={styles.containerMain}>
         <MainNavigation />
         <section className={styles.containerIntro}>
@@ -64,7 +70,7 @@ export default function Home() {
           </div>
 
           <div className={styles.containerBio}>
-            <div className={styles.dcseanImg}>
+            <div ref={imageMeshRef} className={styles.dcseanImg}>
               <img src={`/duotone.png`} />
             </div>
 
