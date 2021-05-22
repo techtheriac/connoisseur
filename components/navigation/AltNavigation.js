@@ -8,14 +8,12 @@ const AltNavigation = () => (
         <Link href="/">
           <a>Work</a>
         </Link>
-        <span>/</span>
       </li>
 
       <li>
         <Link href="/musings">
           <a>Musings</a>
         </Link>
-        <span>/</span>
       </li>
 
       <li>
