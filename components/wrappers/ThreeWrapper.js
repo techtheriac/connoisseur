@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import React, { useRef, Suspense, useEffect } from "react";
+import toggleBackground from "../../helpers/toggleBackground";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import "../shaderMaterials/SquirlyMaterial";
 import duotone from "../shaderMaterials/textures/duotone.png";
@@ -35,7 +36,7 @@ const SquirlyMesh = ({ meshGeometryDimension }) => {
 
 const ThreeWrapper = ({ children, meshGeometryDimension }) => {
   useEffect(() => {
-    console.log(meshGeometryDimension);
+    toggleBackground("var(--durag-blue)");
   });
   return (
     <div>
