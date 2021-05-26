@@ -6,9 +6,13 @@ const PostsLising = ({ posts }) => {
     <div className={styles.containerPosts}>
       {posts.map((post) => {
         return (
-          <Link key={post.slug} href={"/musings/" + post.slug}>
-            <a>{post.title + " " + post.date}</a>
-          </Link>
+          <div className={styles.containerLink} key={post.slug}>
+            <Link href={"/musings/" + post.slug}>
+              <a className={styles.musingLink}>{post.title}</a>
+            </Link>
+
+            <small className={styles.musingDate}>{post.date}</small>
+          </div>
         );
       })}
     </div>
