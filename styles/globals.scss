@@ -323,6 +323,11 @@ body {
   src: url("../fonts/NeueAlteGrotesk-Regular.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "Gintronic";
+  src: url("../fonts/Gintronic-Light.woff2") format("woff2");
+}
+
 body {
   background-color: var(--durag-blue);
 }

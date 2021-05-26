@@ -4,6 +4,8 @@ import config from "blog.config";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import BlogLayout from "@/components/wrappers/BlogLayout";
+import Code from "@/components/Code";
+const components = { Code };
 
 const Musing = ({ post, source }) => {
   return (
@@ -24,7 +26,7 @@ const Musing = ({ post, source }) => {
         </ul>
         <main className={styles.paragraphsMusing}>
           {/* contents should be here */}
-          <MDXRemote {...source} />
+          <MDXRemote {...source} components={components} />
         </main>
       </div>
     </BlogLayout>
