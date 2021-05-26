@@ -1,4 +1,3 @@
-import react from "react";
 import styles from "../styles/components/Code.module.scss";
 
 const Code = ({ children }) => {
