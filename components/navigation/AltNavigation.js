@@ -6,7 +6,7 @@ const AltNavigation = () => (
     <ul className={styles.navItems}>
       <li>
         <Link href="/">
-          <a>Work</a>
+          <a>Home</a>
         </Link>
       </li>
 
