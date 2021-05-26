@@ -1,14 +1,11 @@
 import Link from "next/link";
 import styles from "../../styles/MainNav.module.scss";
-import Logo from "../atoms/Logo";
 
 const MainNavigation = () => (
   <nav className={styles.containerNav}>
     <ul className={styles.navItems}>
       <li>
-        <Link href="/">
-          <a>Work</a>
-        </Link>
+        <a href="#resume">Work</a>
       </li>
 
       <li>
