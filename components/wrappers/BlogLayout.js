@@ -7,7 +7,10 @@ import { NavDang } from "../../helpers/Animations";
 export default function BlogLayout({ children }) {
   useEffect(() => {
     toggleBackground("#ffffff");
-    new NavDang({ el: document.querySelector("[class*='navItems']") });
+    new NavDang({
+      el: document.querySelector("[class*='navItems']"),
+      blur: false,
+    });
   }, []);
 
   return (
