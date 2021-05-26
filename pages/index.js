@@ -46,6 +46,8 @@ export default function Home() {
   const [imageMeshDimensions, setImageMeshDimensions] = useState({
     height: 0,
     width: 0,
+    top: 0,
+    left: 0,
   });
 
   const imageMeshRef = useCallback((node) => {
@@ -88,7 +90,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={styles.containerWork}>
+        <section id="resume" className={styles.containerWork}>
           <h2>Resume</h2>
           {works.map(({ role, year, company, projects }) => {
             return (
