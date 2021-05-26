@@ -23,11 +23,9 @@
 
   h1 {
     text-transform: capitalize;
-    font-size: var(--step-0);
     margin-bottom: var(--space-3xs-2xs);
-
+    font-size: var(--step-2);
     font-family: "Cosi Azure";
-    // font-size: var(--step-2);
     text-decoration: none;
     font-weight: 700;
     animation: gradient 15s ease infinite;
@@ -40,6 +38,10 @@
       #203946 46%,
       #e0998e 100%
     );
+
+    @include media(">=tablet") {
+      font-size: var(--step-0);
+    }
 
     @include media(">tablet") {
       max-width: 15ch;
@@ -72,6 +74,9 @@
 .socialMusing {
   grid-area: social;
   margin-top: var(--space-s-m);
+  > * {
+    cursor: pointer;
+  }
 
   li + li {
     margin-top: var(--space-3xs-2xs);
@@ -80,6 +85,11 @@
   @include media("<=tablet") {
     padding-top: var(--space-s);
     padding-bottom: var(--space-s);
+  }
+
+  @include media(">tablet") {
+    position: fixed;
+    top: 29%;
   }
 }
 
