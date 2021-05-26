@@ -1,8 +1,13 @@
-import BlogLayout from "@/components/wrappers/BlogLayout";
+import dynamic from "next/dynamic";
 import PostsLising from "@/components/PostsListing";
 import { getAllPosts } from "api";
 import config from "../../blog.config";
 import styles from "../../styles/BlogListing.module.scss";
+
+const BlogLayout = dynamic(
+  () => import("../../components/wrappers/BlogLayout"),
+  { ssr: false }
+);
 
 const PostsPage = ({ posts }) => {
   return (

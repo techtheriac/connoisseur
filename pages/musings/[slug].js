@@ -1,11 +1,16 @@
+import dynamic from "next/dynamic";
 import styles from "../../styles/Musings.module.scss";
 import { getAllPosts, getPostBySlug } from "api";
 import config from "blog.config";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-import BlogLayout from "@/components/wrappers/BlogLayout";
 import Code from "@/components/Code";
 const components = { Code };
+
+const BlogLayout = dynamic(
+  () => import("../../components/wrappers/BlogLayout"),
+  { ssr: false }
+);
 
 const Musing = ({ post, source }) => {
   return (
