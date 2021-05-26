@@ -54,7 +54,7 @@ const ThreeWrapper = ({ children, meshGeometryDimension }) => {
       >
         <Canvas camera={{ position: [0, 0, 600] }}>
           <Suspense fallback={null}>
-            <Scene meshGeometryDimension={meshGeometryDimension} />
+            {/* <Scene meshGeometryDimension={meshGeometryDimension} /> */}
           </Suspense>
         </Canvas>
       </div>
