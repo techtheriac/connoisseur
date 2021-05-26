@@ -2,9 +2,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
 export class NavDang {
-  constructor({ el }) {
+  constructor({ el, blur }) {
     gsap.registerPlugin(ScrollTrigger);
     this.el = el;
+    this.blur = blur;
     this.navItems = gsap.utils.toArray(this.el.querySelectorAll("li"));
     this.navItemsReversed = gsap.utils
       .toArray(this.el.querySelectorAll("li"))
@@ -32,10 +33,11 @@ export class NavDang {
 
     return gsap.to(links, {
       duration: 0.3,
-      stagger: 0.05,
+      stagger: () => (this.blur === true ? 0 : 0.09),
 
       //toggles visibility
       autoAlpha: () => (scrollingDown ? 0 : 1),
+      // autoAlpha: this.blurTheAss(scrollingDown),
       y: () => (scrollingDown ? 20 : 0),
       ease: "Power4.out",
     });
