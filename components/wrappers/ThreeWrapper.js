@@ -1,9 +1,10 @@
 import * as THREE from "three";
 import React, { useRef, Suspense, useEffect } from "react";
 import toggleBackground from "../../helpers/toggleBackground";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import "../shaderMaterials/SquirlyMaterial";
 import duotone from "../shaderMaterials/textures/duotone.png";
+import { NavDang } from "../../helpers/Animations";
 
 const Scene = ({ meshGeometryDimension }) => {
   return (
@@ -15,8 +16,22 @@ const Scene = ({ meshGeometryDimension }) => {
   );
 };
 
+const ScrollContainer = ({ scroll, children }) => {
+  const { viewport } = useThree();
+  const group = useRef();
+  const vec = new THREE.Vector3();
+  useFrame(() =>
+    group.current.position.lerp(
+      vec.set(0, viewport.height * scroll.current, 0),
+      0.1
+    )
+  );
+
+  return <group ref={group}>{children}</group>;
+};
+
 const SquirlyMesh = ({ meshGeometryDimension }) => {
-  const { width, height } = meshGeometryDimension;
+  const { width, height, top, left } = meshGeometryDimension;
   const ref = useRef();
   const [texture] = useLoader(THREE.TextureLoader, [duotone]);
 
@@ -37,9 +52,13 @@ const SquirlyMesh = ({ meshGeometryDimension }) => {
 const ThreeWrapper = ({ children, meshGeometryDimension }) => {
   useEffect(() => {
     toggleBackground("var(--durag-blue)");
+    new NavDang({
+      el: document.querySelector("[class*='navItems']"),
+      blur: true,
+    });
   });
   return (
-    <div>
+    <div data-scroll-container>
       {children}
       <div
         id="canvas-container"
@@ -54,7 +73,7 @@ const ThreeWrapper = ({ children, meshGeometryDimension }) => {
       >
         <Canvas camera={{ position: [0, 0, 600] }}>
           <Suspense fallback={null}>
-            {/* <Scene meshGeometryDimension={meshGeometryDimension} /> */}
+            <Scene meshGeometryDimension={meshGeometryDimension} />
           </Suspense>
         </Canvas>
       </div>
