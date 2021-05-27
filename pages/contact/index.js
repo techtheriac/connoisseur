@@ -19,7 +19,7 @@ const Contact = () => {
   return (
     <main className={styles.containerContacts}>
       <div className={styles.wrapperBack}>
-        <span>
+        {/* <span>
           <svg
             width="50"
             height="50"
@@ -33,7 +33,7 @@ const Contact = () => {
               stroke-width="4"
             />
           </svg>
-        </span>
+        </span> */}
       </div>
       <div className={styles.wrapperCards}>
         {contacts.map(({ name, link }) => {
