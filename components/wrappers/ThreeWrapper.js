@@ -4,7 +4,7 @@ import toggleBackground from "../../helpers/toggleBackground";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import "../shaderMaterials/SquirlyMaterial";
 import duotone from "../shaderMaterials/textures/duotone.png";
-import { NavDang } from "../../helpers/Animations";
+import { NavDang, Fader } from "../../helpers/Animations";
 import { PerspectiveCamera } from "@react-three/drei";
 
 const SquirlyMesh = ({ meshGeometryDimension }) => {

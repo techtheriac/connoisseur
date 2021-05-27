@@ -91,7 +91,7 @@ export default function Home() {
           </div>
         </section>
         <section id="resume" className={styles.containerWork}>
-          <h2>Resume</h2>
+          <h2>deeds</h2>
           {works.map(({ role, year, company, projects }) => {
             return (
               <div key={company} className={styles.wrapperWork}>

@@ -43,3 +43,19 @@ export class NavDang {
     });
   }
 }
+
+export class Fader {
+  constructor({ el }) {
+    this.el = el;
+
+    this.fade();
+  }
+
+  fade() {
+    gsap.from(this.el, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "Power4.out",
+    });
+  }
+}
