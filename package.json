@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.1.5",
     "@next/mdx": "^10.2.0",
+    "@react-three/drei": "^5.2.1",
     "@react-three/fiber": "^6.1.5",
     "framer-motion": "^4.0.3",
     "glslify-loader": "^2.0.0",

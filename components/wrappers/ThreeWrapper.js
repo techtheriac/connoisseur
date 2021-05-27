@@ -5,30 +5,7 @@ import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import "../shaderMaterials/SquirlyMaterial";
 import duotone from "../shaderMaterials/textures/duotone.png";
 import { NavDang } from "../../helpers/Animations";
-
-const Scene = ({ meshGeometryDimension }) => {
-  return (
-    <>
-      <ambientLight intensity={0.1} />
-      <directionalLight color="red" position={[0, 0, 5]} />
-      <SquirlyMesh meshGeometryDimension={meshGeometryDimension} />
-    </>
-  );
-};
-
-const ScrollContainer = ({ scroll, children }) => {
-  const { viewport } = useThree();
-  const group = useRef();
-  const vec = new THREE.Vector3();
-  useFrame(() =>
-    group.current.position.lerp(
-      vec.set(0, viewport.height * scroll.current, 0),
-      0.1
-    )
-  );
-
-  return <group ref={group}>{children}</group>;
-};
+import { PerspectiveCamera } from "@react-three/drei";
 
 const SquirlyMesh = ({ meshGeometryDimension }) => {
   const { width, height, top, left } = meshGeometryDimension;
@@ -49,6 +26,48 @@ const SquirlyMesh = ({ meshGeometryDimension }) => {
   );
 };
 
+const Scene = ({ meshGeometryDimension }) => {
+  const viewport = useThree((state) => state.viewport);
+  const { top, left, height, width } = meshGeometryDimension;
+
+  return (
+    <>
+      <ambientLight intensity={0.1} />
+      <directionalLight color="red" position={[0, 0, 5]} />
+      <PerspectiveCamera
+        makeDefault
+        // position={[0, 0, 600]}
+        // fov={2 * Math.atan(viewport.height / 2 / 600) * (180 / Math.PI)}
+      >
+        <SquirlyMesh
+          meshGeometryDimension={meshGeometryDimension}
+          position={[
+            left -
+              viewport.width / 2 +
+              width / -top +
+              viewport.height / 2 -
+              height / 2,
+            0,
+          ]}
+        />
+      </PerspectiveCamera>
+    </>
+  );
+};
+
+function ScrollContainer({ scroll, children }) {
+  const { viewport } = useThree();
+  const group = useRef();
+  const vec = new THREE.Vector3();
+  useFrame(() =>
+    group.current.position.lerp(
+      vec.set(0, viewport.height * scroll.current, 0),
+      0.1
+    )
+  );
+  return <group ref={group}>{children}</group>;
+}
+
 const ThreeWrapper = ({ children, meshGeometryDimension }) => {
   useEffect(() => {
     toggleBackground("var(--durag-blue)");
@@ -57,9 +76,9 @@ const ThreeWrapper = ({ children, meshGeometryDimension }) => {
       blur: true,
     });
   });
+
   return (
-    <div data-scroll-container>
-      {children}
+    <div>
       <div
         id="canvas-container"
         style={{
@@ -71,12 +90,21 @@ const ThreeWrapper = ({ children, meshGeometryDimension }) => {
           position: "fixed",
         }}
       >
-        <Canvas camera={{ position: [0, 0, 600] }}>
+        <Canvas
+          raycaster={{
+            computeOffsets: ({ clientX, clientY }) => ({
+              offsetX: clientX,
+              offsetY: clientY,
+            }),
+          }}
+        >
           <Suspense fallback={null}>
             <Scene meshGeometryDimension={meshGeometryDimension} />
           </Suspense>
         </Canvas>
       </div>
+
+      {children}
     </div>
   );
 };
