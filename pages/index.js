@@ -37,7 +37,7 @@ export default function Home() {
           title: "KiakiaPrints",
           description:
             "Shop for and customize prints on apparels, mugs, banners etc.",
-          url: "https://kiakiaprints.com",
+          url: "https://kiakiaprint.com",
         },
       ],
     },
