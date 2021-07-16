@@ -75,7 +75,7 @@ export default function Home() {
 
           <div className={styles.containerBio}>
             <div ref={imageMeshRef} className={styles.dcseanImg}>
-              <img src={`/duotone.png`} />
+              <img src={`/duotone.jpg`} />
             </div>
 
             <div className={styles.connoisseurRant}>
