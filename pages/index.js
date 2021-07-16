@@ -67,10 +67,10 @@ export default function Home() {
         <MainNavigation />
         <section className={styles.containerIntro}>
           <div className={styles.containerDuragText}>
-            <h2 className={styles.durag}>Durag</h2>
+            <h2 className={styles.durag}>Franklin</h2>
           </div>
           <div className={styles.containerDuragText}>
-            <h2 className={styles.connoisseur}>Connoisseur</h2>
+            <h2 className={styles.connoisseur}>Jezreel</h2>
           </div>
 
           <div className={styles.containerBio}>
