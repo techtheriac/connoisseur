@@ -20,6 +20,10 @@
   margin-top: calc(var(--space-xl-2xl) * 2);
 }
 
+// .durag, .connoisseur {
+  
+// }
+
 .containerDuragText {
   width: inherit;
   display: flex;
@@ -39,8 +43,11 @@
 
   h2 {
     font-family: "Cosi Azure";
-    color: var(--durag-tomato);
+    // color: var(--durag-tomato);
     font-size: var(--step-5);
+    color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--durag-tomato);
   }
 }
 
