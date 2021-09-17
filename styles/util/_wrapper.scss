@@ -1,0 +1,16 @@
+@import "./include-media";
+@import "./breakpoints";
+
+.containerMain {
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+  width: 100%;
+  position: relative;
+
+  @include media("<=tablet") {
+    padding-left: var(--space-xs);
+    padding-right: var(--space-xs);
+  }
+}

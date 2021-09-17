@@ -1,5 +1,8 @@
-//resets
+// Imports
+@import "./util/include-media";
+@import "./util/breakpoints";
 
+//resets
 html,
 body,
 h1,
@@ -125,22 +128,166 @@ q:before {
 
 html,
 body {
-  font-size: 10px;
+  font-size: 16px;
+  // Instead of making `vw` a dependency in factoring out font sizes fluidly
+  // With sass I use predefined sizes based on the viewports in incorporate in my project
+  // Assigning a font size to these individual font breakpoint all in respect to my typescale
+  // Users seldom have to resize their windows whilst browsing the web. Hence the problem
+  // of typographic elements jumping when there's a 1px difference in viewport with is almost non exixtent
+  // In fact, browser window resizing is imposssible for in mobile devices
+
+  // Using the `media query mixin` - mixins have to be imported in individual modules
+
+  // Use css `clamp` to define layout container margins/padding
 }
 
-// Variables
+:root {
+  --fluid-min-width: 320;
+  --fluid-max-width: 1140;
+
+  --fluid-screen: 100vw;
+  --fluid-bp: calc(
+    (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+      (var(--fluid-max-width) - var(--fluid-min-width))
+  );
+}
+
+@media screen and (min-width: 1140px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-max-width) * 1px);
+  }
+}
 
 :root {
   --durag-tomato: #e0998e;
-  --durag-tomato-01: rgba(224, 153, 142, 0.54);
+  --durag-tomato-01: rgba(224, 153, 142, 0.2);
   --durag-meadow: #a7d9a4;
   --durag-blue: #203946;
   --durag-bg-offwhite: #f2f2f2;
 
-  --space-sm: 1.2rem;
+  // Spacing should be dependent on a scale
+  // Scale definition - experiment with grid lover and type scale to define prefered scale\
+
+  // Font Step definitions
+
+  --step--2: clamp(0.69rem, 0.59rem + 0.52vw, 0.96rem);
+  --step--1: clamp(0.83rem, 0.69rem + 0.72vw, 1.2rem);
+  --step-0: clamp(1rem, 0.8rem + 0.98vw, 1.5rem);
+  --step-1: clamp(1.2rem, 0.94rem + 1.32vw, 1.88rem);
+  --step-2: clamp(1.44rem, 1.09rem + 1.76vw, 2.34rem);
+  --step-3: clamp(1.73rem, 1.26rem + 2.35vw, 2.93rem);
+  --step-4: clamp(2.07rem, 1.45rem + 3.1vw, 3.66rem);
+  --step-5: clamp(2.49rem, 1.67rem + 4.08vw, 4.58rem);
+
+  // Space definitions
+
+  --fc-3xs-min: (var(--fc-s-min) * 0.25);
+  --fc-3xs-max: (var(--fc-s-max) * 0.25);
+
+  --fc-2xs-min: (var(--fc-s-min) * 0.5);
+  --fc-2xs-max: (var(--fc-s-max) * 0.5);
+
+  --fc-xs-min: (var(--fc-s-min) * 0.75);
+  --fc-xs-max: (var(--fc-s-max) * 0.75);
+
+  --fc-s-min: (var(--f-0-min, 16));
+  --fc-s-max: (var(--f-0-max, 24));
+
+  --fc-m-min: (var(--fc-s-min) * 1.5);
+  --fc-m-max: (var(--fc-s-max) * 1.5);
+
+  --fc-l-min: (var(--fc-s-min) * 2);
+  --fc-l-max: (var(--fc-s-max) * 2);
+
+  --fc-xl-min: (var(--fc-s-min) * 3);
+  --fc-xl-max: (var(--fc-s-max) * 3);
+
+  --fc-2xl-min: (var(--fc-s-min) * 4);
+  --fc-2xl-max: (var(--fc-s-max) * 4);
+
+  --fc-3xl-min: (var(--fc-s-min) * 6);
+  --fc-3xl-max: (var(--fc-s-max) * 6);
+
+  /* T-shirt sizes */
+  --space-3xs: calc(
+    ((var(--fc-3xs-min) / 16) * 1rem) + (var(--fc-3xs-max) - var(--fc-3xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-2xs: calc(
+    ((var(--fc-2xs-min) / 16) * 1rem) + (var(--fc-2xs-max) - var(--fc-2xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-xs: calc(
+    ((var(--fc-xs-min) / 16) * 1rem) + (var(--fc-xs-max) - var(--fc-xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-s: calc(
+    ((var(--fc-s-min) / 16) * 1rem) + (var(--fc-s-max) - var(--fc-s-min)) *
+      var(--fluid-bp)
+  );
+  --space-m: calc(
+    ((var(--fc-m-min) / 16) * 1rem) + (var(--fc-m-max) - var(--fc-m-min)) *
+      var(--fluid-bp)
+  );
+  --space-l: calc(
+    ((var(--fc-l-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-l-min)) *
+      var(--fluid-bp)
+  );
+  --space-xl: calc(
+    ((var(--fc-xl-min) / 16) * 1rem) + (var(--fc-xl-max) - var(--fc-xl-min)) *
+      var(--fluid-bp)
+  );
+  --space-2xl: calc(
+    ((var(--fc-2xl-min) / 16) * 1rem) + (var(--fc-2xl-max) - var(--fc-2xl-min)) *
+      var(--fluid-bp)
+  );
+  --space-3xl: calc(
+    ((var(--fc-3xl-min) / 16) * 1rem) + (var(--fc-3xl-max) - var(--fc-3xl-min)) *
+      var(--fluid-bp)
+  );
+
+  /* One-up pairs */
+  --space-3xs-2xs: calc(
+    ((var(--fc-3xs-min) / 16) * 1rem) + (var(--fc-2xs-max) - var(--fc-3xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-2xs-xs: calc(
+    ((var(--fc-2xs-min) / 16) * 1rem) + (var(--fc-xs-max) - var(--fc-2xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-xs-s: calc(
+    ((var(--fc-xs-min) / 16) * 1rem) + (var(--fc-s-max) - var(--fc-xs-min)) *
+      var(--fluid-bp)
+  );
+  --space-s-m: calc(
+    ((var(--fc-s-min) / 16) * 1rem) + (var(--fc-m-max) - var(--fc-s-min)) *
+      var(--fluid-bp)
+  );
+  --space-m-l: calc(
+    ((var(--fc-m-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-m-min)) *
+      var(--fluid-bp)
+  );
+  --space-l-xl: calc(
+    ((var(--fc-l-min) / 16) * 1rem) + (var(--fc-xl-max) - var(--fc-l-min)) *
+      var(--fluid-bp)
+  );
+  --space-xl-2xl: calc(
+    ((var(--fc-xl-min) / 16) * 1rem) + (var(--fc-2xl-max) - var(--fc-xl-min)) *
+      var(--fluid-bp)
+  );
+  --space-2xl-3xl: calc(
+    ((var(--fc-2xl-min) / 16) * 1rem) + (var(--fc-3xl-max) - var(--fc-2xl-min)) *
+      var(--fluid-bp)
+  );
+
+  /* Custom pairs */
+  --space-s-l: calc(
+    ((var(--fc-s-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-s-min)) *
+      var(--fluid-bp)
+  );
 }
 
-// Typography
+// Type face imports
 @font-face {
   font-family: "Aventa";
   src: url("../fonts/Aventa-Regular.woff") format("woff");
@@ -151,12 +298,47 @@ body {
   src: url("../fonts/LeRosartDisplay-Light.woff") format("woff");
 }
 
-@font-face {
-  font-family: "Rosat Display Semibold";
-  src: url("../fonts/LeRosartDisplay-Semibold.woff") format("woff");
-}
+// @font-face {
+//   font-family: "Rosat Display Semibold";
+//   src: url("../fonts/LeRosartDisplay-Semibold.woff") format("woff");
+// }
 
 @font-face {
   font-family: "Rosat Text Italic";
   src: url("../fonts/LeRosartText-LightItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Cosi Azure";
+  src: url("../fonts/CosiAzure-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Neue Grotesk Book";
+  src: url("../fonts/NeueAlteGrotesk-Book.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Neue Grotesk Regular";
+  src: url("../fonts/NeueAlteGrotesk-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Gintronic";
+  src: url("../fonts/Gintronic-Light.woff2") format("woff2");
+}
+
+body {
+  background-color: var(--durag-blue);
+}
+
+code {
+  font-family: "Gintronic";
+}
+
+.has-scrolled [class*="Home_durag"] {
+  z-index: 99;
+  opacity: 0.4;
+  transition: opacity 0.5s cubic-bezier(1, -0.12, 0.32, 0.67);
+  will-change: transform;
 }

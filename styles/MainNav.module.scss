@@ -1,39 +1,30 @@
-.containerNav {
-  display: flex;
-  justify-content: space-between;
-  padding: var(--space-sm);
-}
+@import "./util/include-media";
+@import "./util/breakpoints";
 
+.containerNav {
+  margin-top: var(--space-2xs-xs);
+  width: calc(100% - calc(2 * var(--space-xl)));
+  align-self: center;
+  position: fixed;
+
+  @include media("<=tablet") {
+    width: calc(100% - calc(2 * var(--space-xs)));
+  }
+}
 .navItems {
   display: flex;
+  justify-content: space-between;
+
   li {
     color: var(--durag-meadow);
-    font-size: 1.6rem;
-    font-family: "Rosat Display Light";
+    font-size: var(--step--2);
+    font-family: "Neue Grotesk Regular";
     a {
       color: inherit;
+      text-transform: uppercase;
     }
     span {
-      margin: 0 2rem 0 2rem;
+      margin: 0 var(--space-m) 0 var(--space-m);
     }
   }
-}
-
-.altNavItems {
-  display: flex;
-  li {
-    color: var(--durag-blue);
-    font-size: 1.6rem;
-    font-family: "Rosat Display Light";
-    a {
-      color: inherit;
-    }
-    span {
-      margin: 0 2rem 0 2rem;
-    }
-  }
-}
-
-.marginOverrides {
-  margin-bottom: 1px solid var(--durag-tomato);
 }

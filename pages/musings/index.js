@@ -1,32 +1,30 @@
-import styles from "../../styles/Musings.module.scss";
-import Head from "next/head";
-import Link from "next/link";
-import AltNavigation from "../../components/navigation/AltNavigation";
-import * as S from "sanctuary";
+import dynamic from "next/dynamic";
+import PostsLising from "@/components/PostsListing";
+import { getAllPosts } from "api";
+import config from "../../blog.config";
+import styles from "../../styles/BlogListing.module.scss";
 
-export default function Musings({ posts }) {
-  const BlogListing = (x) => (
-    <div key={x.id}>
-      <Link href={`/musings/${x.slug}`}>
-        <a>
-          <h1>{x.title}</h1>
-        </a>
-      </Link>
-    </div>
-  );
+const BlogLayout = dynamic(
+  () => import("../../components/wrappers/BlogLayout"),
+  { ssr: false }
+);
 
+const PostsPage = ({ posts }) => {
   return (
-    <div className={styles.containerMusings}>
-      <AltNavigation />
-      {S.map(BlogListing)(posts)}
-    </div>
+    <BlogLayout>
+      <PostsLising posts={posts} />
+    </BlogLayout>
   );
-}
+};
 
 export async function getStaticProps() {
-  const res = await fetch(`${process.env.URL}/posts`);
-  const posts = await res.json();
+  const posts = getAllPosts(["title", "date", "slug", "author"]);
+  const startIndex = 0;
+  const endIndex = config.postsPerPage;
+
   return {
-    props: { posts },
+    props: { posts: posts.slice(startIndex, endIndex) },
   };
 }
+
+export default PostsPage;

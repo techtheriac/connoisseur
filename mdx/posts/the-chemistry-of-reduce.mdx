@@ -1,0 +1,61 @@
+---
+title: "The Chemistry Of Reduce"
+excerpt: ""
+date: "2020-02-16T05:35:07.322Z"
+---
+
+The power of the higher-order function 'Reduce' stems from its explicit nature. He might pose to be that king with an impenetrable empire (well, he seemed that way to me at first) but understanding his core will make him bow to your sway.
+
+In trying to wrap my head around how this king operates, I was able to relate his mode of operation to simple chemical reactions. Reduce takes in a mappable data structure and spits out a new item. It's that simple.
+Let's take a look at how water is formed from Hydrogen and Oxygen.
+
+<Code>
+
+2H<sub>2</sub> + 0<sub>2</sub> ==> 2H<sub>2</sub>0
+
+</Code>
+
+The above chemical reaction proceeds under certain conditions. Hydrogen and Oxygen commingle, and water is born. The function supplied to Reduce plays the role of simulating conditions, introducing constraints, and telling Reduce what to do as he loops through your data.
+
+Let's have a look at how Reduce will helps us transform atoms (numbers in an array) into a fat molecule (the sum of these numbers):
+
+<Code>
+
+let constituents = [2, 3, 4, 5, 6];
+let initialMolecule = 0;
+let chunk = constituents.reduce(function (molecule, atoms) {
+return molecule + atoms;
+}, initialMolecule);
+console.log(chunk);
+//prints 20;
+
+</Code>
+
+In the above code, we have an array of numbers called 'constituents'. The higher-order function 'reduce' takes a function with two arguments 'molecule' and 'atoms' and returns the sum of molecule and atoms. Note that what Reduce does is loop through the array 'constituents' and adds atoms to molecules until there are no atoms left.
+The value of molecule increases per iteration. The final molecule is what is being returned and stored in the variable 'chunk'. If the initialMolecule of 0 is not indicated, reduce starts staking up the atoms from the first atom in the array to build the initial molecule. It makes sense to think of initialMolecule as a temporary placeholder; the platform upon which the chemical reaction is initialized.
+
+### Mapping With Reduce
+
+We all know that the higher-order function 'Map' can do a bunch of computation on arrays and spit out an array of the same length with its constituents transformed as desired. Yeah, that's what it does.
+It turns out, it doesn't take much to achieve this same thing with Reduce. This here is what opened my eyes to the power of reduce. The mysterious King Reduce isn't much of a mystery after-all.
+
+Supposing I have an array of number strings, and I want to make them actual numbers, here's the trick I'll pull off on reduce:
+
+<Code>
+
+let molecules = ["2", "3", "4", "5", "6"];
+let container = [];
+let moleculesAltered = molecules.reduce((accumulator, molecule) => {
+accumulator.push(Number(molecule));
+return accumulator;
+}, container);
+console.log(moleculesAltered);
+//prints [2, 3, 4, 5, 6];
+
+</Code>
+
+Why on earth will I ever do this when I can simply use map?
+
+Notice how an empty array plays the role of 'initialMolecule' here? We are trying to spit back an array just like map will do. Thus, we create an empty one. The accumulator then takes it from there, and each molecule transformed from string to number is pushed on every iteration. The final result is an accumulator pregnant with these data. We then have it returned and stored in the variable 'moleculesAltered'.
+
+[Read more on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
