@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import Head from "next/head";
 import { useEffect, useState, useRef, useCallback } from "react";
 import styles from "../styles/Home.module.scss";
 import MainNavigation from "@/components/navigation/MainNavigation";
@@ -43,80 +44,64 @@ export default function Home() {
     },
   ];
 
-  const [imageMeshDimensions, setImageMeshDimensions] = useState({
-    height: 0,
-    width: 0,
-    top: 0,
-    left: 0,
-  });
-
-  const imageMeshRef = useCallback((node) => {
-    if (node !== null) {
-      setImageMeshDimensions({
-        height: node.getBoundingClientRect().height,
-        width: node.getBoundingClientRect().width,
-        top: node.getBoundingClientRect().top,
-        left: node.getBoundingClientRect().left,
-      });
-    }
-  }, []);
-
   return (
-    <ThreeWrapper meshGeometryDimension={imageMeshDimensions}>
-      <main className={styles.containerMain}>
-        <MainNavigation />
-        <section className={styles.containerIntro}>
-          <div className={styles.containerDuragText}>
-            <h2 className={styles.durag}>Franklin</h2>
-          </div>
-          <div className={styles.containerDuragText}>
-            <h2 className={styles.connoisseur}>Jezreel</h2>
-          </div>
-
-          <div className={styles.containerBio}>
-            <div ref={imageMeshRef} className={styles.dcseanImg}>
-              <img src={`/duotone.jpg`} />
+    <div>
+      <ThreeWrapper>
+        <main className={styles.containerMain}>
+          <MainNavigation />
+          <section className={styles.containerIntro}>
+            <div className={styles.containerDuragText}>
+              <h2 className={styles.durag}>Franklin</h2>
+            </div>
+            <div className={styles.containerDuragText}>
+              <h2 className={styles.connoisseur}>Jezreel</h2>
             </div>
 
-            <div className={styles.connoisseurRant}>
-              <p>I don't sell durags!</p>
-              <p>With a knack for aesthetics,</p>
-              <p>I make internet things that scale.</p>
-              <p>Wanna take your business online?</p>
-              <p>
-                <a href="mailto:techtheriac@outlook.com">Hit me up</a>
-              </p>
-              <p>Cheers </p>
-            </div>
-          </div>
-        </section>
-        <section id="resume" className={styles.containerWork}>
-          <h2>deeds</h2>
-          {works.map(({ role, year, company, projects }) => {
-            return (
-              <div key={company} className={styles.wrapperWork}>
-                <div className={styles.wrapperCompany}>
-                  <p>{year}</p>
-                  <p>{company}</p>
-                </div>
-
-                <div className={styles.projectListing}>
-                  {projects.map(({ title, description, url }) => {
-                    return (
-                      <div className={styles.project} key={url}>
-                        <h3>
-                          <a href={url}>{title}</a>
-                        </h3>
-                        <p>{description}</p>
-                      </div>
-                    );
-                  })}
-                </div>
+            <div className={styles.containerBio}>
+              <div className={styles.dcseanImg}>
+                <img src={`/duotone.jpg`} alt="Franklin Jezreel image" />
               </div>
-            );
-          })}
-        </section>
-      </main>
-    </ThreeWrapper>
+
+              <div className={styles.connoisseurRant}>
+                <p>I don't sell durags!</p>
+                <p>With a knack for aesthetics,</p>
+                <p>I make internet things that scale.</p>
+                <p>Wanna take your business online?</p>
+                <p>
+                  <a href="mailto:techtheriac@outlook.com">Hit me up</a>
+                </p>
+                <p>Cheers </p>
+              </div>
+            </div>
+          </section>
+          <section id="resume" className={styles.containerWork}>
+            <h2>deeds</h2>
+            {works.map(({ role, year, company, projects }) => {
+              return (
+                <div key={company} className={styles.wrapperWork}>
+                  <div className={styles.wrapperCompany}>
+                    <p>{year}</p>
+                    <p>{company}</p>
+                  </div>
+
+                  <div className={styles.projectListing}>
+                    {projects.map(({ title, description, url }) => {
+                      return (
+                        <div className={styles.project} key={url}>
+                          <h3>
+                            <a href={url}>{title}</a>
+                          </h3>
+                          <p>{description}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </section>
+        </main>
+      </ThreeWrapper>
+    </div>
   );
 }
