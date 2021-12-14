@@ -20,50 +20,24 @@
   margin-top: calc(var(--space-xl-2xl) * 2);
 }
 
-// .durag, .connoisseur {
-  
-// }
+.wrapperBio {
+}
 
-.containerDuragText {
-  width: inherit;
+.wrapperFuckingName {
   display: flex;
+  align-items: center;
+  font-family: "Grand Slang";
+  font-size: var(--step-5);
+  font-weight: normal;
 
-  @include media(">=tablet") {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto;
-  }
-
-  .durag {
-    grid-column: 5 / -1;
-  }
-  .connoisseur {
-    grid-column: 7 / -1;
-  }
-
-  h2 {
-    font-family: "Cosi Azure";
-    // color: var(--durag-tomato);
-    font-size: var(--step-5);
-    color: transparent;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: var(--durag-tomato);
+  :nth-child(2) {
+    font-family: "Grand Slang";
+    font-style: italic;
   }
 }
 
-.containerBio {
-  display: grid;
-  grid-template-columns: calc(35rem / 2) 1fr;
-  grid-template-rows: minmax(calc(44rem / 2), auto);
-  column-gap: var(--space-xl-2xl);
-  width: 100%;
-  margin-top: var(--space-xl-2xl);
-
-  @include media("<tablet") {
-    grid-template-columns: calc(35rem / 2);
-    grid-template-rows: minmax(calc(44rem / 2), auto), auto;
-  }
-}
+// .fuckingName {
+// }
 
 .connoisseurRant {
   grid-column: 2 / -1;
