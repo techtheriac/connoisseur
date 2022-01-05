@@ -20,9 +20,6 @@
   margin-top: calc(var(--space-xl-2xl) * 2);
 }
 
-.wrapperBio {
-}
-
 .wrapperFuckingName {
   display: flex;
   align-items: center;
@@ -30,14 +27,10 @@
   font-size: var(--step-5);
   font-weight: normal;
 
-  :nth-child(2) {
-    font-family: "Grand Slang";
-    font-style: italic;
+  h1 {
+    color: #fff;
   }
 }
-
-// .fuckingName {
-// }
 
 .connoisseurRant {
   grid-column: 2 / -1;

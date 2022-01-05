@@ -54,9 +54,9 @@ export default function Home() {
               <h1 className={styles.fuckingName}>Franklin</h1>
               <h1 className={styles.fuckingName}>Jezreel</h1>
             </div>
-            <div className={styles.wrapperBio}>
+            {/* <div className={styles.wrapperBio}>
               <p>I am a software developer with so much fucking experience</p>
-            </div>
+            </div> */}
           </section>
           <section id="resume" className={styles.containerWork}>
             <h2>deeds</h2>

@@ -54,7 +54,7 @@ export class Candy {
   }
 
   applyBlur() {
-    this.app.stage.filters = [new KawaseBlurFilter(30, 10, true)];
+    this.app.stage.filters = [new KawaseBlurFilter(70, 25, true)];
   }
 }
 
@@ -69,7 +69,7 @@ class Orb {
     this.y = random(this.bounds["y"].min, this.bounds["y"].max);
 
     // how large the orb is vs it's original radius (this will modulate over time)
-    this.scale = 1;
+    this.scale = 2;
 
     // what color is the orb?
     this.fill = fill;
@@ -100,7 +100,7 @@ class Orb {
   setBounds() {
     // how far from the { x, y } origin can each orb move
     const maxDist =
-      window.innerWidth < 1000 ? window.innerWidth / 3 : window.innerWidth / 5;
+      window.innerWidth < 1000 ? window.innerWidth / 1 : window.innerWidth / 2;
     // the { x, y } origin for each orb (the bottom right of the screen)
     const originX = window.innerWidth / 1.25;
     const originY =
@@ -112,11 +112,11 @@ class Orb {
     return {
       x: {
         min: originX - maxDist,
-        max: originX + maxDist,
+        max: originX + maxDist / 200,
       },
       y: {
         min: originY - maxDist,
-        max: originY + maxDist,
+        max: originY + maxDist / 200,
       },
     };
   }
@@ -187,10 +187,11 @@ class ColorPalette {
     );
 
     // store the color choices in an array so that a random one can be picked later
+
+    // 🔥 Add colors of choice here bitch
     this.colorChoices = [
-      this.baseColor,
-      this.complimentaryColor1,
-      this.complimentaryColor2,
+      '#58356e',
+      '#f8955b',      
     ];
   }
 
