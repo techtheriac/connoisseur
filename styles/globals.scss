@@ -161,7 +161,8 @@ body {
 :root {
   --durag-tomato: #e0998e;
   --durag-tomato-01: rgba(224, 153, 142, 0.2);
-  --durag-meadow: #a7d9a4;
+  // --durag-meadow: #a7d9a4;
+  --durag-meadow: #fff;
   --durag-blue: #203946;
   --durag-bg-offwhite: #f2f2f2;
 
@@ -298,11 +299,6 @@ body {
   src: url("../fonts/LeRosartDisplay-Light.woff") format("woff");
 }
 
-// @font-face {
-//   font-family: "Rosat Display Semibold";
-//   src: url("../fonts/LeRosartDisplay-Semibold.woff") format("woff");
-// }
-
 @font-face {
   font-family: "Rosat Text Italic";
   src: url("../fonts/LeRosartText-LightItalic.woff") format("woff");
@@ -328,8 +324,18 @@ body {
   src: url("../fonts/Gintronic-Light.woff2") format("woff2");
 }
 
-body {
-  background-color: var(--durag-blue);
+@font-face {
+  font-family: "Grand Slang";
+  src: url("../fonts/GrandSlang-Italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Grand Slang";
+  src: url("../fonts/GrandSlang-Roman.woff2") format("woff2");
+  font-style: normal;
+  font-weight: normal;
 }
 
 code {
@@ -341,4 +347,18 @@ code {
   opacity: 0.4;
   transition: opacity 0.5s cubic-bezier(1, -0.12, 0.32, 0.67);
   will-change: transform;
+}
+
+.orb-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+body {
+  background-color: #c3c3c3;
 }

@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useEffect, useState, useRef, useCallback } from "react";
 import styles from "../styles/Home.module.scss";
+import toggleBackground from "@/helpers/toggleBackground";
 import MainNavigation from "@/components/navigation/MainNavigation";
 
 const ThreeWrapper = dynamic(
@@ -10,6 +11,10 @@ const ThreeWrapper = dynamic(
 );
 
 export default function Home() {
+  useEffect(() => {
+    toggleBackground('#c3c3c3');
+  })
+  
   const works = [
     {
       company: "Intelligent Innovations",
@@ -50,29 +55,13 @@ export default function Home() {
         <main className={styles.containerMain}>
           <MainNavigation />
           <section className={styles.containerIntro}>
-            <div className={styles.containerDuragText}>
-              <h2 className={styles.durag}>Franklin</h2>
+            <div className={styles.wrapperFuckingName}>
+              <h1 className={styles.fuckingName}>Franklin</h1>
+              <h1 className={styles.fuckingName}>Jezreel</h1>
             </div>
-            <div className={styles.containerDuragText}>
-              <h2 className={styles.connoisseur}>Jezreel</h2>
-            </div>
-
-            <div className={styles.containerBio}>
-              <div className={styles.dcseanImg}>
-                <img src={`/duotone.jpg`} alt="Franklin Jezreel image" />
-              </div>
-
-              <div className={styles.connoisseurRant}>
-                <p>I don't sell durags!</p>
-                <p>With a knack for aesthetics,</p>
-                <p>I make internet things that scale.</p>
-                <p>Wanna take your business online?</p>
-                <p>
-                  <a href="mailto:techtheriac@outlook.com">Hit me up</a>
-                </p>
-                <p>Cheers </p>
-              </div>
-            </div>
+            {/* <div className={styles.wrapperBio}>
+              <p>I am a software developer with so much fucking experience</p>
+            </div> */}
           </section>
           <section id="resume" className={styles.containerWork}>
             <h2>deeds</h2>

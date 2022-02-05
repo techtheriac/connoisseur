@@ -20,48 +20,15 @@
   margin-top: calc(var(--space-xl-2xl) * 2);
 }
 
-// .durag, .connoisseur {
-  
-// }
-
-.containerDuragText {
-  width: inherit;
+.wrapperFuckingName {
   display: flex;
+  align-items: center;
+  font-family: "Grand Slang";
+  font-size: var(--step-5);
+  font-weight: normal;
 
-  @include media(">=tablet") {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto;
-  }
-
-  .durag {
-    grid-column: 5 / -1;
-  }
-  .connoisseur {
-    grid-column: 7 / -1;
-  }
-
-  h2 {
-    font-family: "Cosi Azure";
-    // color: var(--durag-tomato);
-    font-size: var(--step-5);
-    color: transparent;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: var(--durag-tomato);
-  }
-}
-
-.containerBio {
-  display: grid;
-  grid-template-columns: calc(35rem / 2) 1fr;
-  grid-template-rows: minmax(calc(44rem / 2), auto);
-  column-gap: var(--space-xl-2xl);
-  width: 100%;
-  margin-top: var(--space-xl-2xl);
-
-  @include media("<tablet") {
-    grid-template-columns: calc(35rem / 2);
-    grid-template-rows: minmax(calc(44rem / 2), auto), auto;
+  h1 {
+    color: #fff;
   }
 }
 
@@ -86,33 +53,13 @@
   }
 }
 
-.dcseanImg {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-column: 1 / span 1;
-
-  @include media("<tablet") {
-    grid-column: 1;
-    grid-row: 1 / span 1;
-  }
-
-  img {
-    //opacity: 0;
-    display: block;
-    min-width: 100%;
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
-  }
-}
-
 .containerWork {
   margin-top: var(--space-xl-2xl);
 
   h2 {
     font-family: "Cosi Azure";
     font-size: var(--step-2);
-    color: var(--durag-tomato);
+    color: #fff;
     letter-spacing: var(--space-2xs-xs);
     margin-bottom: var(--space-s);
   }
