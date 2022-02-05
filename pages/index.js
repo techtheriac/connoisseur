@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useEffect, useState, useRef, useCallback } from "react";
 import styles from "../styles/Home.module.scss";
+import toggleBackground from "@/helpers/toggleBackground";
 import MainNavigation from "@/components/navigation/MainNavigation";
 
 const ThreeWrapper = dynamic(
@@ -10,6 +11,10 @@ const ThreeWrapper = dynamic(
 );
 
 export default function Home() {
+  useEffect(() => {
+    toggleBackground('#c3c3c3');
+  })
+  
   const works = [
     {
       company: "Intelligent Innovations",

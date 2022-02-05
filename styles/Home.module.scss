@@ -53,33 +53,13 @@
   }
 }
 
-.dcseanImg {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-column: 1 / span 1;
-
-  @include media("<tablet") {
-    grid-column: 1;
-    grid-row: 1 / span 1;
-  }
-
-  img {
-    //opacity: 0;
-    display: block;
-    min-width: 100%;
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
-  }
-}
-
 .containerWork {
   margin-top: var(--space-xl-2xl);
 
   h2 {
     font-family: "Cosi Azure";
     font-size: var(--step-2);
-    color: var(--durag-tomato);
+    color: #fff;
     letter-spacing: var(--space-2xs-xs);
     margin-bottom: var(--space-s);
   }
