@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import PostsLising from "@/components/PostsListing";
 import { getPosts } from "BlogInfrastructure";
+import {compact} from 'lodash';
 
 const BlogLayout = dynamic(
   () => import("../../components/wrappers/BlogLayout"),

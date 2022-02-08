@@ -21,6 +21,7 @@
     "hsl-to-hex": "^1.0.0",
     "include-media": "^1.4.9",
     "locomotive-scroll": "^4.1.1",
+    "lodash": "^4.17.21",
     "next": "10.0.7",
     "next-images": "^1.7.0",
     "pixi.js": "^5.3.11",
