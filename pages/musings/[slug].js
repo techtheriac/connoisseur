@@ -3,6 +3,7 @@ import styles from "../../styles/Musings.module.scss";
 import { compact } from "lodash";
 import { getPost, getPostContent, getPosts, getPostSlugs } from "BlogInfrastructure";
 import { useEffect } from "react";
+import { ContentRenderer } from "@/components/ContentRenderer";
 
 
 const BlogLayout = dynamic(
@@ -18,13 +19,9 @@ const Musing = ({ postId, postData, postContent }) => {
 
   return (
     <BlogLayout>
-      <div>
+      {/* <div>
       {
-        postContent.map((paragraph, index) => {
-          // return <p key={paragraph.id}>
-          //   {paragraph.paragraph.text[0].plain_text}
-          // </p>;
-
+        postContent.map((paragraph, index) => {          
           if(paragraph.type === "paragraph") {
             return <p key={index}>{ paragraph.paragraph.text[0].plain_text }</p>
           }
@@ -39,7 +36,9 @@ const Musing = ({ postId, postData, postContent }) => {
 
         })
       }
-      </div>
+      
+      </div> */}
+      <ContentRenderer postContent={postContent} />
     </BlogLayout>
   );
 };
