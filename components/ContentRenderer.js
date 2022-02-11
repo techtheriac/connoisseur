@@ -1,4 +1,5 @@
 // TO-DO - Get a sorted sematic structure of blog post content before rendering 
+import React, {useEffect} from "react";
 import {styled} from "@stitches/react";
 import * as R from 'ramda';
 
@@ -6,8 +7,17 @@ const Map = R.addIndex(R.map);
 
 const Paragraph = styled("p", {
   fontSize: "1.2rem",
+  marginTop: "20px",
 });
 
+const BlogLink = ({content, linkUrl}) => {
+  useEffect(() => {
+    console.log(content, linkUrl)
+  })
+
+  return <a href={linkUrl}>{content}</a>
+}
+const BlogContentBox = styled("div");
 const HeadingOne = styled("h1");
 const HeadingTwo = styled("h2");
 const HeadingThree = styled("h3");
@@ -17,7 +27,7 @@ const HeadingSix = styled("h6");
 
 const ELEMENT_TYPE_PATH = R.lensPath(["type"])
 const PARAGRAPH_CONTENT_PATH = R.lensPath(["paragraph", "text", 0, "plain_text"])
-const PARAGRAPH_PATH = R.lensPath(["paragraph"]);
+const PARAGRAPH_PATH = R.lensPath(["paragraph", "text"]);
 const HEADING_CONTENT_PATH = (level) => R.lensPath([`heading_${level}`, "text", 0, "plain_text"])
 
 const getContent = (path) => (elementObject) => R.view(path, elementObject);
@@ -29,10 +39,23 @@ const getElementType = getContent(ELEMENT_TYPE_PATH);
 const paragraphHasChildren = elementHasChildren(PARAGRAPH_PATH);
 
 const parseParagraph = (elementObject, index) => {
-  // Use switch statment to capture every possible condition declaratively
   if(!paragraphHasChildren(elementObject)) {
     return <Paragraph key={index}>{getParagraphContent(elementObject)}</Paragraph>
   }
+  else {
+    const paragraphArray = getParagraphArray(elementObject);
+    const paragraphChildren = R.map(parsePregnantParagraph, paragraphArray);    
+    const PregnantParagraph = <Paragraph>{paragraphChildren.map(x => x)}</Paragraph>
+    return PregnantParagraph;
+  }
+}
+
+const parsePregnantParagraph = (contentObject) => {
+  if(contentObject.href !== null) {
+    return <BlogLink linkUrl={contentObject.href} content={contentObject.plain_text} />
+  }
+
+  return contentObject.plain_text;
 }
 
 const renderProcedure = (elementObject, index) => {
@@ -65,4 +88,4 @@ const renderProcedure = (elementObject, index) => {
   }
 }
 
-export const ContentRenderer = ({postContent}) => <div> { Map(renderProcedure, postContent) }</div>;
+export const ContentRenderer = ({postContent}) => <BlogContentBox> { Map(renderProcedure, postContent) }</BlogContentBox>;
