@@ -44,15 +44,15 @@ const parseParagraph = (elementObject, index) => {
   }
   else {
     const paragraphArray = getParagraphArray(elementObject);
-    const paragraphChildren = R.map(parsePregnantParagraph, paragraphArray);    
-    const PregnantParagraph = <Paragraph>{paragraphChildren.map(x => x)}</Paragraph>
+    const paragraphChildren = Map(parsePregnantParagraph, paragraphArray);    
+    const PregnantParagraph = <Paragraph>{Map(x => x, paragraphChildren)}</Paragraph>
     return PregnantParagraph;
   }
 }
 
-const parsePregnantParagraph = (contentObject) => {
+const parsePregnantParagraph = (contentObject, index) => {
   if(contentObject.href !== null) {
-    return <BlogLink linkUrl={contentObject.href} content={contentObject.plain_text} />
+    return <BlogLink key={index} linkUrl={contentObject.href} content={contentObject.plain_text} />
   }
 
   return contentObject.plain_text;
