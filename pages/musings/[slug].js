@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import styles from "../../styles/Musings.module.scss";
-import { compact } from "lodash";
 import { getPost, getPostContent, getPosts, getPostSlugs } from "BlogInfrastructure";
 import { useEffect } from "react";
 import { ContentRenderer } from "@/components/ContentRenderer";
@@ -18,26 +17,7 @@ const Musing = ({ postId, postData, postContent }) => {
   })
 
   return (
-    <BlogLayout>
-      {/* <div>
-      {
-        postContent.map((paragraph, index) => {          
-          if(paragraph.type === "paragraph") {
-            return <p key={index}>{ paragraph.paragraph.text[0].plain_text }</p>
-          }
-
-          if(paragraph.type === "heading_2") {
-            return <h2 key={index}>{paragraph.heading_2.text[0].plain_text}</h2>
-          }
-
-          if(paragraph.type === "heading_1") {
-            return <h1 key={index}>{paragraph.heading_1.text[0].plain_text}</h1>
-          }
-
-        })
-      }
-      
-      </div> */}
+    <BlogLayout>      
       <ContentRenderer postContent={postContent} />
     </BlogLayout>
   );

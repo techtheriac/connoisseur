@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import PostsLising from "@/components/PostsListing";
 import { getPosts } from "BlogInfrastructure";
-import {compact} from 'lodash';
 
 const BlogLayout = dynamic(
   () => import("../../components/wrappers/BlogLayout"),
@@ -26,11 +25,6 @@ export async function getStaticProps() {
     console.log(elem.properties)
   })
   
-
-  // console.log("Notion posts",  notionPosts)
-  
-  
-
   return {
     props: {  },
   };

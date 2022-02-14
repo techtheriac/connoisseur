@@ -24,12 +24,17 @@
   display: flex;
   align-items: center;
   font-family: "Grand Slang";
-  font-size: var(--step-5);
+  // font-size: var(--step-5);
+
   font-weight: normal;
 
   h1 {
     color: #fff;
   }
+}
+
+.fuckingName {
+  --tt-key: header;
 }
 
 .connoisseurRant {

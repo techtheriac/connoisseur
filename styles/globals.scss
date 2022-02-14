@@ -362,3 +362,13 @@ code {
 body {
   background-color: #c3c3c3;
 }
+
+
+@keyframes header {
+  0% {
+    font-size: 1.5rem;
+  }
+  100% {
+    font-size: 7.5rem;
+  }
+}
