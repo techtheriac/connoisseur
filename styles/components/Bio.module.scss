@@ -1,5 +1,6 @@
 @import "../util/include-media";
 @import "../util/breakpoints";
+@import "../util/typography";
 
 .containerIntro {
   width: 100%;
@@ -10,22 +11,13 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-
-  p {
-    color: #fff;
-    font-weight: 100;
-    font-family: "Sohne Leicht";    
-    font-style: normal;
-    font-size: 1.5rem;
-    line-height: 1.6;
-  }
 }
 
+
 .fuckingName {
-  --tt-key: header;
-  font-weight: 100;
-  font-family: "Grand Slang";
-  text-transform: uppercase;
-  font-style: italic;  
-  color: #fff;
+  @include slang-fluid-name;
+}
+
+.bio {
+ @include sohne-fluid-home; 
 }

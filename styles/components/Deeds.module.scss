@@ -1,5 +1,6 @@
 @import "../util/include-media";
 @import "../util/breakpoints";
+@import "../util/typography";
 
 .containerWork {
   margin-top: var(--space-xl-2xl);
@@ -33,17 +34,16 @@
 }
 
 .project {
-  border-bottom: 1px solid #ffffff1c;
+  border-bottom: 1px solid #ffffff5e;
   margin-bottom: var(--space-xs);
   padding-bottom: var(--space-xs);
   padding-top: var(--space-s);
   color: var(--durag-meadow);
   display: flex;
+  flex-direction: column;
   align-items: baseline;
-  
+
   p {
-    text-transform: capitalize;
-    font-size: 1.2rem;
-    margin-left: var(--space-s);
+    @include sohne-fluid-home;   
   }
 }
