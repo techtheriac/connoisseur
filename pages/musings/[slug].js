@@ -1,71 +1,56 @@
-import dynamic from "next/dynamic";
-import styles from "../../styles/Musings.module.scss";
-import { getAllPosts, getPostBySlug } from "api";
-import config from "blog.config";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
-import Code from "@/components/Code";
-const components = { Code };
+import { getPost, getPostContent, getPosts, getPostSlugs } from "BlogInfrastructure";
+import { useEffect } from "react";
+import { ContentRenderer } from "@/components/ContentRenderer";
 
-const BlogLayout = dynamic(
-  () => import("../../components/wrappers/BlogLayout"),
-  { ssr: false }
-);
+const Musing = ({ postId, postData, postContent }) => {
 
-const Musing = ({ post, source }) => {
+  useEffect(() => {
+    console.log("postContent", postContent)
+  })
+
   return (
-    <BlogLayout>
-      <div className={styles.contentMusing}>
-        <section className={styles.containerTitleMusing}>
-          <h1 className={styles.titleMusing}>{post.title}</h1>
-          <p>{config.author}</p>
-        </section>
-        <ul className={styles.socialMusing}>
-          <li>Share</li>
-          <li>
-            <a>Twitter</a>
-          </li>
-          <li>
-            <a>Facebook</a>
-          </li>
-        </ul>
-        <main className={styles.paragraphsMusing}>
-          {/* contents should be here */}
-          <MDXRemote {...source} components={components} />
-        </main>
-      </div>
-    </BlogLayout>
+    <div>      
+      <ContentRenderer postContent={postContent} />
+    </div>
   );
 };
 
-export async function getStaticProps({ params }) {
-  const post = await getPostBySlug(params.slug, [
-    "title",
-    "excerpt",
-    "date",
-    "slug",
-    "author",
-    "content",
-  ]);
-
-  const mdxSource = await serialize(post.content);
-
+export async function getStaticPaths() {
+  const {paths, fallback} = await getPostSlugs();
+  
   return {
-    props: { post, source: mdxSource },
-  };
+    paths,
+    fallback
+  }
 }
 
-export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+export async function getStaticProps(context) {
+  const slug = context.params && context.params.slug;
+
+  // get all posts from notion database
+  const posts = await getPosts();
+
+  // find post with a matching slug property
+  const matchedPost = posts.results.filter((post) => {
+    if(post && post.properties && post.properties.slug) {
+      return post.properties.slug.rich_text?.[0].plain_text == slug
+    }
+  })[0]
+
+  // get notion page data and all child block data
+  const [postData, postContent] = await Promise.all([
+    getPost(matchedPost.id),
+    getPostContent(matchedPost.id)
+  ])
 
   return {
-    paths: posts.map((post) => {
-      return {
-        params: { ...post },
-      };
-    }),
-    fallback: false,
-  };
+    props: {
+      postId: matchedPost.id,
+      postData,
+      postContent
+    },
+    revalidate: 60,
+  }
 }
 
 export default Musing;

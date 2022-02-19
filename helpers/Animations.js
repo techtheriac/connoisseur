@@ -1,7 +1,7 @@
 import ScrollTrigger from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
-export class NavDang {
+export default class NavDang {
   constructor({ el, blur }) {
     gsap.registerPlugin(ScrollTrigger);
     this.el = el;
@@ -32,29 +32,13 @@ export class NavDang {
     const links = scrollingDown ? this.navItems : this.navItemsReversed;
 
     return gsap.to(links, {
-      duration: 0.3,
+      duration: 0.5,
       stagger: () => (this.blur === true ? 0 : 0.09),
 
       //toggles visibility
       autoAlpha: () => (scrollingDown ? 0 : 1),
       // autoAlpha: this.blurTheAss(scrollingDown),
       y: () => (scrollingDown ? 20 : 0),
-      ease: "Power4.out",
-    });
-  }
-}
-
-export class Fader {
-  constructor({ el }) {
-    this.el = el;
-
-    this.fade();
-  }
-
-  fade() {
-    gsap.from(this.el, {
-      opacity: 0,
-      duration: 0.5,
       ease: "Power4.out",
     });
   }

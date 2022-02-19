@@ -1,0 +1,18 @@
+@import "./include-media";
+@import "./breakpoints";
+
+@mixin sohne-fluid-home {
+  --tt-key: sohne-fluid-home;
+  color: #fff;
+  font-family: "Sohne Leicht";    
+  font-style: normal;
+}
+
+@mixin slang-fluid-name {
+  --tt-key: header;
+  font-weight: 100;
+  font-family: "Grand Slang";
+  text-transform: uppercase;
+  font-style: italic;  
+  color: #fff;
+}

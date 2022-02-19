@@ -1,0 +1,23 @@
+@import "../util/include-media";
+@import "../util/breakpoints";
+@import "../util/typography";
+
+.containerIntro {
+  width: 100%;
+  margin-top: calc(var(--space-xl-2xl) * 2);
+}
+
+.wrapperFuckingName {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+
+.fuckingName {
+  @include slang-fluid-name;
+}
+
+.bio {
+ @include sohne-fluid-home; 
+}

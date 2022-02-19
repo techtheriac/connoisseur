@@ -2,7 +2,6 @@ const path = require("path");
 const R = require("ramda");
 
 const withImages = require("next-images");
-//const withTM = require("next-transpile-modules")(["three"]);
 const composeConfig = R.compose(withImages);
 
 module.exports = composeConfig({

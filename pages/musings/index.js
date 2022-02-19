@@ -1,29 +1,25 @@
-import dynamic from "next/dynamic";
-import PostsLising from "@/components/PostsListing";
-import { getAllPosts } from "api";
-import config from "../../blog.config";
-import styles from "../../styles/BlogListing.module.scss";
-
-const BlogLayout = dynamic(
-  () => import("../../components/wrappers/BlogLayout"),
-  { ssr: false }
-);
+import { getPosts } from "BlogInfrastructure";
 
 const PostsPage = ({ posts }) => {
   return (
-    <BlogLayout>
-      <PostsLising posts={posts} />
-    </BlogLayout>
+    <div>
+      {/* <PostsLising posts={posts} /> */}
+    </div>
   );
 };
 
 export async function getStaticProps() {
-  const posts = getAllPosts(["title", "date", "slug", "author"]);
-  const startIndex = 0;
-  const endIndex = config.postsPerPage;
 
+  const notionPosts = await getPosts()
+
+  const results = notionPosts.results;
+
+  results.forEach((elem) => {
+    console.log(elem.properties)
+  })
+  
   return {
-    props: { posts: posts.slice(startIndex, endIndex) },
+    props: {  },
   };
 }
 
