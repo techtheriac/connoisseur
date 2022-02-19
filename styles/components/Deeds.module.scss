@@ -1,0 +1,50 @@
+@import "../util/include-media";
+@import "../util/breakpoints";
+
+.containerWork {
+  margin-top: var(--space-xl-2xl);
+
+  h2 {    
+    font-size: var(--step-2);
+    font-family: "Grand Slang";
+    color: #fff;
+    font-weight: lighter; 
+    line-height: 58px;
+    font-style: italic;   
+    margin-bottom: var(--space-s);
+  }
+}
+
+.wrapperCompany {
+  display: flex;
+  margin-bottom: var(--space-s);
+  P {
+    text-transform: uppercase;
+    color: var(--durag-meadow);
+    font-size: var(--step--1);
+  }
+
+  > :nth-child(1) {
+    margin-right: var(--space-xs);
+  }
+}
+
+.projectListing {
+  .project {
+    border-bottom: 1px solid var(--durag-tomato-01);
+    margin-bottom: var(--space-s);
+    padding-bottom: var(--space-s);    
+    color: var(--durag-meadow);
+
+    a {
+      color: var(--durag-meadow);
+      text-transform: uppercase;
+      padding: 0 var(--space-m) 0 0;
+    }
+
+    @include media(">=tablet") {
+      display: flex;
+      align-items: baseline;
+    }
+  }
+}

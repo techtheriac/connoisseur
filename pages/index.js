@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
-import Head from "next/head";
 import { useEffect, useState, useRef, useCallback } from "react";
-import styles from "../styles/Home.module.scss";
+import styles from "@/styles/Home.module.scss";
 import toggleBackground from "@/helpers/toggleBackground";
-import MainNavigation from "@/components/navigation/MainNavigation";
+import Navigation from "@/components/Navigation";
+import Deeds from "@/components/Deeds";
 
 const ThreeWrapper = dynamic(
   () => import("../components/wrappers/ThreeWrapper"),
@@ -15,80 +15,18 @@ export default function Home() {
     toggleBackground('#c3c3c3');
   })
   
-  const works = [
-    {
-      company: "Intelligent Innovations",
-      role: "Frontend Developer",
-      year: "2020",
-      projects: [
-        {
-          title: "9Pay",
-          description: "A Multi-Merchant eCommerce Plarform",
-          url: "https://9pay.com.ng",
-        },
-        {
-          title: "9id",
-          description:
-            "9Mobile backed merchant verification system for small businesses.",
-          url: "https://9id.com.ng",
-        },
-      ],
-    },
-    {
-      company: "KiakiaPrints",
-      role: "Frontend Developer",
-      year: "2021",
-      projects: [
-        {
-          title: "KiakiaPrints",
-          description:
-            "Shop for and customize prints on apparels, mugs, banners etc.",
-          url: "https://kiakiaprint.com",
-        },
-      ],
-    },
-  ];
-
   return (    
       <ThreeWrapper>
         <main className={styles.containerMain}>
-          <MainNavigation />
+          <Navigation />
           <section className={styles.containerIntro}>
-            <div className={styles.wrapperFuckingName}>
-              <p>My name is,</p>
+            <div className={styles.wrapperFuckingName}>              
               <h1 className={styles.fuckingName}>Franklin Jezreel</h1>              
               <p>I am a Software Engineer from Nigeria  <br /> with experience working across various stacks.</p>
-            </div>
-            {/* <div className={styles.wrapperBio}>
-              <p>I am a software developer with so much fucking experience</p>
-            </div> */}
+            </div>            
           </section>
-          <section id="resume" className={styles.containerWork}>
-            <h2>deeds</h2>
-            {works.map(({ role, year, company, projects }) => {
-              return (
-                <div key={company} className={styles.wrapperWork}>
-                  <div className={styles.wrapperCompany}>
-                    <p>{year}</p>
-                    <p>{company}</p>
-                  </div>
-
-                  <div className={styles.projectListing}>
-                    {projects.map(({ title, description, url }) => {
-                      return (
-                        <div className={styles.project} key={url}>
-                          <h3>
-                            <a href={url}>{title}</a>
-                          </h3>
-                          <p>{description}</p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </section>
+          
+          <Deeds />
         </main>
       </ThreeWrapper>    
   );

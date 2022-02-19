@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "../../styles/MainNav.module.scss";
+import styles from "@/styles/components/Navigation.module.scss";
 
 const MainNavigation = () => (
   <nav className={styles.containerNav}>

@@ -58,7 +58,7 @@ export class Candy {
 
   applyBlur() {
     this.app.stage.filters = [      
-      new KawaseBlurFilter(70, 35, true),      
+      new KawaseBlurFilter(80, 20, true),      
     ];
   }
 }
@@ -105,7 +105,7 @@ class Orb {
   setBounds() {
     // how far from the { x, y } origin can each orb move
     const maxDist =
-      window.innerWidth < 1000 ? window.innerWidth / 1 : window.innerWidth / 2;
+      window.innerWidth < 1000 ? window.innerWidth / 2 : window.innerWidth / 2;
     // the { x, y } origin for each orb (the bottom right of the screen)
     const originX = window.innerWidth / 1.25;
     const originY =
@@ -163,45 +163,11 @@ class Orb {
 
 class ColorPalette {
   constructor() {
-    this.setColors();
-    this.setCustomProperties();    
+    this.setColors();   
   }
 
-  setColors() {
-    // pick a random hue somewhere between 220 and 360
-    this.hue = ~~random(220, 360);
-    this.complimentaryHue1 = this.hue + 30;
-    this.complimentaryHue2 = this.hue + 60;
-    // define a fixed saturation and lightness
-    this.saturation = 95;
-    this.lightness = 50;
-
-    // define a base color
-    this.baseColor = hsl(this.hue, this.saturation, this.lightness);
-    // define a complimentary color, 30 degress away from the base
-    this.complimentaryColor1 = hsl(
-      this.complimentaryHue1,
-      this.saturation,
-      this.lightness
-    );
-    // define a second complimentary color, 60 degrees away from the base
-    this.complimentaryColor2 = hsl(
-      this.complimentaryHue2,
-      this.saturation,
-      this.lightness
-    );
-
-    // store the color choices in an array so that a random one can be picked later
-
-    // 🔥 Add colors of choice here bitch
-    // this.colorChoices = [
-    //   '#58356e',
-    //   '#f8955b',      
-    // ];
-
-    // this.colorChoices = [colors[Math.floor(Math.random() * colors.length)].hex]
-    // this.colorChoices = colors.map(x => x.hex);
-    this.colorChoices = tome.get('dt09').colors;
+  setColors() {    
+    this.colorChoices = tome.get('dt09').colors;    
   }
 
   randomColor() {
@@ -209,19 +175,6 @@ class ColorPalette {
     return this.colorChoices[~~random(0, this.colorChoices.length)].replace(
       "#",
       "0x"
-    );
-  }
-
-  setCustomProperties() {
-    // set CSS custom properties so that the colors defined here can be used throughout the UI
-    document.documentElement.style.setProperty("--hue", this.hue);
-    document.documentElement.style.setProperty(
-      "--hue-complimentary1",
-      this.complimentaryHue1
-    );
-    document.documentElement.style.setProperty(
-      "--hue-complimentary2",
-      this.complimentaryHue2
     );
   }
 }

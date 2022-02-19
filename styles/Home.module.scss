@@ -25,14 +25,10 @@
   align-items: flex-start;
   flex-direction: column;
 
-  h1 {
-    color: #fff;
-  }
-
-  p {
+  p {    
     color: #fff;
     font-weight: 100;
-    font-family: "Grand Slang";    
+    font-family: "Sohne Leicht";    
     font-style: normal;
     font-size: 1.5rem;
     line-height: 1.6;
@@ -45,72 +41,5 @@
   font-family: "Grand Slang";
   text-transform: uppercase;
   font-style: italic;  
-}
-
-.connoisseurRant {
-  grid-column: 2 / -1;
-  @include media("<tablet") {
-    grid-column: 1;
-    grid-row: 2 / -1;
-    margin-top: var(--space-m);
-  }
-  p {    
-    color: var(--durag-meadow);
-    font-size: var(--step-0);
-  }
-
-  a {
-    color: var(--durag-tomato);
-    &:hover {
-      color: var(--durag-meadow);
-    }
-  }
-}
-
-.containerWork {
-  margin-top: var(--space-xl-2xl);
-
-  h2 {    
-    font-size: var(--step-2);
-    font-family: "Grand Slang";    
-    color: #fff;
-    font-weight: lighter; 
-    line-height: 58px;
-    font-style: italic;   
-    margin-bottom: var(--space-s);
-  }
-}
-
-.wrapperCompany {
-  display: flex;
-  margin-bottom: var(--space-s);
-  P {
-    text-transform: uppercase;
-    color: var(--durag-meadow);    
-    font-size: var(--step--1);
-  }
-
-  > :nth-child(1) {
-    margin-right: var(--space-xs);
-  }
-}
-
-.projectListing {
-  .project {
-    border-bottom: 1px solid var(--durag-tomato-01);
-    margin-bottom: var(--space-s);
-    padding-bottom: var(--space-s);    
-    color: var(--durag-meadow);
-
-    a {
-      color: var(--durag-meadow);
-      text-transform: uppercase;
-      padding: 0 var(--space-m) 0 0;
-    }
-
-    @include media(">=tablet") {
-      display: flex;
-      align-items: baseline;
-    }
-  }
+  color: #fff;
 }

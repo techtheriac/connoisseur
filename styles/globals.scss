@@ -309,17 +309,6 @@ body {
   src: url("../fonts/Sohne-Breit-Fett.woff2") format("woff2");
 }
 
-
-@font-face {
-  font-family: "Neue Grotesk Book";
-  src: url("../fonts/NeueAlteGrotesk-Book.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Neue Grotesk Regular";
-  src: url("../fonts/NeueAlteGrotesk-Regular.woff2") format("woff2");
-}
-
 @font-face {
   font-family: "Gintronic";
   src: url("../fonts/Gintronic-Light.woff2") format("woff2");
@@ -375,11 +364,11 @@ body {
   }
 }
 
-@keyframes navigation {
+@keyframes dotseventoone {
   0% {
-    font-size: .65rem;
+    font-size: .7rem;
   }
   100% {
-    font-size: .98rem;
+    font-size: 1rem;
   }
 }

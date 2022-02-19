@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { NavDang, Fader } from "../../helpers/Animations";
 import styles from "../../styles/ThreeWrapper.module.scss";
 import { Candy } from "@/helpers/Candy";
+
 const ThreeWrapper = ({ children }) => {
   useEffect(() => {
     new NavDang({
