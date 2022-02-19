@@ -1,14 +1,6 @@
-import dynamic from "next/dynamic";
-import styles from "../../styles/Musings.module.scss";
 import { getPost, getPostContent, getPosts, getPostSlugs } from "BlogInfrastructure";
 import { useEffect } from "react";
 import { ContentRenderer } from "@/components/ContentRenderer";
-
-
-const BlogLayout = dynamic(
-  () => import("../../components/wrappers/BlogLayout"),
-  { ssr: false }
-);
 
 const Musing = ({ postId, postData, postContent }) => {
 
@@ -17,9 +9,9 @@ const Musing = ({ postId, postData, postContent }) => {
   })
 
   return (
-    <BlogLayout>      
+    <div>      
       <ContentRenderer postContent={postContent} />
-    </BlogLayout>
+    </div>
   );
 };
 
