@@ -22,19 +22,29 @@
 
 .wrapperFuckingName {
   display: flex;
-  align-items: center;
-  font-family: "Grand Slang";
-  // font-size: var(--step-5);
-
-  font-weight: normal;
+  align-items: flex-start;
+  flex-direction: column;
 
   h1 {
     color: #fff;
+  }
+
+  p {
+    color: #fff;
+    font-weight: 100;
+    font-family: "Grand Slang";    
+    font-style: normal;
+    font-size: 1.5rem;
+    line-height: 1.6;
   }
 }
 
 .fuckingName {
   --tt-key: header;
+  font-weight: 100;
+  font-family: "Grand Slang";
+  text-transform: uppercase;
+  font-style: italic;  
 }
 
 .connoisseurRant {
@@ -44,8 +54,7 @@
     grid-row: 2 / -1;
     margin-top: var(--space-m);
   }
-  p {
-    font-family: "Neue Grotesk Book";
+  p {    
     color: var(--durag-meadow);
     font-size: var(--step-0);
   }
@@ -61,11 +70,13 @@
 .containerWork {
   margin-top: var(--space-xl-2xl);
 
-  h2 {
-    font-family: "Cosi Azure";
+  h2 {    
     font-size: var(--step-2);
+    font-family: "Grand Slang";    
     color: #fff;
-    letter-spacing: var(--space-2xs-xs);
+    font-weight: lighter; 
+    line-height: 58px;
+    font-style: italic;   
     margin-bottom: var(--space-s);
   }
 }
@@ -75,8 +86,7 @@
   margin-bottom: var(--space-s);
   P {
     text-transform: uppercase;
-    color: var(--durag-meadow);
-    font-family: "Neue Grotesk Book";
+    color: var(--durag-meadow);    
     font-size: var(--step--1);
   }
 
@@ -89,8 +99,7 @@
   .project {
     border-bottom: 1px solid var(--durag-tomato-01);
     margin-bottom: var(--space-s);
-    padding-bottom: var(--space-s);
-    font-family: "Neue Grotesk Book";
+    padding-bottom: var(--space-s);    
     color: var(--durag-meadow);
 
     a {

@@ -49,15 +49,15 @@ export default function Home() {
     },
   ];
 
-  return (
-    <div>
+  return (    
       <ThreeWrapper>
         <main className={styles.containerMain}>
           <MainNavigation />
           <section className={styles.containerIntro}>
             <div className={styles.wrapperFuckingName}>
-              <h1 className={styles.fuckingName}>Franklin</h1>
-              <h1 className={styles.fuckingName}>Jezreel</h1>
+              <p>My name is,</p>
+              <h1 className={styles.fuckingName}>Franklin Jezreel</h1>              
+              <p>I am a Software Engineer from Nigeria  <br /> with experience working across various stacks.</p>
             </div>
             {/* <div className={styles.wrapperBio}>
               <p>I am a software developer with so much fucking experience</p>
@@ -90,7 +90,6 @@ export default function Home() {
             })}
           </section>
         </main>
-      </ThreeWrapper>
-    </div>
+      </ThreeWrapper>    
   );
 }

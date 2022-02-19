@@ -1,9 +1,12 @@
 import * as PIXI from "pixi.js";
 import { KawaseBlurFilter } from "@pixi/filter-kawase-blur";
+import {ShockwaveFilter} from '@pixi/filter-shockwave';
 import SimplexNoise from "simplex-noise";
 import hsl from "hsl-to-hex";
 import debounce from "debounce";
 import { random, map } from "./math";
+const colors = require("riso-colors");
+import * as tome from 'chromotome';
 
 export class Candy {
   constructor() {
@@ -54,7 +57,9 @@ export class Candy {
   }
 
   applyBlur() {
-    this.app.stage.filters = [new KawaseBlurFilter(70, 25, true)];
+    this.app.stage.filters = [      
+      new KawaseBlurFilter(70, 35, true),      
+    ];
   }
 }
 
@@ -159,7 +164,7 @@ class Orb {
 class ColorPalette {
   constructor() {
     this.setColors();
-    this.setCustomProperties();
+    this.setCustomProperties();    
   }
 
   setColors() {
@@ -189,10 +194,14 @@ class ColorPalette {
     // store the color choices in an array so that a random one can be picked later
 
     // 🔥 Add colors of choice here bitch
-    this.colorChoices = [
-      '#58356e',
-      '#f8955b',      
-    ];
+    // this.colorChoices = [
+    //   '#58356e',
+    //   '#f8955b',      
+    // ];
+
+    // this.colorChoices = [colors[Math.floor(Math.random() * colors.length)].hex]
+    // this.colorChoices = colors.map(x => x.hex);
+    this.colorChoices = tome.get('dt09').colors;
   }
 
   randomColor() {

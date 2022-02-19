@@ -14,11 +14,11 @@
 .navItems {
   display: flex;
   justify-content: space-between;
-
+  
   li {
     color: var(--durag-meadow);
-    font-size: var(--step--2);
-    font-family: "Neue Grotesk Regular";
+    //font-size: var(--step--2);    
+    --tt-key: navigation;
     a {
       color: inherit;
       text-transform: uppercase;

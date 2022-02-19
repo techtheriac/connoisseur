@@ -290,24 +290,25 @@ body {
 
 // Type face imports
 @font-face {
-  font-family: "Aventa";
-  src: url("../fonts/Aventa-Regular.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Rosat Display Light";
-  src: url("../fonts/LeRosartDisplay-Light.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Rosat Text Italic";
-  src: url("../fonts/LeRosartText-LightItalic.woff") format("woff");
-}
-
-@font-face {
   font-family: "Cosi Azure";
   src: url("../fonts/CosiAzure-Bold.woff2") format("woff2");
 }
+
+@font-face {
+  font-family: "Sohne Leicht";
+  src: url("../fonts/Sohne-Leicht.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Sohne Buch";
+  src: url("../fonts/Sohne-Buch.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Sohne Breit Fett";
+  src: url("../fonts/Sohne-Breit-Fett.woff2") format("woff2");
+}
+
 
 @font-face {
   font-family: "Neue Grotesk Book";
@@ -361,14 +362,24 @@ code {
 
 body {
   background-color: #c3c3c3;
+  font-family: "Sohne Leicht";
 }
 
 
 @keyframes header {
   0% {
-    font-size: 1.5rem;
+    font-size: .65rem;
   }
   100% {
     font-size: 7.5rem;
+  }
+}
+
+@keyframes navigation {
+  0% {
+    font-size: .65rem;
+  }
+  100% {
+    font-size: .98rem;
   }
 }
