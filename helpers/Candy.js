@@ -1,11 +1,9 @@
 import * as PIXI from "pixi.js";
 import { KawaseBlurFilter } from "@pixi/filter-kawase-blur";
-import {ShockwaveFilter} from '@pixi/filter-shockwave';
 import SimplexNoise from "simplex-noise";
 import hsl from "hsl-to-hex";
 import debounce from "debounce";
-import { random, map } from "./math";
-const colors = require("riso-colors");
+import { random, map } from "./Math";
 import * as tome from 'chromotome';
 
 export class Candy {

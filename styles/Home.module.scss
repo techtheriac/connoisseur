@@ -1,45 +1,11 @@
 @import "./util/include-media";
 @import "./util/breakpoints";
+@import "./util/wrapper";
 
 .containerMain {
   display: flex;
   flex-direction: column;
-  padding-left: var(--space-xl);
-  padding-right: var(--space-xl);
   width: 100%;
   position: relative;
-
-  @include media("<=tablet") {
-    padding-left: var(--space-xs);
-    padding-right: var(--space-xs);
-  }
-}
-
-.containerIntro {
-  width: 100%;
-  margin-top: calc(var(--space-xl-2xl) * 2);
-}
-
-.wrapperFuckingName {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-
-  p {    
-    color: #fff;
-    font-weight: 100;
-    font-family: "Sohne Leicht";    
-    font-style: normal;
-    font-size: 1.5rem;
-    line-height: 1.6;
-  }
-}
-
-.fuckingName {
-  --tt-key: header;
-  font-weight: 100;
-  font-family: "Grand Slang";
-  text-transform: uppercase;
-  font-style: italic;  
-  color: #fff;
+  @include wrapper-spacing;
 }

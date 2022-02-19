@@ -1,17 +1,10 @@
-import dynamic from "next/dynamic";
-import PostsLising from "@/components/PostsListing";
 import { getPosts } from "BlogInfrastructure";
-
-const BlogLayout = dynamic(
-  () => import("../../components/wrappers/BlogLayout"),
-  { ssr: false }
-);
 
 const PostsPage = ({ posts }) => {
   return (
-    <BlogLayout>
+    <div>
       {/* <PostsLising posts={posts} /> */}
-    </BlogLayout>
+    </div>
   );
 };
 

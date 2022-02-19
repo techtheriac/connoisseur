@@ -9,6 +9,7 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@ashthornton/asscroll": "^2.0.4",
     "@notionhq/client": "^0.4.13",
     "@pixi/filter-kawase-blur": "^4.1.5",
     "@pixi/filter-old-film": "^4.1.5",

@@ -1,16 +1,9 @@
 @import "./include-media";
 @import "./breakpoints";
 
-.containerMain {
-  display: flex;
-  flex-direction: column;
-  padding-left: var(--space-xl);
-  padding-right: var(--space-xl);
-  width: 100%;
-  position: relative;
-
+@mixin wrapper-spacing {
+  padding: 0 var(--space-xl) 0 var(--space-xl);
   @include media("<=tablet") {
-    padding-left: var(--space-xs);
-    padding-right: var(--space-xs);
-  }
+    padding: 0 var(--space-xs) 0 var(--space-xs);
+  }  
 }

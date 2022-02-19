@@ -10,7 +10,8 @@
     color: #fff;
     font-weight: lighter; 
     line-height: 58px;
-    font-style: italic;   
+    font-style: normal;
+    text-transform: capitalize;   
     margin-bottom: var(--space-s);
   }
 }
@@ -19,6 +20,8 @@
   display: flex;
   margin-bottom: var(--space-s);
   P {
+    font-family: "Sohne Buch";
+    font-weight: bold;
     text-transform: uppercase;
     color: var(--durag-meadow);
     font-size: var(--step--1);
@@ -29,22 +32,18 @@
   }
 }
 
-.projectListing {
-  .project {
-    border-bottom: 1px solid var(--durag-tomato-01);
-    margin-bottom: var(--space-s);
-    padding-bottom: var(--space-s);    
-    color: var(--durag-meadow);
-
-    a {
-      color: var(--durag-meadow);
-      text-transform: uppercase;
-      padding: 0 var(--space-m) 0 0;
-    }
-
-    @include media(">=tablet") {
-      display: flex;
-      align-items: baseline;
-    }
+.project {
+  border-bottom: 1px solid #ffffff1c;
+  margin-bottom: var(--space-xs);
+  padding-bottom: var(--space-xs);
+  padding-top: var(--space-s);
+  color: var(--durag-meadow);
+  display: flex;
+  align-items: baseline;
+  
+  p {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    margin-left: var(--space-s);
   }
 }

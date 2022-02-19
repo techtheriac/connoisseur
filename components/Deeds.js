@@ -49,12 +49,12 @@ const Deeds = () => {
             <div className={styles.projectListing}>
               {projects.map(({ title, description, url }) => {
                 return (
-                  <div className={styles.project} key={url}>
+                  <a href={url} className={styles.project} key={url}>
                     <h3>
-                      <a href={url}>{title}</a>
+                      {title}
                     </h3>
                     <p>{description}</p>
-                  </div>
+                  </a>
                 );
               })}
             </div>
