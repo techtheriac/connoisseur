@@ -1,5 +1,6 @@
 @import "./util/include-media";
 @import "./util/breakpoints";
+@import "./util/typography";
 
 .containerNav {
   margin-top: var(--space-2xs-xs);
@@ -17,10 +18,9 @@
   
   li {
     color: var(--durag-meadow);
-    //font-size: var(--step--2);    
-    --tt-key: dotseventoone;
+    
     a {
-      color: inherit;
+      @include sohne-fluid-home;
       text-transform: uppercase;
     }
     span {
