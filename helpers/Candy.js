@@ -155,7 +155,7 @@ class Orb {
     const originX = window.innerWidth / 1.25;
     const originY =
       window.innerWidth < 1000
-        ? window.innerHeight
+        ? window.innerHeight / 2
         : window.innerHeight / 1.375;
 
     // allow each orb to move x distance away from it's { x, y }origin
