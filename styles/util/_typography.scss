@@ -8,6 +8,14 @@
   font-style: normal;
 }
 
+@mixin sohne-fluid-navigation {
+  --tt-key: sohne-fluid-navigation;
+  color: #fff;
+  font-family: "Sohne Leicht";    
+  font-style: normal;
+}
+
+
 @mixin slang-fluid-name {
   --tt-key: header;
   font-weight: 100;

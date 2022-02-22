@@ -20,7 +20,7 @@
     color: var(--durag-meadow);
     
     a {
-      @include sohne-fluid-home;
+      @include sohne-fluid-navigation;
       text-transform: uppercase;
     }
     span {

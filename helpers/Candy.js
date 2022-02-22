@@ -56,8 +56,55 @@ export class Candy {
 
   applyBlur() {
     this.app.stage.filters = [      
-      new KawaseBlurFilter(80, 20, true),      
+      new KawaseBlurFilter(70, 20, true),
+      this.createCustomFilter      
     ];
+  }
+
+  get createCustomFilter() {
+    const fragmentShader = `    
+      varying vec2 vTextureCoord;
+      uniform sampler2D uSampler;
+      void main(void)
+      {
+       float noise = (fract(sin(dot(vTextureCoord, vec2(12.9898,78.233)*2.0)) * 43758.5453));
+        vec4 col = texture2D(uSampler, vTextureCoord) - noise / 8.0;
+        gl_FragColor = col;
+        // gl_FragColor = texture2D(uSampler, vTextureCoord);
+      }    
+    `;
+    
+    const vertexShader = `
+      attribute vec2 aVertexPosition;
+
+      uniform mat3 projectionMatrix;
+      
+      varying vec2 vTextureCoord;
+      
+      uniform vec4 inputSize;
+      uniform vec4 outputFrame;
+      
+      vec4 filterVertexPosition( void )
+      {
+          vec2 position = aVertexPosition * max(outputFrame.zw, vec2(0.)) + outputFrame.xy;
+      
+          return vec4((projectionMatrix * vec3(position, 1.0)).xy, 0.0, 1.0);
+      }
+      
+      vec2 filterTextureCoord( void )
+      {
+          return aVertexPosition * (outputFrame.zw * inputSize.zw);
+      }
+      
+      void main(void)
+      {
+          gl_Position = filterVertexPosition();
+          vTextureCoord = filterTextureCoord();
+      }
+    `;
+
+    const myUniforms = { myUniform: 0.5, };
+    return new PIXI.Filter(null, fragmentShader)
   }
 }
 
