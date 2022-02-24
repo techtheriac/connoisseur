@@ -490,10 +490,19 @@ body {
 
 @keyframes header {
   0% {
-    font-size: .4rem;
+    font-size: 1rem;
   }
   100% {
-    font-size: 7rem;
+    font-size: 7.5rem;    
+  }
+}
+
+@keyframes fluid-heading-level-02 {
+  0% {
+    font-size: 1.7rem;
+  }
+  100% {
+    font-size: 2.5rem;
   }
 }
 

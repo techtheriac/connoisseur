@@ -18,9 +18,18 @@
 
 @mixin slang-fluid-name {
   --tt-key: header;
-  //font-weight: 100;
+  font-weight: 100;
   font-family: "Vulf Sans Medium";
   text-transform: capitalize;
-  font-style: italic;  
+  font-style: normal;  
+  color: #fff;
+}
+
+@mixin fluid-heading-level-02 {
+  --tt-key: fluid-heading-level-02;
+  font-weight: 100;
+  font-family: "Vulf Sans Bold";
+  text-transform: capitalize;
+  font-style: italic; 
   color: #fff;
 }
