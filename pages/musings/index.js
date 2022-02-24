@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { getPosts } from "BlogInfrastructure";
+import styles from "@/styles/Musings.module.scss";
 
 const WholeLayout = dynamic(() => import("../../components/WholeLayout"), {
   ssr: false,
@@ -8,44 +9,49 @@ const WholeLayout = dynamic(() => import("../../components/WholeLayout"), {
 const PostsPage = ({ posts }) => {
   const sections = [
     {
-      name: "Ramblings",
-      link: "/"
+      name: "Engineering Ramblings",
+      link: "/",
     },
     {
       name: "Poetry",
-      link: "/"
+      link: "/",
     },
-    {}
+    {
+      name: "Journal",
+      link: "/",
+    },
   ];
 
   return (
-     <WholeLayout>
-      <div>
-        {
-          sections.map((section, index) => {
-            return (
-              <a key={index} href={section.link}>{section.name}</a>
-              )
-            })
-          } 
-      </div>
-      </WholeLayout>
-  
+    <WholeLayout>
+      <main className={styles.wrapperMusings}>
+        {sections.map((section, index) => {
+          return (
+            <a
+              className={styles.musingSectionName}
+              key={index}
+              href={section.link}
+            >
+              {section.name}
+            </a>
+          );
+        })}
+      </main>
+    </WholeLayout>
   );
 };
 
 export async function getStaticProps() {
-
-  const notionPosts = await getPosts()
+  const notionPosts = await getPosts();
 
   const results = notionPosts.results;
 
   results.forEach((elem) => {
-    console.log(elem.properties)
-  })
-  
+    console.log(elem.properties);
+  });
+
   return {
-    props: {  },
+    props: {},
   };
 }
 

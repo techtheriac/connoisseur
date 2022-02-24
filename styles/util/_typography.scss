@@ -4,24 +4,23 @@
 @mixin sohne-fluid-home {
   --tt-key: sohne-fluid-home;
   color: #fff;
-  font-family: "Vulf Sans Regular";    
+  font-family: "Vulf Sans Regular";
   font-style: normal;
 }
 
 @mixin sohne-fluid-navigation {
   --tt-key: sohne-fluid-navigation;
   color: #fff;
-  font-family: "Vulf Sans Regular";    
+  font-family: "Vulf Sans Regular";
   font-style: normal;
 }
-
 
 @mixin slang-fluid-name {
   --tt-key: header;
   font-weight: 100;
   font-family: "Vulf Sans Medium";
   text-transform: capitalize;
-  font-style: normal;  
+  font-style: normal;
   color: #fff;
 }
 
@@ -30,7 +29,7 @@
   font-weight: 100;
   font-family: "Vulf Sans Bold";
   text-transform: capitalize;
-  font-style: italic; 
+  font-style: italic;
   color: #fff;
 }
 
@@ -39,7 +38,7 @@
   font-weight: 100;
   font-family: "Vulf Sans Bold";
   text-transform: capitalize;
-  font-style: $style; 
+  font-style: $style;
   color: #fff;
 }
 
@@ -48,6 +47,15 @@
   font-weight: 100;
   font-family: "Vulf Sans Bold";
   text-transform: capitalize;
-  font-style: $style; 
+  font-style: $style;
+  color: #fff;
+}
+
+@mixin fluid-black-level-01($style) {
+  --tt-key: fluid-black-level-01;
+  font-weight: 100;
+  font-family: "Vulf Sans Black";
+  text-transform: capitalize;
+  font-style: $style;
   color: #fff;
 }
