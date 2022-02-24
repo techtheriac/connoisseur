@@ -3,9 +3,9 @@ import React, { useEffect } from "react";
 import styles from "@/styles/components/ThreeWrapper.module.scss";
 import { Candy } from "@/helpers/Candy";
 
-const ThreeWrapper = ({ children }) => {
+const ThreeWrapper = ({ children, candyConfig }) => {
   useEffect(() => {
-    new Candy();
+    new Candy(candyConfig);
   });
 
   return (

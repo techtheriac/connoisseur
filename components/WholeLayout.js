@@ -4,9 +4,14 @@ import Navigation from "./Navigation";
 import styles from "@/styles/Home.module.scss";
 
 const WholeLayout = ({ children }) => {
+  const candyConfig = {
+    iterator: 2,
+    palette: "retro-washedout",
+  };
+
   return (
     <div>
-      <ThreeWrapper>
+      <ThreeWrapper candyConfig={candyConfig}>
         <main className={styles.containerMain}>
           <Navigation />
           {children}

@@ -4,12 +4,12 @@ import SimplexNoise from "simplex-noise";
 import hsl from "hsl-to-hex";
 import debounce from "debounce";
 import { random, map } from "./Math";
-import * as tome from 'chromotome';
+import * as tome from "chromotome";
 
 export class Candy {
-  constructor() {
+  constructor({ iterator, palette }) {
     this.initializeApp();
-    this.initializeColorPalette();
+    this.setColors(palette);
     this.orbs = [];
     this.createorbs();
     this.initializeAnimation();
@@ -30,7 +30,7 @@ export class Candy {
 
   createorbs() {
     for (let i = 0; i < 10; i++) {
-      const orb = new Orb(this.colorPalette.randomColor());
+      const orb = new Orb(this.randomColor());
       this.app.stage.addChild(orb.graphics);
       this.orbs.push(orb);
     }
@@ -55,9 +55,9 @@ export class Candy {
   }
 
   applyBlur() {
-    this.app.stage.filters = [      
+    this.app.stage.filters = [
       new KawaseBlurFilter(70, 20, true),
-      this.createCustomFilter      
+      this.createCustomFilter,
     ];
   }
 
@@ -72,7 +72,7 @@ export class Candy {
         gl_FragColor = col;
       }    
     `;
-    
+
     const vertexShader = `
       attribute vec2 aVertexPosition;
 
@@ -102,8 +102,22 @@ export class Candy {
       }
     `;
 
-    const myUniforms = { myUniform: 0.5, };
-    return new PIXI.Filter(null, fragmentShader)
+    const myUniforms = { myUniform: 0.5 };
+    return new PIXI.Filter(null, fragmentShader);
+  }
+
+  setColors(palette) {
+    this.colorChoices = tome.get(palette).colors;
+
+    console.log(palette);
+  }
+
+  randomColor() {
+    // pick a random color
+    return this.colorChoices[~~random(0, this.colorChoices.length)].replace(
+      "#",
+      "0x"
+    );
   }
 }
 
@@ -202,23 +216,5 @@ class Orb {
     this.graphics.drawCircle(0, 0, this.radius);
     // let graphics know we won't be filling in any more shapes
     this.graphics.endFill();
-  }
-}
-
-class ColorPalette {
-  constructor() {
-    this.setColors();   
-  }
-
-  setColors() {    
-    this.colorChoices = tome.get('dt09').colors;    
-  }
-
-  randomColor() {
-    // pick a random color
-    return this.colorChoices[~~random(0, this.colorChoices.length)].replace(
-      "#",
-      "0x"
-    );
   }
 }
