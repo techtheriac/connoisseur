@@ -488,7 +488,7 @@ code {
 
 body {
   background-color: #c3c3c3;
-  font-family: "Sohne Leicht";
+  font-family: "Vulf Sans Light";
 }
 
 
@@ -509,6 +509,25 @@ body {
     font-size: 2.5rem;
   }
 }
+
+@keyframes fluid-heading-level-04 {
+  0% {
+    font-size: 1.5rem;
+  }
+  100% {
+    font-size: 1.7rem;
+  }
+}
+
+@keyframes fluid-heading-level-05 {
+  0% {
+    font-size: 1.3rem;
+  }
+  100% {
+    font-size: 1.5rem;
+  }
+}
+
 
 @keyframes sohne-fluid-home {
   0% {
