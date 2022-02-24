@@ -33,3 +33,21 @@
   font-style: italic; 
   color: #fff;
 }
+
+@mixin fluid-heading-level-04($style) {
+  --tt-key: fluid-heading-level-04;
+  font-weight: 100;
+  font-family: "Vulf Sans Bold";
+  text-transform: capitalize;
+  font-style: $style; 
+  color: #fff;
+}
+
+@mixin fluid-heading-level-05($style) {
+  --tt-key: fluid-heading-level-05;
+  font-weight: 100;
+  font-family: "Vulf Sans Bold";
+  text-transform: capitalize;
+  font-style: $style; 
+  color: #fff;
+}

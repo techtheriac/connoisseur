@@ -1,10 +1,36 @@
+import dynamic from "next/dynamic";
 import { getPosts } from "BlogInfrastructure";
 
+const WholeLayout = dynamic(() => import("../../components/WholeLayout"), {
+  ssr: false,
+});
+
 const PostsPage = ({ posts }) => {
+  const sections = [
+    {
+      name: "Ramblings",
+      link: "/"
+    },
+    {
+      name: "Poetry",
+      link: "/"
+    },
+    {}
+  ];
+
   return (
-    <div>
-      {/* <PostsLising posts={posts} /> */}
-    </div>
+     <WholeLayout>
+      <div>
+        {
+          sections.map((section, index) => {
+            return (
+              <a key={index} href={section.link}>{section.name}</a>
+              )
+            })
+          } 
+      </div>
+      </WholeLayout>
+  
   );
 };
 
