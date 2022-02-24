@@ -24,6 +24,7 @@
 
 .bio {
  @include sohne-fluid-home; 
+ max-width: 40em;
 
  a {
    color: #fff;

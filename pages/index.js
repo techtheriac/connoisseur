@@ -9,9 +9,9 @@ const WholeLayout = dynamic(() => import("../components/WholeLayout"), {
 });
 
 export default function Home() {
-  useEffect(() => {
-    toggleBackground("#c3c3c3");
-  });
+  // useEffect(() => {
+  //   toggleBackground("#c3c3c3");
+  // });
 
   return (
     <WholeLayout>     
