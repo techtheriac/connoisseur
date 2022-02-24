@@ -4,7 +4,7 @@
 @mixin sohne-fluid-home {
   --tt-key: sohne-fluid-home;
   color: #fff;
-  font-family: "Vulf Sans Light";    
+  font-family: "Vulf Sans Regular";    
   font-style: normal;
 }
 
@@ -21,6 +21,6 @@
   //font-weight: 100;
   font-family: "Vulf Sans Medium";
   text-transform: capitalize;
-  font-style: normal;  
+  font-style: italic;  
   color: #fff;
 }
