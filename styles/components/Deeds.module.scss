@@ -6,14 +6,7 @@
   margin-top: var(--space-xl-2xl);
 
   h2 {    
-    font-size: var(--step-2);
-    font-family: "Grand Slang";
-    color: #fff;
-    font-weight: lighter; 
-    line-height: 58px;
-    font-style: normal;
-    text-transform: capitalize;   
-    margin-bottom: var(--space-s);
+    @include fluid-heading-level-02;
   }
 }
 

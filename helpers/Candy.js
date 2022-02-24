@@ -70,7 +70,6 @@ export class Candy {
        float noise = (fract(sin(dot(vTextureCoord, vec2(12.9898,78.233)*2.0)) * 43758.5453));
         vec4 col = texture2D(uSampler, vTextureCoord) - noise / 8.0;
         gl_FragColor = col;
-        // gl_FragColor = texture2D(uSampler, vTextureCoord);
       }    
     `;
     
