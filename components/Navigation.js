@@ -15,7 +15,7 @@ const Navigation = () => {
     <nav className={styles.containerNav}>
       <ul className={styles.navItems}>
         <li>
-          <a href="#resume">Work</a>
+          <a href="/">Home</a>
         </li>
 
         <li>
