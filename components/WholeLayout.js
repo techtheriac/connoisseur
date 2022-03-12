@@ -11,17 +11,19 @@ const WholeLayout = ({ children }) => {
   };
 
   useEffect(() => {
-    const asscroll = new ASScroll({ ease: 0.075 });
+    const asscroll = new ASScroll({ ease: 0.075, disableRaf: false });
     window.addEventListener("load", () => {
-      asscroll.enable();
+      asscroll.enable({ reset: 0 });
     });
+
+    asscroll.on("scroll", (scrollPos) => console.log(scrollPos));
   });
 
   return (
     <div asscroll-container="true">
       <ThreeWrapper candyConfig={candyConfig}>
         <main className={styles.containerMain}>
-          <Navigation />
+          {/* <Navigation /> */}
           {children}
         </main>
       </ThreeWrapper>

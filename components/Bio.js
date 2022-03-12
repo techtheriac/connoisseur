@@ -17,10 +17,11 @@ const Bio = () => {
           </a>{" "}
         </p>
         <p className={styles.bio}>
-          I can help you build internet things that scale:{" "}
+          I can help you{" "}
           <a href="mailto:techtheriac@outlook.com" target="_blank">
-            Hit me up
+            build
           </a>{" "}
+          internet things that scale
         </p>
       </div>
     </section>
