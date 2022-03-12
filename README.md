@@ -6,4 +6,6 @@ GOALS
 
 - Display loader until fontFace Observer resolves fonts
 
+Chromotome color palette - https://kgolid.github.io/chromotome-site/
 
+Preferred palette - "dt09",

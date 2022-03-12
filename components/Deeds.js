@@ -41,8 +41,7 @@ const Deeds = () => {
       {works.map(({ role, year, company, projects }) => {
         return (
           <div key={company} className={styles.wrapperWork}>
-            <div className={styles.wrapperCompany}>
-              <p>{year}</p>
+            <div className={styles.wrapperCompany}>              
               <p>{company}</p>
             </div>
 

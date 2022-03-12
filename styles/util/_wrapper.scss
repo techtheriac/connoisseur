@@ -5,5 +5,15 @@
   padding: 0 var(--space-xl) 0 var(--space-xl);
   @include media("<=tablet") {
     padding: 0 var(--space-xs) 0 var(--space-xs);
-  }  
+  }
+}
+
+@mixin section-layout-spacing {
+  width: 100%;
+  margin-top: calc(var(--space-xl-2xl) * 2);
+}
+
+@mixin flex-vr {
+  display: flex;
+  flex-direction: column;
 }

@@ -1,124 +1,14 @@
 @import "./util/include-media";
 @import "./util/breakpoints";
+@import "./util/wrapper";
+@import "./util/typography";
 
-.contentMusing {
-  display: grid;
-  grid-template-columns: 1fr 3fr;  
-  grid-template-areas: "title title" "social musing";
-  margin-top: calc(var(--space-xl-2xl));
-
-  @include media("<=tablet") {
-    grid-template-columns: auto;
-    grid-template-areas: "title" "musing" "social";
-
-    > * + * {
-      margin-top: var(--space-m);
-    }
-  }
+.wrapperMusings {
+  @include section-layout-spacing;
+  @include flex-vr;
 }
 
-.containerTitleMusing {
-  grid-area: title;
-
-  h1 {
-    text-transform: capitalize;
-    margin-bottom: var(--space-3xs-2xs);
-    font-size: var(--step-2);    
-    text-decoration: none;
-    font-weight: 700;
-    animation: gradient 15s ease infinite;
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(
-      43deg,
-      #a7d9a4 0%,
-      #203946 46%,
-      #e0998e 100%
-    );
-
-    @include media(">=tablet") {
-      font-size: var(--step-0);
-    }
-
-    @include media(">tablet") {
-      max-width: 15ch;
-    }
-  }
-
-  p {    
-    color: #333;
-  }
-
-  @include media(">tablet") {
-    position: sticky;
-    top: 20px;
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.socialMusing {
-  grid-area: social;
-  margin-top: var(--space-s-m);
-  > * {
-    cursor: pointer;
-  }
-
-  li + li {
-    margin-top: var(--space-3xs-2xs);
-  }
-
-  @include media("<=tablet") {
-    padding-top: var(--space-s);
-    padding-bottom: var(--space-s);
-  }
-
-  @include media(">tablet") {
-    position: fixed;
-    top: 29%;
-  }
-}
-
-.paragraphsMusing {
-  grid-area: musing;
-
-  p {    
-    font-size: var(--step--1);
-    color: inherit;
-
-    @include media(">tablet") {
-      font-size: 1rem;
-      line-height: var(--space-s);
-    }
-
-    @include media("<=tablet") {
-      line-height: 1.5;
-    }
-  }
-
-  p + p {
-    margin-top: var(--space-2xs);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h4,
-  h5 {
-    font-weight: 600;
-    padding-top: var(--space-xs);
-    padding-bottom: var(--space-3xs);
-  }
+.musingSectionName {
+  @include fluid-black-level-01("bold");
+  text-decoration: underline;
 }
