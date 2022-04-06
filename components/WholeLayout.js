@@ -18,12 +18,14 @@ const WholeLayout = ({ children }) => {
     // });
     // asscroll.on("scroll", (scrollPos) => console.log(scrollPos));
 
-    const scroll = new SmoothScroll({
-      scrollbar: false,
-      touchMultiplier: 10,
-      friction: 0.1,
-    });
-    scroll.reset();
+    const scroll = new SmoothScroll();
+    //   {
+    //   scrollbar: false,
+    //   touchMultiplier: 40,
+    //   friction: 0.4,
+    //   stepSize: 1,
+    // }
+    // scroll.reset();
 
     window.addEventListener("resize", () => scroll.reset());
   });
