@@ -17,6 +17,9 @@ const WholeLayout = ({ children }) => {
     //   asscroll.enable({ reset: 0 });
     // });
     // asscroll.on("scroll", (scrollPos) => console.log(scrollPos));
+    let vh = window.innerHeight * 0.01;
+    // Then we set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
 
     const scroll = new SmoothScroll();
     //   {
