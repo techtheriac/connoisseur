@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { lerp } from "@/helpers/Math";
+import normalizeWheel from "normalize-wheel";
 
 export default class SmoothScroll {
   constructor({ scrollable, scrollContainer }) {
@@ -16,6 +17,10 @@ export default class SmoothScroll {
     this.onMouseWheelEvent = this.onMouseWheel.bind(this);
     this.onResizeEvent = this.onResize.bind(this);
 
+    this.onTouchDownEvent = this.onTouchDown.bind(this);
+    this.onTouchMoveEvent = this.onTouchMove.bind(this);
+    this.onTouchUpEvent = this.onTouchUp.bind(this);
+
     this.setDefaultLimit();
     this.addEventListeners();
 
@@ -31,6 +36,9 @@ export default class SmoothScroll {
   addEventListeners() {
     window.addEventListener("mousewheel", this.onMouseWheelEvent);
     window.addEventListener("resize", this.onResizeEvent);
+    window.addEventListener("touchstart", this.onTouchDownEvent);
+    window.addEventListener("touchmove", this.onTouchMoveEvent);
+    window.addEventListener("touchend", this.onTouchUpEvent);
   }
 
   removeEventListeners() {
@@ -42,8 +50,35 @@ export default class SmoothScroll {
   }
 
   onMouseWheel(event) {
+    const { pixelY } = normalizeWheel(event);
     const { deltaY } = event;
+
     this.scroll.target += deltaY;
+
+    // this.scroll.target += pixelY;
+
+    // console.log("Default", event);
+    // console.log("Normalized", normalized);
+  }
+
+  onTouchDown(event) {
+    this.isDown = true;
+
+    this.scroll.position = this.scroll.current;
+    this.start = event.touches ? event.touches[0].clientX : event.clientX;
+  }
+
+  onTouchMove(event) {
+    if (!this.isDown) return;
+
+    const x = event.touches ? event.touches[0].clientX : event.clientX;
+    const distance = (this.start - x) * 0.01;
+
+    this.scroll.target = this.scroll.position + distance;
+  }
+
+  onTouchUp(event) {
+    this.isDown = false;
   }
 
   update() {
@@ -56,7 +91,7 @@ export default class SmoothScroll {
     this.scroll.current = gsap.utils.interpolate(
       this.scroll.current,
       this.scroll.target,
-      0.01
+      0.02
     );
     this.scrollable.style.transform = `translateY(${-this.scroll.current}px)`;
 
