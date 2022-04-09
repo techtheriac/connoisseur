@@ -8,12 +8,19 @@ import * as tome from "chromotome";
 
 export class Candy {
   constructor({ iterator, palette }) {
+    this.createCanvas();
     this.initializeApp();
     this.setColors(palette);
     this.orbs = [];
     this.createorbs();
     this.initializeAnimation();
     this.applyBlur();
+  }
+
+  createCanvas() {
+    const candy = document.createElement("canvas");
+    candy.classList.add("orb-canvas");
+    document.body.appendChild(candy);
   }
 
   initializeApp() {

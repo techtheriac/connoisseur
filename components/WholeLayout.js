@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ThreeWrapper from "@/components/ThreeWrapper";
 import Navigation from "./Navigation";
 import styles from "@/styles/Home.module.scss";
-//import ASScroll from "@ashthornton/asscroll";
-import { SmoothScroll } from "@emotionagency/smoothscroll";
+import SmoothScroll from "@/helpers/smoothScroll";
+import { Candy } from "@/helpers/Candy";
 
 const WholeLayout = ({ children }) => {
   const candyConfig = {
@@ -12,35 +11,21 @@ const WholeLayout = ({ children }) => {
   };
 
   useEffect(() => {
-    // const asscroll = new ASScroll({ ease: 0.075, disableRaf: false });
-    // window.addEventListener("load", () => {
-    //   asscroll.enable({ reset: 0 });
-    // });
-    // asscroll.on("scroll", (scrollPos) => console.log(scrollPos));
     let vh = window.innerHeight * 0.01;
-    // Then we set the value in the --vh custom property to the root of the document
     document.documentElement.style.setProperty("--vh", `${vh}px`);
 
-    const scroll = new SmoothScroll();
-    //   {
-    //   scrollbar: false,
-    //   touchMultiplier: 40,
-    //   friction: 0.4,
-    //   stepSize: 1,
-    // }
-    // scroll.reset();
+    const scrollable = document.getElementById("scroll-child");
+    const scrollContainer = document.getElementById("scroll-container");
 
-    window.addEventListener("resize", () => scroll.reset());
+    const scroll = new SmoothScroll({ scrollable, scrollContainer });
   });
 
   return (
     <div id="scroll-container">
-      <ThreeWrapper candyConfig={candyConfig}>
-        <main className={styles.containerMain}>
-          {/* <Navigation /> */}
-          {children}
-        </main>
-      </ThreeWrapper>
+      <main id="scroll-child" className={styles.containerMain}>
+        <Navigation />
+        {children}
+      </main>
     </div>
   );
 };
