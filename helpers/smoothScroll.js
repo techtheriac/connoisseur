@@ -56,7 +56,7 @@ export default class SmoothScroll {
     this.scroll.current = gsap.utils.interpolate(
       this.scroll.current,
       this.scroll.target,
-      0.07
+      0.01
     );
     this.scrollable.style.transform = `translateY(${-this.scroll.current}px)`;
 
