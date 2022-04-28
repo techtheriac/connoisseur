@@ -8,10 +8,12 @@ export default class SmoothScroll {
     this.scrollContainer = scrollContainer;
 
     this.scroll = {
+      ease: 0.1,
       current: 0,
       target: 0,
       last: 0,
       limit: 0,
+      position: 0,
     };
 
     this.onMouseWheelEvent = this.onMouseWheel.bind(this);
@@ -28,9 +30,18 @@ export default class SmoothScroll {
   }
 
   setDefaultLimit() {
-    this.scroll.limit = this.scrollable.clientHeight;
+    this.scroll.limit = this.scrollable.scrollHeight - window.innerHeight;
 
-    console.log(this.scroll.limit);
+    console.log(
+      "scroll diff",
+      this.scrollable.scrollHeight - window.innerHeight
+    );
+  }
+
+  get calculateScrollLimit() {
+    return this.scrollable.scrollHeight > window.innerHeight
+      ? this.scrollable.scrollHeight - window.innerHeight
+      : 0;
   }
 
   addEventListeners() {
@@ -46,19 +57,13 @@ export default class SmoothScroll {
   }
 
   onResize(e) {
-    this.scroll.limit = this.scrollable.clientHeight - window.innerHeight;
+    this.scroll.limit = this.scrollable.scrollHeight - window.innerHeight;
   }
 
   onMouseWheel(event) {
     const { pixelY } = normalizeWheel(event);
     const { deltaY } = event;
-
     this.scroll.target += deltaY;
-
-    // this.scroll.target += pixelY;
-
-    // console.log("Default", event);
-    // console.log("Normalized", normalized);
   }
 
   onTouchDown(event) {
@@ -91,9 +96,11 @@ export default class SmoothScroll {
     this.scroll.current = gsap.utils.interpolate(
       this.scroll.current,
       this.scroll.target,
-      0.02
+      this.scroll.ease
     );
-    this.scrollable.style.transform = `translateY(${-this.scroll.current}px)`;
+
+    this.scrollable.style.transform = `translate3d(0, ${-this.scroll
+      .current}px, 0)`;
 
     window.requestAnimationFrame(this.update.bind(this));
   }

@@ -15,14 +15,9 @@
 .navItems {
   display: flex;
   justify-content: space-between;
-  
+
   li {
     color: var(--durag-meadow);
-    
-    a {
-      @include sohne-fluid-navigation;
-      text-transform: uppercase;
-    }
     span {
       margin: 0 var(--space-m) 0 var(--space-m);
     }

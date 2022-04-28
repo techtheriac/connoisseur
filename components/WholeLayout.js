@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import Navigation from "./Navigation";
 import styles from "@/styles/Home.module.scss";
 import SmoothScroll from "@/helpers/smoothScroll";
 import { Candy } from "@/helpers/Candy";
+import Canvas from "@/helpers/canvas";
+import Sizing from "@/helpers/sizing";
+import LocomotiveScroll from "locomotive-scroll";
 
 const WholeLayout = ({ children }) => {
   const candyConfig = {
@@ -10,19 +13,21 @@ const WholeLayout = ({ children }) => {
     palette: "dt09",
   };
 
-  useEffect(() => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-
-    const scrollable = document.getElementById("scroll-child");
-    const scrollContainer = document.getElementById("scroll-container");
-
-    const scroll = new SmoothScroll({ scrollable, scrollContainer });
+  useLayoutEffect(() => {
+    const locomotive = new LocomotiveScroll({
+      el: document.querySelector("[data-scroll-container]"),
+      smooth: true,
+      smartphone: { smooth: true },
+      tablet: { smooth: true },
+    });
+    locomotive.on("scroll", (e) => {
+      console.log(e);
+    });
   });
 
   return (
-    <div id="scroll-container">
-      <main id="scroll-child" className={styles.containerMain}>
+    <div>
+      <main data-scroll-container className={styles.containerMain}>
         <Navigation />
         {children}
       </main>

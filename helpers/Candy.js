@@ -36,7 +36,7 @@ export class Candy {
   }
 
   createorbs() {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       const orb = new Orb(this.randomColor());
       this.app.stage.addChild(orb.graphics);
       this.orbs.push(orb);
@@ -114,9 +114,7 @@ export class Candy {
   }
 
   setColors(palette) {
-    this.colorChoices = tome.get(palette).colors;
-
-    console.log(palette);
+    this.colorChoices = tome.get(palette).colors;    
   }
 
   randomColor() {
@@ -170,7 +168,7 @@ class Orb {
   setBounds() {
     // how far from the { x, y } origin can each orb move
     const maxDist =
-      window.innerWidth < 1000 ? window.innerWidth / 2 : window.innerWidth / 2;
+      window.innerWidth < 1000 ? window.innerWidth / 2 : window.innerWidth / 1.5;
     // the { x, y } origin for each orb (the bottom right of the screen)
     const originX = window.innerWidth / 1.25;
     const originY =

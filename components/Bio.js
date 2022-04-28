@@ -2,7 +2,7 @@ import styles from "@/styles/components/Bio.module.scss";
 
 const Bio = () => {
   return (
-    <section className={styles.containerIntro}>
+    <section className={styles.containerIntro} data-scroll-section>
       <div className={styles.wrapperFuckingName}>
         <h2>Hi, I'm</h2>
         <h1 className={styles.fuckingName}>Franklin Jezreel</h1>

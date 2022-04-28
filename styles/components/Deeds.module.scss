@@ -4,17 +4,10 @@
 
 .containerWork {
   margin-top: var(--space-xl-2xl);
-
-  h2 {    
-    @include fluid-heading-level-02;
-  }
 }
 
 .wrapperCompany {
   display: flex;
-  P {
-    @include fluid-heading-level-04("normal");
-  }
 
   > :nth-child(1) {
     margin-right: var(--space-xs);
@@ -30,12 +23,4 @@
   display: flex;
   flex-direction: column;
   align-items: baseline;
-
-  p {
-    @include sohne-fluid-home;   
-  }
-
-  h3 {
-    @include fluid-heading-level-05("normal");
-  }
 }

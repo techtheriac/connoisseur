@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import styles from "@/styles/components/Navigation.module.scss";
-import  NavDang  from "@/helpers/Animations";
+import NavDang from "@/helpers/Animations";
 
 const Navigation = () => {
   useEffect(() => {
     new NavDang({
       el: document.querySelector("[class*='navItems']"),
       blur: false,
-    });    
+    });
   });
 
   return (
-    <nav className={styles.containerNav}>
+    <nav className={styles.containerNav} data-scroll-section>
       <ul className={styles.navItems}>
         <li>
           <a href="/">Home</a>

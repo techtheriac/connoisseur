@@ -11,25 +11,15 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-
-  h2 {
-    @include fluid-heading-level-02;
-  }
-}
-
-
-.fuckingName {
-  @include slang-fluid-name;
 }
 
 .bio {
- @include sohne-fluid-home; 
- max-width: 40em;
+  max-width: 40em;
 
- a {
-   color: #fff;
-   text-decoration: underline;
-   font-style: italic;
-   text-transform: lowercase;
- }
+  a {
+    color: #fff;
+    text-decoration: underline;
+    font-style: italic;
+    text-transform: lowercase;
+  }
 }

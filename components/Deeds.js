@@ -36,12 +36,12 @@ const Deeds = () => {
   ];
 
   return (
-    <section id="resume" className={styles.containerWork}>
+    <section id="resume" className={styles.containerWork} data-scroll-section>
       <h2>deeds</h2>
       {works.map(({ role, year, company, projects }) => {
         return (
           <div key={company} className={styles.wrapperWork}>
-            <div className={styles.wrapperCompany}>              
+            <div className={styles.wrapperCompany}>
               <p>{company}</p>
             </div>
 
@@ -49,9 +49,7 @@ const Deeds = () => {
               {projects.map(({ title, description, url }) => {
                 return (
                   <a href={url} className={styles.project} key={url}>
-                    <h3>
-                      {title}
-                    </h3>
+                    <h3>{title}</h3>
                     <p>{description}</p>
                   </a>
                 );
