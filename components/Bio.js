@@ -2,9 +2,15 @@ import styles from "@/styles/components/Bio.module.scss";
 
 const Bio = () => {
   return (
-    <section className={styles.containerIntro} data-scroll-section>
-      <div className={styles.wrapperFuckingName}>
-        <h2>Hi, I'm</h2>
+    <r-cell
+      span={`1-4`}
+      span-s={`row`}
+      // className={styles.containerIntro}
+
+      data-scroll-section
+    >
+      <div>
+        <h1>Hi, I'm</h1>
         <h1 className={styles.fuckingName}>Franklin Jezreel</h1>
         <p className={styles.bio}>
           A Software Engineer with experience working across various stacks.
@@ -24,7 +30,7 @@ const Bio = () => {
           internet things that scale
         </p>
       </div>
-    </section>
+    </r-cell>
   );
 };
 

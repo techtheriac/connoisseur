@@ -1,25 +1,8 @@
 @import "./util/include-media";
 @import "./util/breakpoints";
-@import "./util/typography";
+@import "../util/flex";
 
 .containerNav {
   margin-top: var(--space-2xs-xs);
-  width: calc(100% - calc(2 * var(--space-xl)));
-  align-self: center;
-  position: fixed;
-
-  @include media("<=tablet") {
-    width: calc(100% - calc(2 * var(--space-xs)));
-  }
-}
-.navItems {
-  display: flex;
-  justify-content: space-between;
-
-  li {
-    color: var(--durag-meadow);
-    span {
-      margin: 0 var(--space-m) 0 var(--space-m);
-    }
-  }
+  @include flex-flow-hr;
 }

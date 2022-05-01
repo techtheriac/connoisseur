@@ -1,29 +1,9 @@
 // Imports
-@import "./resets.scss";
+@import "./util/resets";
+@import "./util/raster";
 @import "./util/include-media";
 @import "./util/breakpoints";
 @import "./util/locomotive";
-@import "./font/Executive.scss";
-html,
-body {
-  font-size: 16px;
-  // Instead of making `vw` a dependency in factoring out font sizes fluidly
-  // With sass I use predefined sizes based on the viewports in incorporate in my project
-  // Assigning a font size to these individual font breakpoint all in respect to my typescale
-  // Users seldom have to resize their windows whilst browsing the web. Hence the problem
-  // of typographic elements jumping when there's a 1px difference in viewport with is almost non exixtent
-  // In fact, browser window resizing is imposssible for in mobile devices
-
-  // Using the `media query mixin` - mixins have to be imported in individual modules
-
-  // Use css `clamp` to define layout container margins/padding
-  // overflow: hidden;
-  // position: fixed;
-  // left: 0;
-  // top: 0;
-  // width: 100%;
-  // height: 100%;
-}
 
 :root {
   --fluid-min-width: 320;
@@ -43,17 +23,14 @@ body {
 }
 
 :root {
+  text-size-adjust: 100%;
+
   --durag-tomato: #e0998e;
   --durag-tomato-01: rgba(224, 153, 142, 0.2);
   // --durag-meadow: #a7d9a4;
   --durag-meadow: #fff;
   --durag-blue: #203946;
   --durag-bg-offwhite: #f2f2f2;
-
-  // Spacing should be dependent on a scale
-  // Scale definition - experiment with grid lover and type scale to define prefered scale\
-
-  // Font Step definitions
 
   --step--2: clamp(0.69rem, 0.59rem + 0.52vw, 0.96rem);
   --step--1: clamp(0.83rem, 0.69rem + 0.72vw, 1.2rem);
@@ -194,6 +171,5 @@ code {
 }
 
 body {
-  background-color: #c3c3c3;
   font-family: "Executive Regular";
 }

@@ -12,7 +12,13 @@ export default function Home() {
   return (
     <WholeLayout>
       <Bio />
-      <Deeds />
+      <Bio />
+      <Bio />
+      <Bio />
+      <Bio />
+      <Bio />
+      <Bio />
+      <Bio />
     </WholeLayout>
   );
 }

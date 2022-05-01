@@ -8,35 +8,47 @@ const Map = R.addIndex(R.map);
 const Paragraph = styled("p", {
   fontSize: "1.2rem",
   marginTop: "20px",
+  fontFamily: "Executive Regular",
 });
 
 const BlogLink = ({ content, linkUrl }) => {
-  useEffect(() => {
-    console.log(content, linkUrl);
-  });
-
   return <a href={linkUrl}>{content}</a>;
 };
-const BlogContentBox = styled("div");
-const HeadingOne = styled("h1");
-const HeadingTwo = styled("h2");
+
+const HeadingOne = styled("h1", {
+  fontFamily: "Executive Bold",
+});
+const HeadingTwo = styled("h2", {
+  fontFamily: "Executive Bold",
+});
 const HeadingThree = styled("h3");
 const HeadingFour = styled("h4");
 const HeadingFive = styled("h5");
 const HeadingSix = styled("h6");
 
 const ELEMENT_TYPE_PATH = R.lensPath(["type"]);
+
 const PARAGRAPH_CONTENT_PATH = R.lensPath([
   "paragraph",
   "text",
   0,
   "plain_text",
 ]);
+
+const BULLET_LIST_ITEM_PATH = R.lensPath([
+  "bulleted_list_item",
+  "text",
+  0,
+  "plain_text",
+]);
+
 const PARAGRAPH_PATH = R.lensPath(["paragraph", "text"]);
+
 const HEADING_CONTENT_PATH = (level) =>
   R.lensPath([`heading_${level}`, "text", 0, "plain_text"]);
 
 const getContent = (path) => (elementObject) => R.view(path, elementObject);
+
 const elementHasChildren = (path) => (elementObject) =>
   R.length(R.view(path, elementObject)) > 1;
 
@@ -54,7 +66,7 @@ const parseParagraph = (elementObject, index) => {
     const paragraphArray = getParagraphArray(elementObject);
     const paragraphChildren = Map(parsePregnantParagraph, paragraphArray);
     const PregnantParagraph = (
-      <Paragraph>{Map((x) => x, paragraphChildren)}</Paragraph>
+      <Paragraph key={index}>{Map((x) => x, paragraphChildren)}</Paragraph>
     );
     return PregnantParagraph;
   }
@@ -102,8 +114,17 @@ const renderProcedure = (elementObject, index) => {
       </HeadingTwo>
     );
   }
+
+  if (getElementType(elementObject) == "bulleted_list_item") {
+    return (
+      <li key={index}>{getContent(BULLET_LIST_ITEM_PATH)(elementObject)}</li>
+    );
+  }
 };
 
 export const ContentRenderer = ({ postContent }) => (
-  <BlogContentBox> {Map(renderProcedure, postContent)}</BlogContentBox>
+  <r-cell span={`3-6`} span-s={`row`} data-scroll-section>
+    {" "}
+    {Map(renderProcedure, postContent)}
+  </r-cell>
 );
