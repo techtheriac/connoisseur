@@ -115,7 +115,7 @@ const renderProcedure = (elementObject, index) => {
 };
 
 export const ContentRenderer = ({ postContent }) => (
-  <r-cell span={`3-6`} span-s={`row`} data-scroll-section>
+  <r-cell span={`2-5`} span-s={`row`} data-scroll-section>
     {" "}
     {Map(renderProcedure, postContent)}
   </r-cell>
