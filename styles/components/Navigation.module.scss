@@ -1,8 +1,15 @@
 @import "./util/include-media";
 @import "./util/breakpoints";
 @import "../util/flex";
+@import "../util/interpolate";
 
-.containerNav {
-  margin-top: var(--space-2xs-xs);
-  @include flex-flow-hr;
+.container > div:nth-child(2) {
+  margin-left: 100px;
+}
+
+.name {
+  @include interpolate(font-size, 320px, 1366px, 30px, 45px);
+}
+.quote {
+  max-width: 20ch;
 }

@@ -3,22 +3,48 @@ import { useEffect } from "react";
 import toggleBackground from "@/helpers/toggleBackground";
 import Deeds from "@/components/Deeds";
 import Bio from "@/components/Bio";
+import TiledListing from "@/components/TiledListing";
 
 const WholeLayout = dynamic(() => import("../components/WholeLayout"), {
   ssr: false,
 });
 
 export default function Home() {
+  const info = [
+    {
+      title: "The verge of stone",
+      meta: "June 24 2021",
+    },
+    {
+      title: "The verge of stone",
+      meta: "June 24 2021",
+    },
+    {
+      title: "The verge of stone",
+      meta: "June 24 2021",
+    },
+    {
+      title: "The verge of stone",
+      meta: "June 24 2021",
+    },
+  ];
   return (
     <WholeLayout>
       <Bio />
-      <Bio />
-      <Bio />
-      <Bio />
-      <Bio />
-      <Bio />
-      <Bio />
-      <Bio />
+      <TiledListing
+        title="Writing"
+        info={info}
+        span={`1+3`}
+        xspan={`row`}
+        xxspan={`row`}
+      />
+      <TiledListing
+        title="Fucking"
+        info={info}
+        span={`4+3`}
+        xspan={`row`}
+        xxspan={`row`}
+      />
     </WholeLayout>
   );
 }

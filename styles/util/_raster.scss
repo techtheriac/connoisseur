@@ -1,7 +1,11 @@
 /* Raster v20 (release package) (rsms.me/raster) */
+@import "../font/executive";
+@import "../font/nb-akademie";
+@import "../util/interpolate";
+
 :root {
   --fontSize: 16px;
-  --sansFont: "Executive Light";
+  --sansFont: "Executive Regular";
   --sansFontBold: "Executive Bold";
   --sansFontRegular: "Executive Regular";
   --sansFontThin: "Executive Thin";
@@ -15,17 +19,16 @@
   --h2-size: 2.2rem;
   --h3-size: 1.4rem;
   --h4-size: 1.1rem;
-  --columnGap: calc(var(--lineHeight) * 2);
+  --columnGap: calc(var(--lineHeight) * 4);
   --rowGap: var(--lineHeight);
   --displayScale: 1;
   --pixel: 1px;
   --foreground-color-rgb: 0, 0, 0;
   --foreground-color-a: 1;
-  --foreground-color: rgba(
-    var(--foreground-color-rgb),
-    var(--foreground-color-a)
-  );
-  --background-color: #fff;
+  --foreground-color: #40403d;
+  --background-color: #fffef2;
+
+  @include interpolate(--fontSize, 320px, 1366px, 16px, 20px);
 }
 
 @supports (font-variant-ligatures: discretionary-ligatures) {
@@ -1538,7 +1541,8 @@ h {
 .h1,
 h,
 h1 {
-  font-weight: 720;
+  font-family: var(--sansFontBold);
+  font-weight: 700;
   letter-spacing: -0.05em;
   font-size: var(--h1-size);
   line-height: calc(var(--lineHeight) * 2);
@@ -1560,6 +1564,7 @@ h1.single-line:first-child {
 }
 .h2,
 h2 {
+  font-family: var(--sansFontBold);
   font-weight: 700;
   letter-spacing: -0.03em;
   font-size: var(--h2-size);
@@ -1581,6 +1586,7 @@ h2.single-line:first-child {
 .h4,
 h3,
 h4 {
+  font-family: var(--sansFontBold);
   font-weight: 700;
   letter-spacing: -0.02em;
   font-size: var(--h3-size);
@@ -1975,6 +1981,9 @@ p + table {
 .flex-h {
   -webkit-box-orient: horizontal;
   flex-direction: row;
+}
+.flex-h.space-between {
+  justify-content: space-between;
 }
 .flex-h,
 .flex-v {
