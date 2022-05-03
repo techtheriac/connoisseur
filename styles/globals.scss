@@ -1,5 +1,4 @@
 // Imports
-@import "./util/resets";
 @import "./util/raster";
 @import "./util/include-media";
 @import "./util/breakpoints";
@@ -168,8 +167,4 @@ code {
   height: 100%;
   pointer-events: none;
   z-index: -1;
-}
-
-body {
-  font-family: "Executive Regular";
 }

@@ -47,7 +47,7 @@ html.has-scroll-dragging {
 .c-scrollbar:hover,
 .has-scroll-scrolling .c-scrollbar,
 .has-scroll-dragging .c-scrollbar {
-  opacity: 0.3;
+  opacity: 0;
 }
 [data-scroll-direction="horizontal"] .c-scrollbar {
   width: 100%;

@@ -1,30 +1,12 @@
 // TO-DO - Get a sorted sematic structure of blog post content before rendering
 import React, { useEffect } from "react";
-import { styled } from "@stitches/react";
 import * as R from "ramda";
 
 const Map = R.addIndex(R.map);
 
-const Paragraph = styled("p", {
-  fontSize: "1.2rem",
-  marginTop: "20px",
-  fontFamily: "Executive Regular",
-});
-
 const BlogLink = ({ content, linkUrl }) => {
   return <a href={linkUrl}>{content}</a>;
 };
-
-const HeadingOne = styled("h1", {
-  fontFamily: "Executive Bold",
-});
-const HeadingTwo = styled("h2", {
-  fontFamily: "Executive Bold",
-});
-const HeadingThree = styled("h3");
-const HeadingFour = styled("h4");
-const HeadingFive = styled("h5");
-const HeadingSix = styled("h6");
 
 const ELEMENT_TYPE_PATH = R.lensPath(["type"]);
 
@@ -59,14 +41,12 @@ const paragraphHasChildren = elementHasChildren(PARAGRAPH_PATH);
 
 const parseParagraph = (elementObject, index) => {
   if (!paragraphHasChildren(elementObject)) {
-    return (
-      <Paragraph key={index}>{getParagraphContent(elementObject)}</Paragraph>
-    );
+    return <p key={index}>{getParagraphContent(elementObject)}</p>;
   } else {
     const paragraphArray = getParagraphArray(elementObject);
     const paragraphChildren = Map(parsePregnantParagraph, paragraphArray);
     const PregnantParagraph = (
-      <Paragraph key={index}>{Map((x) => x, paragraphChildren)}</Paragraph>
+      <p key={index}>{Map((x) => x, paragraphChildren)}</p>
     );
     return PregnantParagraph;
   }
@@ -93,25 +73,37 @@ const renderProcedure = (elementObject, index) => {
 
   if (getElementType(elementObject) == "heading_1") {
     return (
-      <HeadingOne key={index}>
-        {getContent(HEADING_CONTENT_PATH(1))(elementObject)}
-      </HeadingOne>
+      <h1 key={index}>{getContent(HEADING_CONTENT_PATH(1))(elementObject)}</h1>
     );
   }
 
   if (getElementType(elementObject) == "heading_2") {
     return (
-      <HeadingTwo key={index}>
-        {getContent(HEADING_CONTENT_PATH(2))(elementObject)}
-      </HeadingTwo>
+      <h2 key={index}>{getContent(HEADING_CONTENT_PATH(2))(elementObject)}</h2>
     );
   }
 
   if (getElementType(elementObject) == "heading_3") {
     return (
-      <HeadingTwo key={index}>
-        {getContent(HEADING_CONTENT_PATH(3))(elementObject)}
-      </HeadingTwo>
+      <h3 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h3>
+    );
+  }
+
+  if (getElementType(elementObject) == "heading_4") {
+    return (
+      <h4 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h4>
+    );
+  }
+
+  if (getElementType(elementObject) == "heading_5") {
+    return (
+      <h5 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h5>
+    );
+  }
+
+  if (getElementType(elementObject) == "heading_6") {
+    return (
+      <h6 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h6>
     );
   }
 

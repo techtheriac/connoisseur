@@ -9,7 +9,7 @@ import LocomotiveScroll from "locomotive-scroll";
 
 const WholeLayout = ({ children }) => {
   const scrollContainer = useRef();
-  useLayoutEffect(() => {
+  useEffect(() => {
     const locomotive = new LocomotiveScroll({
       el: scrollContainer.current,
       smooth: true,
