@@ -8,20 +8,12 @@ import {
 import { useEffect } from "react";
 import { ContentRenderer } from "@/components/ContentRenderer";
 
-const WholeLayout = dynamic(() => import("@/components/WholeLayout"), {
-  ssr: false,
-});
-
 const Musing = ({ postId, postData, postContent }) => {
   useEffect(() => {
     console.log("postContent", postContent);
   });
 
-  return (
-    <WholeLayout>
-      <ContentRenderer postContent={postContent} />
-    </WholeLayout>
-  );
+  return <ContentRenderer postContent={postContent} />;
 };
 
 export async function getStaticPaths() {

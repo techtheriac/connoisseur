@@ -1,0 +1,5 @@
+:root {
+  @include interpolate(--fontSize, 320px, 1366px, 16px, 20px);
+  --columnGap: calc(var(--fontSize) * 2);
+  --rowGap: calc(var(--fontSize) * 1.2);
+}

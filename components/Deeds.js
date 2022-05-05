@@ -1,5 +1,3 @@
-import styles from "@/styles/components/Deeds.module.scss";
-
 const Deeds = () => {
   const works = [
     {
@@ -36,19 +34,19 @@ const Deeds = () => {
   ];
 
   return (
-    <section id="resume" className={styles.containerWork} data-scroll-section>
+    <section>
       <h2>deeds</h2>
       {works.map(({ role, year, company, projects }) => {
         return (
-          <div key={company} className={styles.wrapperWork}>
-            <div className={styles.wrapperCompany}>
+          <div key={company}>
+            <div>
               <p>{company}</p>
             </div>
 
-            <div className={styles.projectListing}>
+            <div>
               {projects.map(({ title, description, url }) => {
                 return (
-                  <a href={url} className={styles.project} key={url}>
+                  <a href={url} key={url}>
                     <h3>{title}</h3>
                     <p>{description}</p>
                   </a>

@@ -1,18 +1,18 @@
 const TiledListing = ({ title, info, span, xspan, xxspan }) => {
   return (
-    <r-cell span={span} span-s={xspan} span-xs={xxspan} data-scroll-section>
+    <div>
       <h3>{title}</h3>
       <div>
         {info.map(({ title, meta }, index) => {
           return (
-            <div key={index} className={`flex-h space-between`}>
+            <div key={index}>
               <p>{title}</p>
               <p>{meta}</p>
             </div>
           );
         })}
       </div>
-    </r-cell>
+    </div>
   );
 };
 export default TiledListing;

@@ -5,10 +5,6 @@ import Deeds from "@/components/Deeds";
 import Bio from "@/components/Bio";
 import TiledListing from "@/components/TiledListing";
 
-const WholeLayout = dynamic(() => import("../components/WholeLayout"), {
-  ssr: false,
-});
-
 export default function Home() {
   const info = [
     {
@@ -29,7 +25,7 @@ export default function Home() {
     },
   ];
   return (
-    <WholeLayout>
+    <div>
       <Bio />
       <TiledListing
         title="Writing"
@@ -45,6 +41,6 @@ export default function Home() {
         xspan={`row`}
         xxspan={`row`}
       />
-    </WholeLayout>
+    </div>
   );
 }
