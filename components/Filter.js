@@ -1,12 +1,21 @@
 import { styled, css } from "stitches.config";
+import Text from "./Text";
 
 export default function Filter() {
   return (
     <_Filter>
-      <p>Musings</p>
-      <p>On Engineering</p>
-      <p>Capsules</p>
-      <p>Journal</p>
+      <Text family="sans" type="filter">
+        Musings
+      </Text>
+      <Text family="sans" type="filter">
+        On Engineering
+      </Text>
+      <Text family="sans" type="filter">
+        Capsules
+      </Text>
+      <Text family="sans" type="filter">
+        Journal
+      </Text>
     </_Filter>
   );
 }

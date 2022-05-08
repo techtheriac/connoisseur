@@ -1,5 +1,7 @@
 :root {
   @include interpolate(--space, 320px, 1366px, 25px, 40px);
+  @include interpolate(--idealSansFontSize, 640px, 1366px, 16px, 20px);
+  @include interpolate(--idealListingFontSize, 640px, 1366px, 16px, 30px);
   --space-s: calc(var(--space) / 2);
   --space-m: calc(var(--space) * 2);
 }

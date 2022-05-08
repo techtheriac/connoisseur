@@ -1,4 +1,5 @@
 import { styled, css } from "stitches.config";
+import TitleHomeItem from "./TitleHomeItem";
 
 export default function TitlesHome() {
   const titles = [
@@ -20,9 +21,13 @@ export default function TitlesHome() {
     <_TitlesHome>
       {titles.map((title, index) => {
         return (
-          <a href="#" key={index}>
+          <TitleHomeItem
+            status={index % 2 == 0 ? "inactive" : "active"}
+            href="#"
+            key={index}
+          >
             {title}
-          </a>
+          </TitleHomeItem>
         );
       })}
     </_TitlesHome>

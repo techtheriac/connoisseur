@@ -21,7 +21,7 @@ export default function Layout({ children }) {
   });
 
   return (
-    <Layout_Styled
+    <_Layout
       grid={{
         "@initial": "gridSm",
         "@sm": "gridBase",
@@ -37,7 +37,7 @@ export default function Layout({ children }) {
         {children}
       </_Main>
       <Footer />
-    </Layout_Styled>
+    </_Layout>
   );
 }
 
@@ -45,7 +45,7 @@ const _Main = styled("main", {
   variants: {
     gridColumn: {
       gridColumnBase: {
-        gridColumn: "5 / -1",
+        gridColumn: "6 / -1",
       },
       gridColumnSm: {
         gridColumn: "1 / -1",
@@ -54,7 +54,7 @@ const _Main = styled("main", {
   },
 });
 
-const Layout_Styled = styled("div", {
+const _Layout = styled("div", {
   display: "grid",
   minHeight: "var(--100vh)",
   paddingLeft: "var(--space)",

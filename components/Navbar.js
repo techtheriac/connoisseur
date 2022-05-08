@@ -1,12 +1,18 @@
-import { styled } from "stitches.config";
+import { styled, css } from "stitches.config";
 import Navigation from "./Navigation";
 import Filter from "./Filter";
 import Namaste from "./Namaste";
+import Link from "next/link";
+import Text from "./Text";
 
 export default function Navbar() {
   return (
     <_Navbar>
-      <Namaste />
+      <Link href="/">
+        <Text as="a" family="sans" type="link">
+          Franklin Jezreel
+        </Text>
+      </Link>
       <Navigation />
       <Filter />
     </_Navbar>

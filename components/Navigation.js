@@ -1,18 +1,26 @@
 import { styled, css } from "stitches.config";
 import Link from "next/link";
+import Text from "./Text";
 
 const _Navigation = styled("div", {
   display: "flex",
+  "> * + *": {
+    marginLeft: "10px",
+  },
 });
 
 export default function Navigation() {
   return (
     <_Navigation>
       <Link href="/">
-        <a>About</a>
+        <Text as="a" family="sans" type="link">
+          About
+        </Text>
       </Link>
       <Link href="/musings">
-        <a>Projects</a>
+        <Text as="a" family="sans" type="link">
+          Projects
+        </Text>
       </Link>
     </_Navigation>
   );

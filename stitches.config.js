@@ -31,7 +31,7 @@ export const { styled, getCssText, css } = createStitches({
       tomato100: "hsla(10,68%,46%, 100%)",
       tomato200: "hsla(10,69%,75%, 100%)",
       tomato300: "hsla(10,52%,56%, 100%)",
-      tomato300: "hsla(10,69%,75%, 72%)",
+      tomato400: "hsla(10,69%,75%, 72%)",
       saffron100: "hsla(35, 100%, 71%, 100%)",
     },
     fontSizes: {
