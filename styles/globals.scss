@@ -3,8 +3,5 @@
 @import "./util/custom-properties";
 @import "./util/resets";
 
-@supports (font-variant-ligatures: discretionary-ligatures) {
-  html {
-    font-variant-ligatures: discretionary-ligatures;
-  }
-}
+@import "./font/financier";
+@import "./font/national";

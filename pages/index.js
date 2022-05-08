@@ -4,6 +4,26 @@ import toggleBackground from "@/helpers/toggleBackground";
 import Deeds from "@/components/Deeds";
 import Bio from "@/components/Bio";
 import TiledListing from "@/components/TiledListing";
+import { styled } from "../stitches.config";
+
+const Text = styled("p", {
+  fontFamily: "$system",
+  color: "$hiContrast",
+
+  variants: {
+    size: {
+      1: {
+        fontSize: "$1",
+      },
+      2: {
+        fontSize: "$2",
+      },
+      3: {
+        fontSize: "$3",
+      },
+    },
+  },
+});
 
 export default function Home() {
   const info = [
@@ -26,21 +46,12 @@ export default function Home() {
   ];
   return (
     <div>
+      <Text as="h1" size="3">
+        Hello, from Stitches.
+      </Text>
       <Bio />
-      <TiledListing
-        title="Writing"
-        info={info}
-        span={`1+3`}
-        xspan={`row`}
-        xxspan={`row`}
-      />
-      <TiledListing
-        title="Fucking"
-        info={info}
-        span={`4+3`}
-        xspan={`row`}
-        xxspan={`row`}
-      />
+      <TiledListing title="Writing" info={info} />
+      <TiledListing title="Fucking" info={info} />
     </div>
   );
 }

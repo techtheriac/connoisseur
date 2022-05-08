@@ -1,4 +1,4 @@
-const TiledListing = ({ title, info, span, xspan, xxspan }) => {
+const TiledListing = ({ title, info }) => {
   return (
     <div>
       <h3>{title}</h3>
