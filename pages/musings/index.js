@@ -17,7 +17,7 @@ const PostsPage = ({ posts }) => {
   ];
 
   return (
-    <main className={styles.wrapperMusings}>
+    <main>
       {sections.map((section, index) => {
         return (
           <a key={index} href={section.link}>
