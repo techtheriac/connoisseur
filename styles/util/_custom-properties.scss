@@ -1,5 +1,5 @@
 :root {
   @include interpolate(--space, 320px, 1366px, 25px, 40px);
-  --columnGap: calc(var(--fontSize) * 2);
-  --rowGap: calc(var(--fontSize) * 1.2);
+  --space-s: calc(var(--space) / 2);
+  --space-m: calc(var(--space) * 2);
 }

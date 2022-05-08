@@ -1,38 +1,19 @@
-import React from "react";
+import { styled, css } from "stitches.config";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
-const Navigation = () => {
-  const router = useRouter();
+const _Navigation = styled("div", {
+  display: "flex",
+});
+
+export default function Navigation() {
   return (
-    <nav>
-      {router.pathname == "/" ? (
-        <div>
-          <h1>Franklin Jezreel</h1>
-          <p>
-            Farouring the relationship between things over their intrinsic
-            properties.
-          </p>
-        </div>
-      ) : (
-        <button type="button" onClick={() => router.back()}>
-          Back
-        </button>
-      )}
-
-      <div>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-        <Link href="/musings">
-          <a>Musings</a>
-        </Link>
-        <Link href="/contact">
-          <a>Contact</a>
-        </Link>
-      </div>
-    </nav>
+    <_Navigation>
+      <Link href="/">
+        <a>About</a>
+      </Link>
+      <Link href="/musings">
+        <a>Projects</a>
+      </Link>
+    </_Navigation>
   );
-};
-
-export default Navigation;
+}
