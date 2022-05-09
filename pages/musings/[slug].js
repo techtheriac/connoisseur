@@ -9,10 +9,6 @@ import { useEffect } from "react";
 import { ContentRenderer } from "@/components/ContentRenderer";
 
 const Musing = ({ postId, postData, postContent }) => {
-  useEffect(() => {
-    console.log("postContent", postContent);
-  });
-
   return <ContentRenderer postContent={postContent} />;
 };
 

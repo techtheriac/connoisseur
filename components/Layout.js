@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { canUseDOM } from "@/helpers/DOM";
-import { styled, css } from "stitches.config";
+import { styled } from "stitches.config";
 import Namaste from "./Namaste";
 
 const useIsomorphicLayoutEffect = canUseDOM()

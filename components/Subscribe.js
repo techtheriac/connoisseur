@@ -55,6 +55,6 @@ const Button = styled("button", {
   boxShadow: "none",
 
   "&:hover": {
-    backgroundColor: "transparent",
+    backgroundColor: "$tomato400",
   },
 });
