@@ -34,6 +34,13 @@ export async function getStaticProps() {
 
   const results = notionPosts.results;
 
+  const properties = results.map((x) => {
+    return {
+      title: x.properties.slug,
+      slug: "",
+      dateCreated: "",
+    };
+  });
   results.forEach((elem) => {
     console.log(elem.properties);
   });

@@ -2,7 +2,6 @@ import React from "react";
 import Text from "./Text";
 import TextScramble from "@/helpers/scramble";
 import { canUseDOM } from "@/helpers/DOM";
-import { styled, css } from "stitches.config";
 
 const useIsomorphicLayoutEffect = canUseDOM()
   ? React.useLayoutEffect

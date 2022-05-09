@@ -1,32 +1,21 @@
 import { styled, css } from "stitches.config";
 import TitleHomeItem from "./TitleHomeItem";
 
-export default function TitlesHome() {
-  const titles = [
-    "Dingbat In the Ocean Of Malice",
-    "Ataraxia I Lost My Mind",
-    "Death and Lambs",
-    "Gold Fury",
-    "Roses",
-    "BangDad is On Fire",
-    "Container Orchestration",
-    "Filter My Loads",
-    "Lime and Lemonades",
-    "Forsake The Night",
-    "Intrinsic Layouts",
-    "Chop My Hand",
-    "Peace is Illusory",
-  ];
+const parseUrl = (tags, slug) => {
+  return tags.includes("poetry") ? `/poetry/${slug}` : `/musings/${slug}`;
+};
+
+export default function TitlesHome({ posts }) {
   return (
     <_TitlesHome>
-      {titles.map((title, index) => {
+      {posts.map((post, index) => {
         return (
           <TitleHomeItem
             status={index % 2 == 0 ? "inactive" : "active"}
-            href="#"
+            href={parseUrl(post.tags, post.slug)}
             key={index}
           >
-            {title}
+            {post.title}
           </TitleHomeItem>
         );
       })}

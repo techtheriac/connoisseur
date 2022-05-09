@@ -98,3 +98,19 @@ export const getPoetrySlugs = async () => {
     fallback: "blocking",
   };
 };
+
+// _____________ USER INTERFACE ____________________
+
+export const getHomePageListing = async () => {
+  const res = await getPosts();
+  return res.results.map((post) => {
+    return {
+      dateCreated: post.created_time,
+      slug: post.properties.slug.rich_text[0].plain_text,
+      title: post.properties.Name.title[0].plain_text,
+      tags: post.properties.Tags.multi_select.map((tag) => {
+        return tag.name;
+      }),
+    };
+  });
+};
