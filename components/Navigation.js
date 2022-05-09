@@ -1,12 +1,13 @@
+import React from "react";
 import { styled, css } from "stitches.config";
 import Link from "next/link";
 import Text from "./Text";
 
 const _Navigation = styled("div", {
   display: "flex",
-  "> * + *": {
-    marginLeft: "10px",
-  },
+  flexDirection: "column",
+  gap: "var(--space-s)",
+  marginRight: "20px",
 });
 
 export default function Navigation() {

@@ -1,7 +1,42 @@
+import React from "react";
+import Text from "./Text";
+import TextScramble from "@/helpers/scramble";
+import { canUseDOM } from "@/helpers/DOM";
 import { styled, css } from "stitches.config";
 
-export default function Namaste() {
-  return <_Namaste>Franklin Jezreel</_Namaste>;
-}
+const useIsomorphicLayoutEffect = canUseDOM()
+  ? React.useLayoutEffect
+  : React.useEffect;
 
-const _Namaste = styled("h1", {});
+export default function Namaste() {
+  const scrambleElement = React.useRef();
+
+  useIsomorphicLayoutEffect(() => {
+    const phrases = ["Franklin Jezreel", "techtheriac", "Designer"];
+    const scramble = new TextScramble(scrambleElement.current);
+    let counter = 0;
+    const next = () => {
+      scramble.setText(phrases[counter]).then(() => {
+        setTimeout(next, 800);
+      });
+      counter = (counter + 1) % phrases.length;
+    };
+    next();
+  });
+
+  return (
+    <Text
+      as="a"
+      family="sans"
+      type="link"
+      ref={scrambleElement}
+      css={{
+        position: "absolute",
+        top: "var(--space-m)",
+        left: "var(--space)",
+      }}
+    >
+      Franklin Jezreel
+    </Text>
+  );
+}

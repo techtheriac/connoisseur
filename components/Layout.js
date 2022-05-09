@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { canUseDOM } from "@/helpers/DOM";
 import { styled, css } from "stitches.config";
+import Namaste from "./Namaste";
 
 const useIsomorphicLayoutEffect = canUseDOM()
   ? React.useLayoutEffect
@@ -27,6 +28,7 @@ export default function Layout({ children }) {
         "@sm": "gridBase",
       }}
     >
+      <Namaste />
       <Navbar />
       <_Main
         gridColumn={{

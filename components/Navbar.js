@@ -1,18 +1,24 @@
+import React from "react";
 import { styled, css } from "stitches.config";
 import Navigation from "./Navigation";
 import Filter from "./Filter";
-import Namaste from "./Namaste";
 import Link from "next/link";
 import Text from "./Text";
+import TextScramble from "@/helpers/scramble";
+import { canUseDOM } from "@/helpers/DOM";
+
+const useIsomorphicLayoutEffect = canUseDOM()
+  ? React.useLayoutEffect
+  : React.useEffect;
 
 export default function Navbar() {
   return (
-    <_Navbar>
-      <Link href="/">
-        <Text as="a" family="sans" type="link">
-          Franklin Jezreel
-        </Text>
-      </Link>
+    <_Navbar
+      gridColumn={{
+        "@initial": "gridColumnSm",
+        "@sm": "gridColumnBase",
+      }}
+    >
       <Navigation />
       <Filter />
     </_Navbar>
@@ -20,9 +26,19 @@ export default function Navbar() {
 }
 
 const _Navbar = styled("div", {
-  gridColumn: "1 / -1",
   display: "flex",
   width: "100%",
   flexDirection: "row",
   justifyContent: "space-between",
+
+  variants: {
+    gridColumn: {
+      gridColumnBase: {
+        gridColumn: "6 / -1",
+      },
+      gridColumnSm: {
+        gridColumn: "3 / -1",
+      },
+    },
+  },
 });

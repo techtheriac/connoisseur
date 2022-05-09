@@ -1,4 +1,4 @@
-class TextScramble {
+export default class TextScramble {
   constructor(el) {
     this.el = el;
     this.chars = "!<>-_\\/[]{}—=+*^?#________";
@@ -51,22 +51,3 @@ class TextScramble {
     return this.chars[Math.floor(Math.random() * this.chars.length)];
   }
 }
-
-// ——————————————————————————————————————————————————
-// Example
-// ——————————————————————————————————————————————————
-
-const phrases = ["Neo,"];
-
-const el = document.querySelector(".text");
-const fx = new TextScramble(el);
-
-let counter = 0;
-const next = () => {
-  fx.setText(phrases[counter]).then(() => {
-    setTimeout(next, 800);
-  });
-  counter = (counter + 1) % phrases.length;
-};
-
-next();
