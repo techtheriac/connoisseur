@@ -9,3 +9,5 @@ GOALS
 Chromotome color palette - https://kgolid.github.io/chromotome-site/
 
 Preferred palette - "dt09",
+
+Notion Powered Blog - https://www.coryetzkorn.com/blog/how-the-notion-api-powers-my-blog

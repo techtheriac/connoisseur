@@ -7,13 +7,20 @@ import { random, map } from "./Math";
 import * as tome from "chromotome";
 
 export class Candy {
-  constructor({ iterator, palette }) {
+  constructor(palette) {
+    this.createCanvas();
     this.initializeApp();
     this.setColors(palette);
     this.orbs = [];
     this.createorbs();
     this.initializeAnimation();
     this.applyBlur();
+  }
+
+  createCanvas() {
+    const candy = document.createElement("canvas");
+    candy.classList.add("orb-canvas");
+    document.body.appendChild(candy);
   }
 
   initializeApp() {
@@ -29,7 +36,7 @@ export class Candy {
   }
 
   createorbs() {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       const orb = new Orb(this.randomColor());
       this.app.stage.addChild(orb.graphics);
       this.orbs.push(orb);
@@ -73,43 +80,12 @@ export class Candy {
       }    
     `;
 
-    const vertexShader = `
-      attribute vec2 aVertexPosition;
-
-      uniform mat3 projectionMatrix;
-      
-      varying vec2 vTextureCoord;
-      
-      uniform vec4 inputSize;
-      uniform vec4 outputFrame;
-      
-      vec4 filterVertexPosition( void )
-      {
-          vec2 position = aVertexPosition * max(outputFrame.zw, vec2(0.)) + outputFrame.xy;
-      
-          return vec4((projectionMatrix * vec3(position, 1.0)).xy, 0.0, 1.0);
-      }
-      
-      vec2 filterTextureCoord( void )
-      {
-          return aVertexPosition * (outputFrame.zw * inputSize.zw);
-      }
-      
-      void main(void)
-      {
-          gl_Position = filterVertexPosition();
-          vTextureCoord = filterTextureCoord();
-      }
-    `;
-
     const myUniforms = { myUniform: 0.5 };
     return new PIXI.Filter(null, fragmentShader);
   }
 
   setColors(palette) {
     this.colorChoices = tome.get(palette).colors;
-
-    console.log(palette);
   }
 
   randomColor() {
@@ -163,7 +139,9 @@ class Orb {
   setBounds() {
     // how far from the { x, y } origin can each orb move
     const maxDist =
-      window.innerWidth < 1000 ? window.innerWidth / 2 : window.innerWidth / 2;
+      window.innerWidth < 1000
+        ? window.innerWidth / 2
+        : window.innerWidth / 1.5;
     // the { x, y } origin for each orb (the bottom right of the screen)
     const originX = window.innerWidth / 1.25;
     const originY =

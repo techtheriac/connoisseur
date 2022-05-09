@@ -1,37 +1,28 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { styled, css } from "stitches.config";
 import Link from "next/link";
-import styles from "@/styles/components/Navigation.module.scss";
-import  NavDang  from "@/helpers/Animations";
+import Text from "./Text";
 
-const Navigation = () => {
-  useEffect(() => {
-    new NavDang({
-      el: document.querySelector("[class*='navItems']"),
-      blur: false,
-    });    
-  });
+const _Navigation = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  gap: "var(--space-s)",
+  marginRight: "20px",
+});
 
+export default function Navigation() {
   return (
-    <nav className={styles.containerNav}>
-      <ul className={styles.navItems}>
-        <li>
-          <a href="/">Home</a>
-        </li>
-
-        <li>
-          <Link href="/musings">
-            <a>Musings</a>
-          </Link>
-        </li>
-
-        <li>
-          <Link href="/contact">
-            <a>Contact</a>
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <_Navigation>
+      <Link href="/">
+        <Text as="a" family="sans" type="link">
+          About
+        </Text>
+      </Link>
+      <Link href="/musings">
+        <Text as="a" family="sans" type="link">
+          Projects
+        </Text>
+      </Link>
+    </_Navigation>
   );
-};
-
-export default Navigation;
+}

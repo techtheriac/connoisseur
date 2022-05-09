@@ -1,19 +1,23 @@
 import dynamic from "next/dynamic";
 import {
-  getPost,
+  getPoems,
   getPostContent,
-  getPosts,
-  getMusingsSlugs,
+  getPost,
+  getPoetrySlugs,
 } from "BlogInfrastructure";
 import { useEffect } from "react";
 import { ContentRenderer } from "@/components/ContentRenderer";
 
-const Musing = ({ postId, postData, postContent }) => {
+const Poem = ({ postId, postData, postContent }) => {
+  useEffect(() => {
+    console.log("postContent", postContent);
+  });
+
   return <ContentRenderer postContent={postContent} />;
 };
 
 export async function getStaticPaths() {
-  const { paths, fallback } = await getMusingsSlugs();
+  const { paths, fallback } = await getPoetrySlugs();
 
   return {
     paths,
@@ -25,7 +29,7 @@ export async function getStaticProps(context) {
   const slug = context.params && context.params.slug;
 
   // get all posts from notion database
-  const posts = await getPosts();
+  const posts = await getPoems();
 
   // find post with a matching slug property
   const matchedPost = posts.results.filter((post) => {
@@ -50,4 +54,4 @@ export async function getStaticProps(context) {
   };
 }
 
-export default Musing;
+export default Poem;

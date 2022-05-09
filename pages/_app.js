@@ -1,12 +1,12 @@
-import Script from 'next/script';
+import Script from "next/script";
 import "../styles/globals.scss";
+import Layout from "@/components/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-    <Script id="typetura-script" src="/packages/typetura.js" strategy="beforeInteractive" />
-    <Component {...pageProps} />
-    </>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
 

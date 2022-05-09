@@ -1,42 +1,37 @@
 // TO-DO - Get a sorted sematic structure of blog post content before rendering
 import React, { useEffect } from "react";
-import { styled } from "@stitches/react";
+import Text from "./Text";
 import * as R from "ramda";
 
 const Map = R.addIndex(R.map);
 
-const Paragraph = styled("p", {
-  fontSize: "1.2rem",
-  marginTop: "20px",
-});
-
 const BlogLink = ({ content, linkUrl }) => {
-  useEffect(() => {
-    console.log(content, linkUrl);
-  });
-
   return <a href={linkUrl}>{content}</a>;
 };
-const BlogContentBox = styled("div");
-const HeadingOne = styled("h1");
-const HeadingTwo = styled("h2");
-const HeadingThree = styled("h3");
-const HeadingFour = styled("h4");
-const HeadingFive = styled("h5");
-const HeadingSix = styled("h6");
 
 const ELEMENT_TYPE_PATH = R.lensPath(["type"]);
+
 const PARAGRAPH_CONTENT_PATH = R.lensPath([
   "paragraph",
   "text",
   0,
   "plain_text",
 ]);
+
+const BULLET_LIST_ITEM_PATH = R.lensPath([
+  "bulleted_list_item",
+  "text",
+  0,
+  "plain_text",
+]);
+
 const PARAGRAPH_PATH = R.lensPath(["paragraph", "text"]);
+
 const HEADING_CONTENT_PATH = (level) =>
   R.lensPath([`heading_${level}`, "text", 0, "plain_text"]);
 
 const getContent = (path) => (elementObject) => R.view(path, elementObject);
+
 const elementHasChildren = (path) => (elementObject) =>
   R.length(R.view(path, elementObject)) > 1;
 
@@ -47,14 +42,12 @@ const paragraphHasChildren = elementHasChildren(PARAGRAPH_PATH);
 
 const parseParagraph = (elementObject, index) => {
   if (!paragraphHasChildren(elementObject)) {
-    return (
-      <Paragraph key={index}>{getParagraphContent(elementObject)}</Paragraph>
-    );
+    return <p key={index}>{getParagraphContent(elementObject)}</p>;
   } else {
     const paragraphArray = getParagraphArray(elementObject);
     const paragraphChildren = Map(parsePregnantParagraph, paragraphArray);
     const PregnantParagraph = (
-      <Paragraph>{Map((x) => x, paragraphChildren)}</Paragraph>
+      <p key={index}>{Map((x) => x, paragraphChildren)}</p>
     );
     return PregnantParagraph;
   }
@@ -81,29 +74,47 @@ const renderProcedure = (elementObject, index) => {
 
   if (getElementType(elementObject) == "heading_1") {
     return (
-      <HeadingOne key={index}>
-        {getContent(HEADING_CONTENT_PATH(1))(elementObject)}
-      </HeadingOne>
+      <h1 key={index}>{getContent(HEADING_CONTENT_PATH(1))(elementObject)}</h1>
     );
   }
 
   if (getElementType(elementObject) == "heading_2") {
     return (
-      <HeadingTwo key={index}>
-        {getContent(HEADING_CONTENT_PATH(2))(elementObject)}
-      </HeadingTwo>
+      <h2 key={index}>{getContent(HEADING_CONTENT_PATH(2))(elementObject)}</h2>
     );
   }
 
   if (getElementType(elementObject) == "heading_3") {
     return (
-      <HeadingTwo key={index}>
-        {getContent(HEADING_CONTENT_PATH(3))(elementObject)}
-      </HeadingTwo>
+      <h3 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h3>
+    );
+  }
+
+  if (getElementType(elementObject) == "heading_4") {
+    return (
+      <h4 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h4>
+    );
+  }
+
+  if (getElementType(elementObject) == "heading_5") {
+    return (
+      <h5 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h5>
+    );
+  }
+
+  if (getElementType(elementObject) == "heading_6") {
+    return (
+      <h6 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h6>
+    );
+  }
+
+  if (getElementType(elementObject) == "bulleted_list_item") {
+    return (
+      <li key={index}>{getContent(BULLET_LIST_ITEM_PATH)(elementObject)}</li>
     );
   }
 };
 
 export const ContentRenderer = ({ postContent }) => (
-  <BlogContentBox> {Map(renderProcedure, postContent)}</BlogContentBox>
+  <div> {Map(renderProcedure, postContent)}</div>
 );
