@@ -1,5 +1,6 @@
 import { styled } from "stitches.config";
 import Text from "./Text";
+import Rounded from "./Rounded";
 
 export default function Filter() {
   return (
@@ -25,11 +26,4 @@ const _Filter = styled("div", {
   display: "flex",
   flexDirection: "column",
   gap: "var(--space-s)",
-});
-
-const Rounded = styled("div", {
-  backgroundColor: "$saffron100",
-  width: "var(--idealSansFontSize)",
-  height: "var(--idealSansFontSize)",
-  borderRadius: "50%",
 });

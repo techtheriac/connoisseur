@@ -1,15 +1,20 @@
 import dynamic from "next/dynamic";
+import Article from "@/components/Article";
 import {
   getPost,
   getPostContent,
   getPosts,
   getMusingsSlugs,
 } from "BlogInfrastructure";
-import { useEffect } from "react";
+
 import { ContentRenderer } from "@/components/ContentRenderer";
 
 const Musing = ({ postId, postData, postContent }) => {
   return <ContentRenderer postContent={postContent} />;
+};
+
+Musing.getLayout = function getLayout(page) {
+  return <Article>{page}</Article>;
 };
 
 export async function getStaticPaths() {
