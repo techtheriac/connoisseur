@@ -20,6 +20,7 @@ export default function Navbar() {
       }}
     >
       <Navigation />
+      <Filter />
     </_Navbar>
   );
 }

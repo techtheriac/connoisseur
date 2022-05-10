@@ -19,7 +19,7 @@ const setDefaultHeight = () =>
   );
 
 export default function Layout({ children }) {
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     setDefaultHeight();
     toggleBackground(`hsla(10, 68%, 46%, 100%)`);
     window.addEventListener("resize", setDefaultHeight);

@@ -2,11 +2,10 @@ import React from "react";
 import { styled, css } from "stitches.config";
 import Text from "./Text";
 import Rounded from "./Rounded";
-import useSWR from "swr";
-import fetcher from "@/helpers/fetcher";
 import { useTagsContext } from "./TagsProvider";
+import { tags } from "BlogInfrastructure";
 
-export default function Filter({ tags }) {
+export default function Filter() {
   const [tagName, handlers] = useTagsContext();
 
   return (
@@ -32,9 +31,6 @@ export default function Filter({ tags }) {
 }
 
 const _Filter = styled("div", {
-  position: "absolute",
-  top: "var(--space-m)",
-  right: "var(--space)",
   display: "flex",
   flexDirection: "column",
   gap: "var(--space-s)",

@@ -123,3 +123,5 @@ export const getAllAvailablePostTags = async () => {
   const flattenedArray = tags.flat();
   return flattenedArray.filter((x, i) => flattenedArray.indexOf(x) === i);
 };
+
+export const tags = ["poetry", "business"];
