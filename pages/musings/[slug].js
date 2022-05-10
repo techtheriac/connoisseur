@@ -1,5 +1,9 @@
+import React, { useEffect } from "react";
+import Text from "@/components/Text";
 import dynamic from "next/dynamic";
 import Article from "@/components/Article";
+import { styled, css } from "stitches.config";
+
 import {
   getPost,
   getPostContent,
@@ -10,7 +14,19 @@ import {
 import { ContentRenderer } from "@/components/ContentRenderer";
 
 const Musing = ({ postId, postData, postContent }) => {
-  return <ContentRenderer postContent={postContent} />;
+  return (
+    <div>
+      <Text
+        css={{
+          color: "#000",
+        }}
+        as="h1"
+      >
+        {postData.properties.Name.title[0].plain_text}
+      </Text>
+      <ContentRenderer postContent={postContent} />
+    </div>
+  );
 };
 
 Musing.getLayout = function getLayout(page) {
