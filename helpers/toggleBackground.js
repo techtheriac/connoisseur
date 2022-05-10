@@ -1,3 +1,3 @@
 export default function toggleBackground(color) {
-  document.body.style.backgroundColor = color;
+  document.documentElement.style.setProperty("--html-color", color);
 }

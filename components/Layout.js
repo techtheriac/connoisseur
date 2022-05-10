@@ -6,6 +6,7 @@ import Namaste from "./Namaste";
 import Grid from "./Grid";
 import Main from "./Main";
 import { TagsProvider } from "./TagsProvider";
+import toggleBackground from "@/helpers/toggleBackground";
 
 const useIsomorphicLayoutEffect = canUseDOM()
   ? React.useLayoutEffect
@@ -18,8 +19,9 @@ const setDefaultHeight = () =>
   );
 
 export default function Layout({ children }) {
-  useIsomorphicLayoutEffect(() => {
+  React.useEffect(() => {
     setDefaultHeight();
+    toggleBackground(`hsla(10, 68%, 46%, 100%)`);
     window.addEventListener("resize", setDefaultHeight);
   });
 

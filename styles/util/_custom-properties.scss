@@ -4,4 +4,5 @@
   @include interpolate(--idealListingFontSize, 640px, 1366px, 16px, 30px);
   --space-s: calc(var(--space) / 2);
   --space-m: calc(var(--space) * 2);
+  --html-color: hsla(10, 68%, 46%, 100%);
 }
