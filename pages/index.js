@@ -1,8 +1,19 @@
-import { getHomePageListing } from "BlogInfrastructure";
+import React, { useEffect } from "react";
+import {
+  getHomePageListing,
+  getAllAvailablePostTags,
+} from "BlogInfrastructure";
 import TitlesHome from "@/components/TitlesHome";
 import Layout from "@/components/Layout";
-export default function Home({ posts }) {
-  return <TitlesHome posts={posts} />;
+import Filter from "@/components/Filter";
+
+export default function Home({ posts, tags }) {
+  return (
+    <>
+      <Filter tags={tags} />
+      <TitlesHome posts={posts} />;
+    </>
+  );
 }
 
 Home.getLayout = function getLayout(page) {
@@ -11,9 +22,11 @@ Home.getLayout = function getLayout(page) {
 
 export async function getStaticProps() {
   const posts = await getHomePageListing();
+  const tags = await getAllAvailablePostTags();
   return {
     props: {
       posts,
+      tags,
     },
     revalidate: 60,
   };

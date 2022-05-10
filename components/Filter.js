@@ -1,28 +1,40 @@
-import { styled } from "stitches.config";
+import React from "react";
+import { styled, css } from "stitches.config";
 import Text from "./Text";
 import Rounded from "./Rounded";
+import useSWR from "swr";
+import fetcher from "@/helpers/fetcher";
+import { useTagsContext } from "./TagsProvider";
 
-export default function Filter() {
+export default function Filter({ tags }) {
+  const [tagName, handlers] = useTagsContext();
+
   return (
     <_Filter>
       <Rounded />
-      <Text family="sans" type="filter">
-        Musings
-      </Text>
-      <Text family="sans" type="filter">
-        Engineering
-      </Text>
-      <Text family="sans" type="filter">
-        Capsules
-      </Text>
-      <Text family="sans" type="filter">
-        Journal
-      </Text>
+      {tags.map((tag, index) => {
+        return (
+          <Text
+            css={{
+              textTransform: "capitalize",
+            }}
+            key={index}
+            family="sans"
+            type="filter"
+            onClick={handlers[tag]}
+          >
+            {tag}
+          </Text>
+        );
+      })}
     </_Filter>
   );
 }
 
 const _Filter = styled("div", {
+  position: "absolute",
+  top: "var(--space-m)",
+  right: "var(--space)",
   display: "flex",
   flexDirection: "column",
   gap: "var(--space-s)",
