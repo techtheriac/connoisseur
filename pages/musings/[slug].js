@@ -1,15 +1,68 @@
+import React, { useEffect } from "react";
+import Text from "@/components/Text";
 import dynamic from "next/dynamic";
+import Article from "@/components/Article";
+import StyledArticle from "@/components/StyledArticle";
+import { styled, css } from "stitches.config";
+import Main from "@/components/Main";
+import parseISO from "date-fns/parseISO";
+import format from "date-fns/format";
+import Rounded from "@/components/Rounded";
 import {
   getPost,
   getPostContent,
   getPosts,
   getMusingsSlugs,
 } from "BlogInfrastructure";
-import { useEffect } from "react";
+
 import { ContentRenderer } from "@/components/ContentRenderer";
 
-const Musing = ({ postId, postData, postContent }) => {
-  return <ContentRenderer postContent={postContent} />;
+const Musing = ({ postId, postData, postContent, date }) => {
+  useEffect(() => {
+    console.log(postData);
+  });
+  return (
+    <>
+      <Main
+        as="article"
+        articleColumn={{
+          "@initial": "gridColumnSm",
+          "@sm": "gridColumnBase",
+        }}
+      >
+        <Text
+          css={{
+            color: "#000",
+            alignSelf: "flex-start",
+            fontSize: "var(--idealSansFontSize)",
+            marginBottom: "var(--space-s)",
+            fontFamily: "$serifDisplayRegular",
+          }}
+        >
+          {date}
+        </Text>
+        <Text
+          css={{
+            color: "#000",
+            alignSelf: "flex-start",
+            fontSize: "var(--idealHeadingOne)",
+            marginBottom: "var(--space-s)",
+            fontFamily: "$serifDisplayRegular",
+          }}
+          as="h1"
+        >
+          {postData.properties.Name.title[0].plain_text}
+        </Text>
+        <StyledArticle>
+          <ContentRenderer postContent={postContent} />
+        </StyledArticle>
+      </Main>
+    </>
+  );
+};
+
+Musing.getLayout = function getLayout(page) {
+  return <Article>{page}</Article>;
 };
 
 export async function getStaticPaths() {
@@ -45,6 +98,7 @@ export async function getStaticProps(context) {
       postId: matchedPost.id,
       postData,
       postContent,
+      date: `${format(parseISO(postData.created_time), "MMMMMM dd, yyyy")}`,
     },
     revalidate: 60,
   };

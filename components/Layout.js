@@ -2,8 +2,11 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { canUseDOM } from "@/helpers/DOM";
-import { styled } from "stitches.config";
 import Namaste from "./Namaste";
+import Grid from "./Grid";
+import Main from "./Main";
+import { TagsProvider } from "./TagsProvider";
+import toggleBackground from "@/helpers/toggleBackground";
 
 const useIsomorphicLayoutEffect = canUseDOM()
   ? React.useLayoutEffect
@@ -18,63 +21,31 @@ const setDefaultHeight = () =>
 export default function Layout({ children }) {
   useIsomorphicLayoutEffect(() => {
     setDefaultHeight();
+    toggleBackground(`hsla(10, 68%, 46%, 100%)`);
     window.addEventListener("resize", setDefaultHeight);
   });
 
   return (
-    <_Layout
-      grid={{
-        "@initial": "gridSm",
-        "@sm": "gridBase",
-      }}
-    >
-      <Namaste />
-      <Navbar />
-      <_Main
-        gridColumn={{
-          "@initial": "gridColumnSm",
-          "@sm": "gridColumnBase",
+    <TagsProvider>
+      <Grid
+        grid={{
+          "@initial": "gridSm",
+          "@sm": "gridBase",
         }}
+        background="tomato"
       >
-        {children}
-      </_Main>
-      <Footer />
-    </_Layout>
+        <Namaste />
+        <Navbar />
+        <Main
+          gridColumn={{
+            "@initial": "gridColumnSm",
+            "@sm": "gridColumnBase",
+          }}
+        >
+          {children}
+        </Main>
+        <Footer />
+      </Grid>
+    </TagsProvider>
   );
 }
-
-const _Main = styled("main", {
-  variants: {
-    gridColumn: {
-      gridColumnBase: {
-        gridColumn: "6 / -1",
-      },
-      gridColumnSm: {
-        gridColumn: "1 / -1",
-      },
-    },
-  },
-});
-
-const _Layout = styled("div", {
-  display: "grid",
-  minHeight: "var(--100vh)",
-  paddingLeft: "var(--space)",
-  paddingRight: "var(--space)",
-  paddingTop: "var(--space-m)",
-  paddingBottom: "var(--space)",
-  backgroundColor: "$tomato100",
-  variants: {
-    grid: {
-      gridBase: {
-        gridTemplateColumns: "repeat(12, 1fr)",
-        gridGap: "var(--space-s)",
-      },
-      gridSm: {
-        display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
-        gridGap: "var(--space-s)",
-      },
-    },
-  },
-});

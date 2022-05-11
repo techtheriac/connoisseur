@@ -5,3 +5,8 @@
 
 @import "./font/financier";
 @import "./font/national";
+
+html,
+body {
+  background-color: var(--html-color);
+}

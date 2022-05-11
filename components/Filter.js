@@ -1,22 +1,31 @@
-import { styled } from "stitches.config";
+import React from "react";
+import { styled, css } from "stitches.config";
 import Text from "./Text";
+import Rounded from "./Rounded";
+import { useTagsContext } from "./TagsProvider";
+import { tags } from "BlogInfrastructure";
 
 export default function Filter() {
+  const [tagName, handlers] = useTagsContext();
+
   return (
     <_Filter>
       <Rounded />
-      <Text family="sans" type="filter">
-        Musings
-      </Text>
-      <Text family="sans" type="filter">
-        Engineering
-      </Text>
-      <Text family="sans" type="filter">
-        Capsules
-      </Text>
-      <Text family="sans" type="filter">
-        Journal
-      </Text>
+      {tags.map((tag, index) => {
+        return (
+          <Text
+            css={{
+              textTransform: "capitalize",
+            }}
+            key={index}
+            family="sans"
+            type="filter"
+            onClick={handlers[tag]}
+          >
+            {tag}
+          </Text>
+        );
+      })}
     </_Filter>
   );
 }
@@ -25,11 +34,4 @@ const _Filter = styled("div", {
   display: "flex",
   flexDirection: "column",
   gap: "var(--space-s)",
-});
-
-const Rounded = styled("div", {
-  backgroundColor: "$saffron100",
-  width: "var(--idealSansFontSize)",
-  height: "var(--idealSansFontSize)",
-  borderRadius: "50%",
 });

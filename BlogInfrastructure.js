@@ -114,3 +114,14 @@ export const getHomePageListing = async () => {
     };
   });
 };
+
+export const getAllAvailablePostTags = async () => {
+  const res = await getPosts();
+  const tags = res.results.map((post) => {
+    return [...post.properties.Tags.multi_select.map((tag) => tag.name)];
+  });
+  const flattenedArray = tags.flat();
+  return flattenedArray.filter((x, i) => flattenedArray.indexOf(x) === i);
+};
+
+export const tags = ["poetry", "business"];

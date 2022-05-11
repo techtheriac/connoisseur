@@ -6,6 +6,9 @@ const TitleHomeItem = styled("a", {
   fontSize: "var(--idealListingFontSize)",
   lineHeight: 1.5,
   textDecoration: "none",
+  transitionProperty: "color",
+  transitionDuration: "0.3s",
+  transitionTimingFunction: "ease-in",
 
   "&:not(:last-child):after": {
     content: `/`,

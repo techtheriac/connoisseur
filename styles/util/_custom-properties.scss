@@ -2,6 +2,9 @@
   @include interpolate(--space, 320px, 1366px, 25px, 40px);
   @include interpolate(--idealSansFontSize, 640px, 1366px, 16px, 20px);
   @include interpolate(--idealListingFontSize, 640px, 1366px, 16px, 30px);
+  @include interpolate(--idealArticleParagraphSize, 640px, 1366px, 20px, 24px);
+  @include interpolate(--idealHeadingOne, 640px, 1366px, 30px, 40px);
   --space-s: calc(var(--space) / 2);
   --space-m: calc(var(--space) * 2);
+  --html-color: hsla(10, 68%, 46%, 100%);
 }

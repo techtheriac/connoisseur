@@ -1,6 +1,5 @@
 // TO-DO - Get a sorted sematic structure of blog post content before rendering
-import React, { useEffect } from "react";
-import Text from "./Text";
+import React from "react";
 import * as R from "ramda";
 
 const Map = R.addIndex(R.map);
