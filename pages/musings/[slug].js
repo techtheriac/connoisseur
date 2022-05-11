@@ -2,8 +2,12 @@ import React, { useEffect } from "react";
 import Text from "@/components/Text";
 import dynamic from "next/dynamic";
 import Article from "@/components/Article";
+import StyledArticle from "@/components/StyledArticle";
 import { styled, css } from "stitches.config";
 import Main from "@/components/Main";
+import parseISO from "date-fns/parseISO";
+import format from "date-fns/format";
+import Rounded from "@/components/Rounded";
 import {
   getPost,
   getPostContent,
@@ -13,7 +17,10 @@ import {
 
 import { ContentRenderer } from "@/components/ContentRenderer";
 
-const Musing = ({ postId, postData, postContent }) => {
+const Musing = ({ postId, postData, postContent, date }) => {
+  useEffect(() => {
+    console.log(postData);
+  });
   return (
     <>
       <Main
@@ -23,6 +30,17 @@ const Musing = ({ postId, postData, postContent }) => {
           "@sm": "gridColumnBase",
         }}
       >
+        <Text
+          css={{
+            color: "#000",
+            alignSelf: "flex-start",
+            fontSize: "var(--idealSansFontSize)",
+            marginBottom: "var(--space-s)",
+            fontFamily: "$serifDisplayRegular",
+          }}
+        >
+          {date}
+        </Text>
         <Text
           css={{
             color: "#000",
@@ -42,33 +60,6 @@ const Musing = ({ postId, postData, postContent }) => {
     </>
   );
 };
-
-const StyledArticle = styled("div", {
-  margin: "0 auto",
-
-  "*": {
-    fontFamily: "$serifText",
-  },
-  p: {
-    maxWidth: "65ch",
-    fontSize: "var(--idealArticleParagraphSize)",
-    lineHeight: "1.1",
-  },
-
-  "p + p": {
-    marginTop: "var(--space-s)",
-  },
-
-  "p + h1, h2, h3, h4, h6": {
-    marginTop: "var(--space-s)",
-  },
-
-  "h1, h2, h3, h4, h5": {
-    fontFamily: "$serifDisplayRegular",
-    fontSize: "var(--idealArticleParagraphSize)",
-    marginBottom: "var(--space-s)",
-  },
-});
 
 Musing.getLayout = function getLayout(page) {
   return <Article>{page}</Article>;
@@ -107,6 +98,7 @@ export async function getStaticProps(context) {
       postId: matchedPost.id,
       postData,
       postContent,
+      date: `${format(parseISO(postData.created_time), "MMMMMM dd, yyyy")}`,
     },
     revalidate: 60,
   };
