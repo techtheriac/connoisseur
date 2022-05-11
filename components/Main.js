@@ -10,6 +10,15 @@ const Main = styled("main", {
         gridColumn: "1 / -1",
       },
     },
+
+    articleColumn: {
+      gridColumnBase: {
+        gridColumn: "2 / -2",
+      },
+      gridColumnSm: {
+        gridColumn: "1 / -1",
+      },
+    },
   },
 });
 

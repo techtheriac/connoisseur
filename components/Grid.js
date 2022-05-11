@@ -15,9 +15,11 @@ const Grid = styled("div", {
         gridGap: "var(--space-s)",
       },
       gridSm: {
-        display: "grid",
         gridTemplateColumns: "repeat(4, 1fr)",
         gridGap: "var(--space-s)",
+      },
+      articleGrid: {
+        justifyContent: "center",
       },
     },
 

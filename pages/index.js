@@ -5,7 +5,6 @@ import {
 } from "BlogInfrastructure";
 import TitlesHome from "@/components/TitlesHome";
 import Layout from "@/components/Layout";
-import Filter from "@/components/Filter";
 
 export default function Home({ posts, tags }) {
   return (

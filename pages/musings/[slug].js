@@ -3,7 +3,7 @@ import Text from "@/components/Text";
 import dynamic from "next/dynamic";
 import Article from "@/components/Article";
 import { styled, css } from "stitches.config";
-
+import Main from "@/components/Main";
 import {
   getPost,
   getPostContent,
@@ -15,19 +15,60 @@ import { ContentRenderer } from "@/components/ContentRenderer";
 
 const Musing = ({ postId, postData, postContent }) => {
   return (
-    <div>
-      <Text
-        css={{
-          color: "#000",
+    <>
+      <Main
+        as="article"
+        articleColumn={{
+          "@initial": "gridColumnSm",
+          "@sm": "gridColumnBase",
         }}
-        as="h1"
       >
-        {postData.properties.Name.title[0].plain_text}
-      </Text>
-      <ContentRenderer postContent={postContent} />
-    </div>
+        <Text
+          css={{
+            color: "#000",
+            alignSelf: "flex-start",
+            fontSize: "var(--idealHeadingOne)",
+            marginBottom: "var(--space-s)",
+            fontFamily: "$serifDisplayRegular",
+          }}
+          as="h1"
+        >
+          {postData.properties.Name.title[0].plain_text}
+        </Text>
+        <StyledArticle>
+          <ContentRenderer postContent={postContent} />
+        </StyledArticle>
+      </Main>
+    </>
   );
 };
+
+const StyledArticle = styled("div", {
+  margin: "0 auto",
+
+  "*": {
+    fontFamily: "$serifText",
+  },
+  p: {
+    maxWidth: "65ch",
+    fontSize: "var(--idealArticleParagraphSize)",
+    lineHeight: "1.1",
+  },
+
+  "p + p": {
+    marginTop: "var(--space-s)",
+  },
+
+  "p + h1, h2, h3, h4, h6": {
+    marginTop: "var(--space-s)",
+  },
+
+  "h1, h2, h3, h4, h5": {
+    fontFamily: "$serifDisplayRegular",
+    fontSize: "var(--idealArticleParagraphSize)",
+    marginBottom: "var(--space-s)",
+  },
+});
 
 Musing.getLayout = function getLayout(page) {
   return <Article>{page}</Article>;
