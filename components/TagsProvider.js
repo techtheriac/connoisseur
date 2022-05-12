@@ -6,6 +6,8 @@ const Context = React.createContext();
 
 export function TagsProvider({ children }) {
   const [activeTag, setActiveTag] = React.useState("");
+
+  // Initialize a ref that will be set to the animation singleton instance
   const animationHandler = React.useRef(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -14,6 +16,7 @@ export function TagsProvider({ children }) {
     const animations = new Animations(currentEL);
     animations.registerEvents();
 
+    // set to the `null` animationHandlerRef the animation singleton in pageLoad
     animationHandler.current = animations;
   });
 
@@ -25,8 +28,10 @@ export function TagsProvider({ children }) {
       poetry: () => {
         setActiveTag("poetry");
       },
-      fadeLayout: () => {
-        animationHandler.current.emit("fadeLayout");
+
+      // Alias PageFade event emitter
+      fadeLayout: (route) => {
+        animationHandler.current.emit("fadePageTransition", route);
       },
     }),
     []

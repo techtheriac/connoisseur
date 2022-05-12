@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { canUseDOM } from "@/helpers/DOM";
+import { useIsomorphicLayoutEffect } from "@/helpers/DOM";
 import Namaste from "./Namaste";
 import Grid from "./Grid";
 import Main from "./Main";
@@ -9,10 +9,6 @@ import gsap from "gsap";
 import { TagsProvider } from "./TagsProvider";
 import toggleBackground from "@/helpers/toggleBackground";
 import Animations from "@/helpers/Events";
-
-const useIsomorphicLayoutEffect = canUseDOM()
-  ? React.useLayoutEffect
-  : React.useEffect;
 
 const setDefaultHeight = () =>
   document.documentElement.style.setProperty(

@@ -23,6 +23,7 @@
     "glslify-loader": "^2.0.0",
     "gray-matter": "^4.0.3",
     "gsap": "^3.6.0",
+    "gsap-promise": "^2.0.0",
     "hsl-to-hex": "^1.0.0",
     "include-media": "^1.4.9",
     "locomotive-scroll": "^4.1.1",
