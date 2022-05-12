@@ -4,6 +4,7 @@ import Text from "./Text";
 import Rounded from "./Rounded";
 import { useTagsContext } from "./TagsProvider";
 import { tags } from "BlogInfrastructure";
+import Animations from "@/helpers/Events";
 
 export default function Filter() {
   const [tagName, handlers] = useTagsContext();
@@ -20,7 +21,9 @@ export default function Filter() {
             key={index}
             family="sans"
             type="filter"
-            onClick={handlers[tag]}
+            //onClick={handlers[tag]}
+
+            onClick={handlers.fadeLayout}
           >
             {tag}
           </Text>

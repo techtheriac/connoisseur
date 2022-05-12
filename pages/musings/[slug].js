@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Text from "@/components/Text";
-import dynamic from "next/dynamic";
 import Article from "@/components/Article";
 import StyledArticle from "@/components/StyledArticle";
 import { styled, css } from "stitches.config";
@@ -32,7 +31,7 @@ const Musing = ({ postId, postData, postContent, date }) => {
       >
         <Text
           css={{
-            color: "#000",
+            color: "#fff",
             alignSelf: "flex-start",
             fontSize: "var(--idealSansFontSize)",
             marginBottom: "var(--space-s)",
@@ -43,7 +42,7 @@ const Musing = ({ postId, postData, postContent, date }) => {
         </Text>
         <Text
           css={{
-            color: "#000",
+            color: "#fff",
             alignSelf: "flex-start",
             fontSize: "var(--idealHeadingOne)",
             marginBottom: "var(--space-s)",

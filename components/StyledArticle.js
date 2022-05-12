@@ -5,7 +5,7 @@ const StyledArticle = styled("div", {
 
   "*": {
     fontFamily: "$serifText",
-    color: "#000",
+    color: "#fff",
   },
   p: {
     maxWidth: "60ch",
