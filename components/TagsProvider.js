@@ -6,21 +6,19 @@ import { useRouter } from "next/router";
 const Context = React.createContext();
 
 export function TagsProvider({ children }) {
-  const router = useRouter();
   const [activeTag, setActiveTag] = React.useState("");
 
   // Initialize a ref that will be set to the animation singleton instance
   const animationHandler = React.useRef(null);
-
-  useIsomorphicLayoutEffect(() => {
-    const currentEL = document.querySelector("#layout");
-
-    const animations = new Animations(currentEL);
+  const containerElement = React.useRef(null);
+  React.useEffect(() => {
+    containerElement.current = document.querySelector("#layout");
+    const animations = new Animations(containerElement.current);
     animations.registerEvents();
 
     // set to the `null` animationHandlerRef the animation singleton in pageLoad
     animationHandler.current = animations;
-  }, [router.pathname]);
+  }, [children]);
 
   const handlers = React.useMemo(
     () => ({

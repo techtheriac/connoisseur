@@ -6,12 +6,12 @@ let instance;
 export default class Animations extends EventEmitter {
   constructor(container) {
     super();
-    if (instance) {
-      return this;
-    }
-
-    instance = this;
     this.container = container;
+
+    console.log(this.container);
+    if (instance) {
+      instance = this;
+    }
   }
 
   getInstance() {
@@ -22,7 +22,7 @@ export default class Animations extends EventEmitter {
     this.on("fadeLayout", this.layoutFade);
     this.on("fadePageTransition", (route) => {
       this.timeline = gsap.timeline({ onComplete: () => router.push(route) });
-      this.timeline.to(this.container, { opacity: 0, duration: 1 });
+      this.timeline.to(this.container, { opacity: 0, duration: 0.5 });
     });
   }
 

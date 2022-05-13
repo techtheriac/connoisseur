@@ -17,9 +17,6 @@ import {
 import { ContentRenderer } from "@/components/ContentRenderer";
 
 const Musing = ({ postId, postData, postContent, date }) => {
-  useEffect(() => {
-    console.log(postData);
-  });
   return (
     <>
       <Main
