@@ -2,7 +2,7 @@ import { styled } from "stitches.config";
 
 const Grid = styled("div", {
   display: "grid",
-  minHeight: "var(--100vh)",
+  minHeight: "100vh",
   paddingLeft: "var(--space)",
   paddingRight: "var(--space)",
   paddingTop: "var(--space-m)",
