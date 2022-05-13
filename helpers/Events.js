@@ -22,8 +22,7 @@ export default class Animations extends EventEmitter {
     this.on("fadeLayout", this.layoutFade);
     this.on("fadePageTransition", (route) => {
       this.timeline = gsap.timeline({ onComplete: () => router.push(route) });
-      this.timeline.to(this.container, { opacity: 0, duration: 2 });
-      console.log(route);
+      this.timeline.to(this.container, { opacity: 0, duration: 1 });
     });
   }
 

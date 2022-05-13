@@ -5,6 +5,7 @@ import toggleBackground from "@/helpers/toggleBackground";
 import { canUseDOM } from "@/helpers/DOM";
 import { styled, css } from "stitches.config";
 import Main from "./Main";
+import { TagsProvider } from "./TagsProvider";
 
 const useIsomorphicLayoutEffect = canUseDOM()
   ? React.useLayoutEffect
@@ -19,19 +20,21 @@ const setDefaultHeight = () =>
 export default function Article({ children }) {
   useIsomorphicLayoutEffect(() => {
     setDefaultHeight();
-    toggleBackground("#333333");
+    toggleBackground("#dbd7be");
     window.addEventListener("resize", setDefaultHeight);
   });
 
   return (
-    <Grid
-      grid={{
-        "@initial": "articleGrid",
-        "@sm": "articleGrid",
-      }}
-      background="transparent"
-    >
-      {children}
-    </Grid>
+    <TagsProvider>
+      <Grid
+        grid={{
+          "@initial": "articleGrid",
+          "@sm": "articleGrid",
+        }}
+        background="#dbd7be"
+      >
+        {children}
+      </Grid>
+    </TagsProvider>
   );
 }

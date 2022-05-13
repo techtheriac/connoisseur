@@ -31,7 +31,7 @@ const Musing = ({ postId, postData, postContent, date }) => {
       >
         <Text
           css={{
-            color: "#fff",
+            color: "#000",
             alignSelf: "flex-start",
             fontSize: "var(--idealSansFontSize)",
             marginBottom: "var(--space-s)",
@@ -42,7 +42,7 @@ const Musing = ({ postId, postData, postContent, date }) => {
         </Text>
         <Text
           css={{
-            color: "#fff",
+            color: "#000",
             alignSelf: "flex-start",
             fontSize: "var(--idealHeadingOne)",
             marginBottom: "var(--space-s)",
