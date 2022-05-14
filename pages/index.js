@@ -9,7 +9,7 @@ import Layout from "@/components/Layout";
 export default function Home({ posts, tags }) {
   return (
     <>
-      <TitlesHome posts={posts} />;
+      <TitlesHome posts={posts} />
     </>
   );
 }

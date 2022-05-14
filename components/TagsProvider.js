@@ -1,7 +1,6 @@
 import React from "react";
 import Animations from "@/helpers/Events";
 import { useIsomorphicLayoutEffect } from "@/helpers/DOM";
-import { useRouter } from "next/router";
 
 const Context = React.createContext();
 
@@ -16,7 +15,7 @@ export function TagsProvider({ children }) {
     const animations = new Animations(containerElement.current);
     animations.registerEvents();
 
-    // set to the `null` animationHandlerRef the animation singleton in pageLoad
+    // set to the `null` animationHandlerRef the animation singleton on pageLoad
     animationHandler.current = animations;
   }, [children]);
 

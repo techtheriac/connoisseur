@@ -8,7 +8,6 @@ export default class Animations extends EventEmitter {
     super();
     this.container = container;
 
-    console.log(this.container);
     if (instance) {
       instance = this;
     }
@@ -19,11 +18,16 @@ export default class Animations extends EventEmitter {
   }
 
   registerEvents() {
-    this.on("fadeLayout", this.layoutFade);
-    this.on("fadePageTransition", (route) => {
-      this.timeline = gsap.timeline({ onComplete: () => router.push(route) });
-      this.timeline.to(this.container, { opacity: 0, duration: 0.5 });
-    });
+    if (this.container) {
+      this.on("fadeLayout", this.layoutFade);
+
+      this.on("fadePageTransition", (route) => {
+        this.pageFadeTimeline = gsap.timeline({
+          onComplete: () => router.push(route),
+        });
+        this.pageFadeTimeline.to(this.container, { opacity: 0, duration: 0.5 });
+      });
+    }
   }
 
   layoutFade() {
