@@ -20,7 +20,10 @@ export default function TitlesHome({ posts }) {
           <TitleHomeItem
             status={handleVisibilityToggle(post.tags, selectedTag)}
             key={index}
-            onClick={() => handlers.fadeLayout(parseUrl(post.tags, post.slug))}
+            onClick={(e) => {
+              console.log(e);
+              handlers.fadeLayout(parseUrl(post.tags, post.slug));
+            }}
           >
             {post.title}
           </TitleHomeItem>

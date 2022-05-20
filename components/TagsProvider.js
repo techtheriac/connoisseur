@@ -11,7 +11,8 @@ export function TagsProvider({ children }) {
   const animationHandler = React.useRef(null);
   const containerElement = React.useRef(null);
   React.useEffect(() => {
-    containerElement.current = document.querySelector("#layout");
+    // containerElement.current = document.querySelector("#layout");
+    containerElement.current = document.querySelector("[data-layout=true]");
     const animations = new Animations(containerElement.current);
     animations.registerEvents();
 

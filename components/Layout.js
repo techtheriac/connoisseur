@@ -5,10 +5,8 @@ import { useIsomorphicLayoutEffect } from "@/helpers/DOM";
 import Namaste from "./Namaste";
 import Grid from "./Grid";
 import Main from "./Main";
-import gsap from "gsap";
 import { TagsProvider } from "./TagsProvider";
 import toggleBackground from "@/helpers/toggleBackground";
-import Animations from "@/helpers/Events";
 
 const setDefaultHeight = () =>
   document.documentElement.style.setProperty(
@@ -31,7 +29,7 @@ export default function Layout({ children }) {
           "@sm": "gridBase",
         }}
         background="tomato"
-        id="layout"
+        data-layout="true"
       >
         <Namaste />
         <Navbar />

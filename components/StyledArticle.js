@@ -11,9 +11,10 @@ const StyledArticle = styled("div", {
     maxWidth: "60ch",
     fontSize: "var(--idealArticleParagraphSize)",
     lineHeight: "1.1",
+    fontWeight: 200,
   },
 
-  "p + p": {
+  "p + p, p + li": {
     marginTop: "var(--space-s)",
   },
 

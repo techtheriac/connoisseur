@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Text from "@/components/Text";
 import Article from "@/components/Article";
 import StyledArticle from "@/components/StyledArticle";
@@ -12,11 +12,18 @@ import {
   getPostContent,
   getPosts,
   getMusingsSlugs,
+  updateLikes,
 } from "BlogInfrastructure";
 
 import { ContentRenderer } from "@/components/ContentRenderer";
 
-const Musing = ({ postId, postData, postContent, date }) => {
+const Musing = ({ postId, postData, hearts, postContent, date }) => {
+  useEffect(() => {
+    console.log(postId);
+  });
+
+  const [heartCount, setHeartCount] = useState(hearts);
+
   return (
     <>
       <Main
@@ -95,6 +102,7 @@ export async function getStaticProps(context) {
       postData,
       postContent,
       date: `${format(parseISO(postData.created_time), "MMMMMM dd, yyyy")}`,
+      hearts: postData.properties.hearts.number,
     },
     revalidate: 60,
   };

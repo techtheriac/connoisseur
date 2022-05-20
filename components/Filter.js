@@ -21,8 +21,6 @@ export default function Filter() {
             family="sans"
             type="filter"
             onClick={handlers[tag]}
-
-            //onClick={() => handlers.fadeLayout("/musings/diversity-inclusion")}
           >
             {tag}
           </Text>

@@ -24,6 +24,8 @@ const BULLET_LIST_ITEM_PATH = R.lensPath([
   "plain_text",
 ]);
 
+const CODE_ITEM_PATH = R.lensPath(["code", "text", 0, "plain_text"]);
+
 const PARAGRAPH_PATH = R.lensPath(["paragraph", "text"]);
 
 const HEADING_CONTENT_PATH = (level) =>
@@ -111,6 +113,10 @@ const renderProcedure = (elementObject, index) => {
     return (
       <li key={index}>{getContent(BULLET_LIST_ITEM_PATH)(elementObject)}</li>
     );
+  }
+
+  if (getElementType(elementObject) == "code") {
+    return <code key={index}>{getContent(CODE_ITEM_PATH)(elementObject)}</code>;
   }
 };
 

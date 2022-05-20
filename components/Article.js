@@ -1,6 +1,5 @@
 import React from "react";
 import Grid from "./Grid";
-import Candy from "./Candy";
 import toggleBackground from "@/helpers/toggleBackground";
 import { canUseDOM } from "@/helpers/DOM";
 import { styled, css } from "stitches.config";
