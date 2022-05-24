@@ -33,7 +33,7 @@ const Musing = ({ postId, postData, hearts, postContent, date }) => {
           "@sm": "gridColumnBase",
         }}
       >
-        <Text
+        {/* <Text
           css={{
             color: "#000",
             alignSelf: "flex-start",
@@ -55,8 +55,31 @@ const Musing = ({ postId, postData, hearts, postContent, date }) => {
           as="h1"
         >
           {postData.properties.Name.title[0].plain_text}
-        </Text>
+        </Text> */}
         <StyledArticle>
+          <Text
+            css={{
+              color: "#000",
+              alignSelf: "flex-start",
+              fontSize: "var(--idealSansFontSize)",
+              marginBottom: "var(--space-s)",
+              fontFamily: "$serifDisplayRegular",
+            }}
+          >
+            {date}
+          </Text>
+          <Text
+            css={{
+              color: "#000",
+              alignSelf: "flex-start",
+              fontSize: "var(--idealHeadingOne)",
+              marginBottom: "var(--space-s)",
+              fontFamily: "$serifDisplayRegular",
+            }}
+            as="h1"
+          >
+            {postData.properties.Name.title[0].plain_text}
+          </Text>
           <ContentRenderer postContent={postContent} />
         </StyledArticle>
       </Main>

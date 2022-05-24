@@ -19,7 +19,7 @@ const Grid = styled("div", {
         gridGap: "var(--space-s)",
       },
       articleGrid: {
-        justifyContent: "center",
+        gridTemplateColumns: "1fr",
       },
     },
 
