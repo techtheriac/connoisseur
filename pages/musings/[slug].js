@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Text from "@/components/Text";
-import dynamic from "next/dynamic";
 import Article from "@/components/Article";
 import StyledArticle from "@/components/StyledArticle";
 import { styled, css } from "stitches.config";
@@ -13,14 +12,18 @@ import {
   getPostContent,
   getPosts,
   getMusingsSlugs,
+  updateLikes,
 } from "BlogInfrastructure";
 
 import { ContentRenderer } from "@/components/ContentRenderer";
 
-const Musing = ({ postId, postData, postContent, date }) => {
+const Musing = ({ postId, postData, hearts, postContent, date }) => {
   useEffect(() => {
-    console.log(postData);
+    console.log(postId);
   });
+
+  const [heartCount, setHeartCount] = useState(hearts);
+
   return (
     <>
       <Main
@@ -30,7 +33,7 @@ const Musing = ({ postId, postData, postContent, date }) => {
           "@sm": "gridColumnBase",
         }}
       >
-        <Text
+        {/* <Text
           css={{
             color: "#000",
             alignSelf: "flex-start",
@@ -52,8 +55,31 @@ const Musing = ({ postId, postData, postContent, date }) => {
           as="h1"
         >
           {postData.properties.Name.title[0].plain_text}
-        </Text>
+        </Text> */}
         <StyledArticle>
+          <Text
+            css={{
+              color: "#000",
+              alignSelf: "flex-start",
+              fontSize: "var(--idealSansFontSize)",
+              marginBottom: "var(--space-s)",
+              fontFamily: "$serifDisplayRegular",
+            }}
+          >
+            {date}
+          </Text>
+          <Text
+            css={{
+              color: "#000",
+              alignSelf: "flex-start",
+              fontSize: "var(--idealHeadingOne)",
+              marginBottom: "var(--space-s)",
+              fontFamily: "$serifDisplayRegular",
+            }}
+            as="h1"
+          >
+            {postData.properties.Name.title[0].plain_text}
+          </Text>
           <ContentRenderer postContent={postContent} />
         </StyledArticle>
       </Main>
@@ -99,6 +125,7 @@ export async function getStaticProps(context) {
       postData,
       postContent,
       date: `${format(parseISO(postData.created_time), "MMMMMM dd, yyyy")}`,
+      hearts: postData.properties.hearts.number,
     },
     revalidate: 60,
   };

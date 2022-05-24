@@ -1,6 +1,6 @@
 import { styled, css } from "stitches.config";
 
-const TitleHomeItem = styled("a", {
+const TitleHomeItem = styled("span", {
   color: "white",
   fontFamily: "$serifDisplayRegular",
   fontSize: "var(--idealListingFontSize)",
@@ -9,6 +9,10 @@ const TitleHomeItem = styled("a", {
   transitionProperty: "color",
   transitionDuration: "0.3s",
   transitionTimingFunction: "ease-in",
+
+  "&:hover": {
+    cursor: "pointer",
+  },
 
   "&:not(:last-child):after": {
     content: `/`,

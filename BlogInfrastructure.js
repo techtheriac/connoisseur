@@ -5,9 +5,32 @@ const notion = new Client({
   auth: process.env.NOTION_INTEGRATION_TOKEN,
 });
 
+export const updateLikes = async (postId) => {
+  const post = await getPost(postId);
+  const currentHeartCount = post.properties.hearts.number;
+  const updateHeartCount = currentHeartCount + 1;
+  const updateResponse = await notion.pages.update({
+    page_id: postId,
+    properties: {
+      hearts: {
+        number: updateHeartCount,
+      },
+    },
+  });
+  if (updateResponse) {
+    return true;
+  }
+};
+
 export const getPosts = async () => {
   return await notion.databases.query({
     database_id: process.env.NOTION_BLOG_ID,
+    filter: {
+      property: "active",
+      checkbox: {
+        equals: true,
+      },
+    },
     sorts: [
       {
         property: "published",

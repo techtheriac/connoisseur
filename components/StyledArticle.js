@@ -2,7 +2,7 @@ import { styled } from "stitches.config";
 
 const StyledArticle = styled("div", {
   margin: "0 auto",
-
+  display: "inherit",
   "*": {
     fontFamily: "$serifText",
     color: "#000",
@@ -11,9 +11,10 @@ const StyledArticle = styled("div", {
     maxWidth: "60ch",
     fontSize: "var(--idealArticleParagraphSize)",
     lineHeight: "1.1",
+    fontWeight: 200,
   },
 
-  "p + p": {
+  "p + p, p + li": {
     marginTop: "var(--space-s)",
   },
 
@@ -25,6 +26,10 @@ const StyledArticle = styled("div", {
     fontFamily: "$serifDisplayRegular",
     fontSize: "var(--idealArticleParagraphSize)",
     marginBottom: "var(--space-s)",
+  },
+
+  li: {
+    maxWidth: "60ch",
   },
 });
 

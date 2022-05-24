@@ -10,3 +10,8 @@ html,
 body {
   background-color: var(--html-color);
 }
+
+body {
+  min-height: var(--100vh);
+  scroll-behavior: smooth;
+}
