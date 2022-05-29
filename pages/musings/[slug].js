@@ -26,7 +26,7 @@ const Date = styled(Text, {
 });
 
 const Title = styled(Text, {
-  color: "#000",
+  color: "#000000b5",
   alignSelf: "flex-start",
   fontSize: "var(--idealHeadingOne)",
   marginBottom: "var(--space-s)",

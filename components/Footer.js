@@ -19,7 +19,8 @@ const links = [
 
 const _Footer = styled("div", {
   display: "grid",
-  gridTemplateRows: "repeat(3, auto)",
+  gridAutoRows: "max-content",
+  alignContent: "end",
   gap: "var(--space-s)",
   variants: {
     gridColumn: {
@@ -62,7 +63,6 @@ export default function Footer() {
         family="serif"
         css={{
           fontSize: "var(--idealListingFontSize)",
-          marginBottom: "-40px",
         }}
       >
         Favouring the relationship between things over their intrinsic
@@ -77,7 +77,6 @@ export default function Footer() {
           family="sans"
           as="a"
           css={{
-            fontSize: "var(--idealListingFontSize)",
             gridColumn: "1",
           }}
         >

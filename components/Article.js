@@ -19,7 +19,7 @@ const setDefaultHeight = () =>
 export default function Article({ children }) {
   useIsomorphicLayoutEffect(() => {
     setDefaultHeight();
-    toggleBackground("#dbd7be");
+    toggleBackground("#fbfbfb");
     window.addEventListener("resize", setDefaultHeight);
   });
 

@@ -6,7 +6,7 @@ const Grid = styled("div", {
   paddingLeft: "var(--space)",
   paddingRight: "var(--space)",
   paddingTop: "var(--space-m)",
-  paddingBottom: "-20px",
+  paddingBottom: "var(--space-s)",
 
   variants: {
     grid: {

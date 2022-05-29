@@ -2,6 +2,7 @@ import { styled, css } from "stitches.config";
 import TitleHomeItem from "./TitleHomeItem";
 import React from "react";
 import { useTagsContext } from "./TagsProvider";
+import Text from "./Text";
 
 const parseUrl = (tags, slug) => {
   return tags.includes("poetry") ? `/poetry/${slug}` : `/musings/${slug}`;
