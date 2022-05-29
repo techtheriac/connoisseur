@@ -14,6 +14,7 @@ const Text = styled("p", {
     },
     type: {
       link: {
+        textDecoration: "none",
         "&:hover": {
           color: "$tomato200",
           cursor: "pointer",

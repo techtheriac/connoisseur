@@ -23,6 +23,11 @@ export default function Navigation() {
           Projects
         </Text>
       </Link>
+      <Link href="/musings">
+        <Text as="a" family="sans" type="link">
+          Playlists
+        </Text>
+      </Link>
     </_Navigation>
   );
 }

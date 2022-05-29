@@ -24,6 +24,8 @@ const BULLET_LIST_ITEM_PATH = R.lensPath([
   "plain_text",
 ]);
 
+const QUOTE_CONTENT_PATH = R.lensPath(["quote", "text", 0, "plain_text"]);
+
 const CODE_ITEM_PATH = R.lensPath(["code", "text", 0, "plain_text"]);
 
 const PARAGRAPH_PATH = R.lensPath(["paragraph", "text"]);
@@ -43,12 +45,18 @@ const paragraphHasChildren = elementHasChildren(PARAGRAPH_PATH);
 
 const parseParagraph = (elementObject, index) => {
   if (!paragraphHasChildren(elementObject)) {
-    return <p key={index}>{getParagraphContent(elementObject)}</p>;
+    return (
+      <p family="serif" key={index}>
+        {getParagraphContent(elementObject)}
+      </p>
+    );
   } else {
     const paragraphArray = getParagraphArray(elementObject);
     const paragraphChildren = Map(parsePregnantParagraph, paragraphArray);
     const PregnantParagraph = (
-      <p key={index}>{Map((x) => x, paragraphChildren)}</p>
+      <p family="serif" key={index}>
+        {Map((x) => x, paragraphChildren)}
+      </p>
     );
     return PregnantParagraph;
   }
@@ -118,8 +126,16 @@ const renderProcedure = (elementObject, index) => {
   if (getElementType(elementObject) == "code") {
     return <code key={index}>{getContent(CODE_ITEM_PATH)(elementObject)}</code>;
   }
+
+  if (getElementType(elementObject) == "quote") {
+    return (
+      <blockquote key={index}>
+        <p>{getContent(QUOTE_CONTENT_PATH)(elementObject)}</p>
+      </blockquote>
+    );
+  }
 };
 
 export const ContentRenderer = ({ postContent }) => (
-  <div> {Map(renderProcedure, postContent)}</div>
+  <> {Map(renderProcedure, postContent)}</>
 );

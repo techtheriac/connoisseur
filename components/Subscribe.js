@@ -6,7 +6,6 @@ const _Subscribe = styled("form", {
   display: "grid",
   gridTemplateColumns: "3fr 1fr",
   gap: "10px",
-  maxHeight: "30px",
 });
 
 export default function Subscribe() {

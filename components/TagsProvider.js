@@ -22,11 +22,14 @@ export function TagsProvider({ children }) {
 
   const handlers = React.useMemo(
     () => ({
-      business: () => {
-        setActiveTag("business");
+      musings: () => {
+        setActiveTag("musings");
       },
       poetry: () => {
         setActiveTag("poetry");
+      },
+      engineering: () => {
+        setActiveTag("engineering");
       },
 
       // Alias PageFade event emitter

@@ -6,7 +6,7 @@ const Grid = styled("div", {
   paddingLeft: "var(--space)",
   paddingRight: "var(--space)",
   paddingTop: "var(--space-m)",
-  paddingBottom: "var(--space)",
+  paddingBottom: "var(--space-s)",
 
   variants: {
     grid: {
@@ -29,6 +29,9 @@ const Grid = styled("div", {
       },
       transparent: {
         backgroundColor: "transparent",
+      },
+      paper: {
+        backgroundImage: "url(/images/paper.png)",
       },
     },
   },
