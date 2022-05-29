@@ -19,7 +19,7 @@ export default function Layout({ children }) {
     setDefaultHeight();
     toggleBackground(`hsla(10, 68%, 46%, 100%)`);
     window.addEventListener("resize", setDefaultHeight);
-  });
+  }, []);
 
   return (
     <TagsProvider>

@@ -13,9 +13,6 @@ const Main = styled("main", {
 
     articleColumn: {
       gridColumnBase: {
-        display: "grid",
-        gridTemplateColumns:
-          "minmax(var(--space-s), 1fr) minmax(auto, 65ch), minmax(var(--space-s), 1fr)",
         gridColumn: "1 / -1",
       },
       gridColumnSm: {

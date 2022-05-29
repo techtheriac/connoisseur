@@ -43,12 +43,18 @@ const paragraphHasChildren = elementHasChildren(PARAGRAPH_PATH);
 
 const parseParagraph = (elementObject, index) => {
   if (!paragraphHasChildren(elementObject)) {
-    return <p key={index}>{getParagraphContent(elementObject)}</p>;
+    return (
+      <p family="serif" key={index}>
+        {getParagraphContent(elementObject)}
+      </p>
+    );
   } else {
     const paragraphArray = getParagraphArray(elementObject);
     const paragraphChildren = Map(parsePregnantParagraph, paragraphArray);
     const PregnantParagraph = (
-      <p key={index}>{Map((x) => x, paragraphChildren)}</p>
+      <p family="serif" key={index}>
+        {Map((x) => x, paragraphChildren)}
+      </p>
     );
     return PregnantParagraph;
   }
@@ -121,5 +127,5 @@ const renderProcedure = (elementObject, index) => {
 };
 
 export const ContentRenderer = ({ postContent }) => (
-  <div> {Map(renderProcedure, postContent)}</div>
+  <> {Map(renderProcedure, postContent)}</>
 );

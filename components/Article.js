@@ -30,7 +30,7 @@ export default function Article({ children }) {
           "@initial": "articleGrid",
           "@sm": "articleGrid",
         }}
-        background="#dbd7be"
+        background="paper"
       >
         {children}
       </Grid>
