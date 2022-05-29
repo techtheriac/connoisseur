@@ -50,9 +50,45 @@ const ArticleMain = styled(Main, {
     lineHeight: "1.1",
   },
 
-  "p, h1, h2, h3, h4, h5": {
+  "p, h1, h2, h3, h4, h5, h6": {
     gridColumn: "2",
   },
+
+  "p + h2": {
+    fontSize: "var(--idealHeadingTwo)",
+    fontFamily: "$sansText",
+    margin: "var(--space-m) 0 var(--space-s) 0",
+  },
+
+  "p + h3": {
+    fontSize: "var(--idealHeadingThree)",
+    fontFamily: "$sansText",
+    margin: "var(--space-s) 0 var(--space-s) 0",
+  },
+
+  "p + h4": {
+    fontSize: "var(--idealSansFontSize)",
+    fontFamily: "$sansText",
+    margin: "var(--space-s) 0 var(--space-s) 0",
+  },
+
+  blockquote: {
+    marginTop: "var(--space-m)",
+    marginBottom: "var(--space-m)",
+    gridColumn: "2",
+    width: "100%",
+
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  "blockquote > p": {
+    color: "#2020205e",
+    fontStyle: "italic",
+    maxWidth: "45ch",
+  },
+
   "> p + p": {
     marginTop: "var(--space-s)",
   },
@@ -60,7 +96,7 @@ const ArticleMain = styled(Main, {
 
 const Musing = ({ postId, postData, hearts, postContent, date }) => {
   useEffect(() => {
-    console.log(postId);
+    console.log(postContent);
   });
 
   const [heartCount, setHeartCount] = useState(hearts);

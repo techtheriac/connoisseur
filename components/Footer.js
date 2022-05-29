@@ -9,7 +9,7 @@ const links = [
   },
   {
     name: "Github",
-    link: "https://github/techtheriac",
+    link: "https://github.com/techtheriac",
   },
   {
     name: "VSCO",
@@ -75,6 +75,7 @@ export default function Footer() {
         <Text
           type="link"
           family="sans"
+          target="_blank"
           as="a"
           css={{
             gridColumn: "1",
@@ -90,7 +91,14 @@ export default function Footer() {
         >
           {links.map(({ name, link }, index) => {
             return (
-              <Text type="link" family="sans" as="a" href={link} key={index}>
+              <Text
+                type="link"
+                family="sans"
+                target="_blank"
+                as="a"
+                href={link}
+                key={index}
+              >
                 {name}
               </Text>
             );

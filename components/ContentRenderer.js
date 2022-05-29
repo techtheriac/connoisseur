@@ -24,6 +24,8 @@ const BULLET_LIST_ITEM_PATH = R.lensPath([
   "plain_text",
 ]);
 
+const QUOTE_CONTENT_PATH = R.lensPath(["quote", "text", 0, "plain_text"]);
+
 const CODE_ITEM_PATH = R.lensPath(["code", "text", 0, "plain_text"]);
 
 const PARAGRAPH_PATH = R.lensPath(["paragraph", "text"]);
@@ -123,6 +125,14 @@ const renderProcedure = (elementObject, index) => {
 
   if (getElementType(elementObject) == "code") {
     return <code key={index}>{getContent(CODE_ITEM_PATH)(elementObject)}</code>;
+  }
+
+  if (getElementType(elementObject) == "quote") {
+    return (
+      <blockquote key={index}>
+        <p>{getContent(QUOTE_CONTENT_PATH)(elementObject)}</p>
+      </blockquote>
+    );
   }
 };
 
