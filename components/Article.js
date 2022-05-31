@@ -3,8 +3,12 @@ import Grid from "./Grid";
 import toggleBackground from "@/helpers/toggleBackground";
 import { canUseDOM } from "@/helpers/DOM";
 import { styled, css } from "stitches.config";
-import Main from "./Main";
 import { TagsProvider } from "./TagsProvider";
+
+const ArticleGrid = styled(Grid, {
+  paddingLeft: "0",
+  paddingRight: "0",
+});
 
 const useIsomorphicLayoutEffect = canUseDOM()
   ? React.useLayoutEffect
@@ -25,7 +29,7 @@ export default function Article({ children }) {
 
   return (
     <TagsProvider>
-      <Grid
+      <ArticleGrid
         grid={{
           "@initial": "articleGrid",
           "@sm": "articleGrid",
@@ -33,7 +37,7 @@ export default function Article({ children }) {
         background="paper"
       >
         {children}
-      </Grid>
+      </ArticleGrid>
     </TagsProvider>
   );
 }
