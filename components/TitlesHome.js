@@ -16,6 +16,7 @@ export default function TitlesHome({ posts }) {
   const [selectedTag, handlers] = useTagsContext();
   return (
     <>
+      <Text>FWIT</Text>
       {posts.map((post, index) => {
         return (
           <TitleHomeItem

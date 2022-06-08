@@ -21,6 +21,11 @@ const Grid = styled("div", {
       articleGrid: {
         gridTemplateColumns: "1fr",
       },
+      gardenGrid: {
+        gridGap: "1rem",
+        gridTemplateColumns:
+          "repeat(auto-fit, minmax(min(100%, var(15ch)), 1fr));",
+      },
     },
 
     background: {

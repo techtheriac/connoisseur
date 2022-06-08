@@ -23,9 +23,9 @@ export default function Navigation() {
           Projects
         </Text>
       </Link>
-      <Link href="/musings">
+      <Link href="/garden">
         <Text as="a" family="sans" type="link">
-          Playlists
+          Garden
         </Text>
       </Link>
     </_Navigation>

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Script from "next/script";
 import "../styles/globals.scss";
 import Layout from "@/components/Layout";

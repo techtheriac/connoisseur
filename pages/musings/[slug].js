@@ -48,6 +48,8 @@ const ArticleMain = styled(Main, {
   p: {
     fontSize: "var(--idealArticleParagraphSize)",
     lineHeight: "1.1",
+    hyphens: "auto",
+    hyphenateLimitChars: "10 3 4",
   },
 
   "p, h1, h2, h3, h4, h5, h6": {
