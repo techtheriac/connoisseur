@@ -41,4 +41,5 @@ const _Navbar = styled("div", {
       },
     },
   },
+  length: 0,
 });

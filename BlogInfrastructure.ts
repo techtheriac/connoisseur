@@ -5,7 +5,7 @@ const notion = new Client({
   auth: process.env.NOTION_INTEGRATION_TOKEN,
 });
 
-export const updateLikes = async (postId) => {
+export const updateLikes = async (postId: string): Promise<Boolean> => {
   const post = await getPost(postId);
   const currentHeartCount = post.properties.hearts.number;
   const updateHeartCount = currentHeartCount + 1;
@@ -40,11 +40,11 @@ export const getPosts = async () => {
   });
 };
 
-export const getPost = async (id) => {
+export const getPost = async (id: string) => {
   return await notion.pages.retrieve({ page_id: id });
 };
 
-export const getPostContent = async (id) => {
+export const getPostContent = async (id: string) => {
   const baseQuery = {
     block_id: id,
     page_size: 100,

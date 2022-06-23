@@ -20,6 +20,7 @@ const Main = styled("main", {
       },
     },
   },
+  length: 0,
 });
 
 export default Main;

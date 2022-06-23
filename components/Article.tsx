@@ -8,6 +8,7 @@ import { TagsProvider } from "./TagsProvider";
 const ArticleGrid = styled(Grid, {
   paddingLeft: "0",
   paddingRight: "0",
+  length: 0,
 });
 
 const useIsomorphicLayoutEffect = canUseDOM()

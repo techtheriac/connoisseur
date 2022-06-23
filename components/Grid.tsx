@@ -40,6 +40,7 @@ const Grid = styled("div", {
       },
     },
   },
+  length: 0,
 });
 
 export default Grid;

@@ -6,6 +6,7 @@ const _Subscribe = styled("form", {
   display: "grid",
   gridTemplateColumns: "3fr 1fr",
   gap: "10px",
+  length: 0,
 });
 
 export default function Subscribe() {
@@ -36,6 +37,7 @@ const Input = styled("input", {
     fontSize: "var(--idealSansFontSize)",
     color: "$tomato200",
   },
+  length: 0,
 });
 
 const Button = styled("button", {
@@ -56,4 +58,5 @@ const Button = styled("button", {
   "&:hover": {
     backgroundColor: "$tomato400",
   },
+  length: 0,
 });

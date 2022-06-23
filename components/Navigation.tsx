@@ -8,6 +8,7 @@ const _Navigation = styled("div", {
   flexDirection: "column",
   gap: "var(--space-s)",
   marginRight: "20px",
+  length: 0,
 });
 
 export default function Navigation() {

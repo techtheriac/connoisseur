@@ -36,6 +36,7 @@ const TitleHomeItem = styled("span", {
       },
     },
   },
+  length: 0,
 });
 
 export default TitleHomeItem;

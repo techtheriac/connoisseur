@@ -27,6 +27,7 @@ const Text = styled("p", {
       },
     },
   },
+  length: 0,
 });
 
 export default Text;

@@ -6,4 +6,5 @@ export const Flow = styled("div", {
   "* + *": {
     marginTop: "var(--space-m)",
   },
+  length: 0,
 });

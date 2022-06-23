@@ -5,6 +5,7 @@ const Rounded = styled("div", {
   width: "var(--idealSansFontSize)",
   height: "var(--idealSansFontSize)",
   borderRadius: "50%",
+  length: 0,
 });
 
 export default Rounded;
