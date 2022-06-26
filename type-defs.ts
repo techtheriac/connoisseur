@@ -1,15 +1,14 @@
-export enum ContentType {
-  Paragraph = "paragraph",
-  HeadingOne = "heading_1",
-  HeadingTwo = "heading_2",
-  HeadingThree = "heading_3",
-  HeadingFour = "heading_4",
-  HeadingFive = "heading_5",
-  HeadingSix = "heading_6",
-  BulletedList = "bulleted_list_item",
-  Quote = "quote",
-  Code = "code",
-}
+export type ContentType =
+  | "paragraph"
+  | "heading_1"
+  | "heading_2"
+  | "heading_3"
+  | "heading_4"
+  | "heading_5"
+  | "heading_6"
+  | "bulleted_list_item"
+  | "quote"
+  | "code";
 
 export type Content = {
   archived: boolean;
