@@ -8,11 +8,13 @@ const StyledScrollArea = styled(ScrollAreaPrimitive.Root, {
   width: "auto",
   height: "90vh",
   overflow: "hidden",
+  length: 0,
 });
 
 const StyledViewport = styled(ScrollAreaPrimitive.Viewport, {
   width: "100%",
   height: "100%",
+  length: 0,
 });
 
 const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
@@ -30,6 +32,7 @@ const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
     flexDirection: "column",
     height: SCROLLBAR_SIZE,
   },
+  length: 0,
 });
 
 const StyledThumb = styled(ScrollAreaPrimitive.Thumb, {
@@ -49,13 +52,20 @@ const StyledThumb = styled(ScrollAreaPrimitive.Thumb, {
     minWidth: 44,
     minHeight: 44,
   },
+  length: 0,
 });
 
 const Box = styled("div", {
   padding: "30px",
+  length: 0,
 });
 
-export const GardenScroll = ({ heading, titles }) => {
+type GardenScrollprop = {
+  heading: string;
+  titles: string[];
+};
+
+export const GardenScroll = ({ heading, titles }: GardenScrollprop) => {
   return (
     <div>
       <h2>{heading}</h2>

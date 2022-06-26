@@ -3,10 +3,16 @@ import { createStitches } from "@stitches/react";
 export const { styled, getCssText, css } = createStitches({
   theme: {
     fonts: {
-      serifDisplayRegular: "Financier Display Regular",
+      serifDisplayRegular: "Dover Serif Dislpay",
       serifDisplayLight: "Financier Display Light",
-      serifText: "Financier Regular",
-      sansText: "National Regular",
+      serifText: "Dover Serif Text",
+      sansText: "Dover Sans Text",
+
+      //--------------------
+      // serifDisplayRegular: "Financier Display Regular",
+      // serifDisplayLight: "Financier Display Light",
+      // serifText: "Financier Regular",
+      // sansText: "National Regular",
     },
     space: {},
     sizes: {},
@@ -33,11 +39,7 @@ export const { styled, getCssText, css } = createStitches({
       tomato300: "hsla(10,52%,56%, 100%)",
       tomato400: "hsla(10,69%,75%, 72%)",
       saffron100: "hsla(35, 100%, 71%, 100%)",
-    },
-    fontSizes: {
-      1: "13px",
-      2: "15px",
-      3: "17px",
+      garden100: "hsla(116,19%,29%, 1)",
     },
   },
   media: {
@@ -46,3 +48,5 @@ export const { styled, getCssText, css } = createStitches({
     lg: "(min-width: 1024px)",
   },
 });
+
+export type Polymorphic = string | React.ComponentType<any>;

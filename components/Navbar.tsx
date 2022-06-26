@@ -13,7 +13,7 @@ const useIsomorphicLayoutEffect = canUseDOM()
 
 export default function Navbar() {
   return (
-    <_Navbar
+    <StyledNavbar
       gridColumn={{
         "@initial": "gridColumnSm",
         "@sm": "gridColumnBase",
@@ -21,11 +21,11 @@ export default function Navbar() {
     >
       <Navigation />
       <Filter />
-    </_Navbar>
+    </StyledNavbar>
   );
 }
 
-const _Navbar = styled("div", {
+const StyledNavbar = styled("div", {
   display: "flex",
   width: "100%",
   flexDirection: "row",

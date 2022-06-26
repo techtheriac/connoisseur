@@ -32,6 +32,7 @@ const _Footer = styled("div", {
       },
     },
   },
+  length: 0,
 });
 
 const Flex = styled("div", {
@@ -39,16 +40,19 @@ const Flex = styled("div", {
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "baseline",
+  length: 0,
 });
 
 const Others = styled("div", {
   width: "100%",
   display: "grid",
   gridTemplateColumns: "2fr 3fr",
+  length: 0,
 });
 
 const FooterLink = styled(Text, {
   textDecoration: "none",
+  length: 0,
 });
 
 export default function Footer() {
@@ -92,10 +96,10 @@ export default function Footer() {
           {links.map(({ name, link }, index) => {
             return (
               <Text
+                as="a"
                 type="link"
                 family="sans"
                 target="_blank"
-                as="a"
                 href={link}
                 key={index}
               >

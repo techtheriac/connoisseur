@@ -1,6 +1,14 @@
 // TO-DO - Get a sorted sematic structure of blog post content before rendering
 import React from "react";
 import * as R from "ramda";
+import { Content, ContentType } from "type-defs";
+
+function viewPathContent(
+  path: R.Lens<any, any>,
+  elementobject
+): any[] | string | any {
+  return R.view(path, elementobject);
+}
 
 const Map = R.addIndex(R.map);
 
@@ -25,44 +33,37 @@ const BULLET_LIST_ITEM_PATH = R.lensPath([
 ]);
 
 const QUOTE_CONTENT_PATH = R.lensPath(["quote", "text", 0, "plain_text"]);
-
 const CODE_ITEM_PATH = R.lensPath(["code", "text", 0, "plain_text"]);
-
 const PARAGRAPH_PATH = R.lensPath(["paragraph", "text"]);
 
-const HEADING_CONTENT_PATH = (level) =>
+const HEADING_CONTENT_PATH = (level: number) =>
   R.lensPath([`heading_${level}`, "text", 0, "plain_text"]);
 
-const getContent = (path) => (elementObject) => R.view(path, elementObject);
+const getContent = (path) => (elementObject) =>
+  viewPathContent(path, elementObject);
 
 const elementHasChildren = (path) => (elementObject) =>
-  R.length(R.view(path, elementObject)) > 1;
+  R.length(viewPathContent(path, elementObject)) > 1;
 
 const getParagraphContent = getContent(PARAGRAPH_CONTENT_PATH);
 const getParagraphArray = getContent(PARAGRAPH_PATH);
 const getElementType = getContent(ELEMENT_TYPE_PATH);
 const paragraphHasChildren = elementHasChildren(PARAGRAPH_PATH);
 
-const parseParagraph = (elementObject, index) => {
+const parseParagraph = (elementObject, index: number) => {
   if (!paragraphHasChildren(elementObject)) {
-    return (
-      <p family="serif" key={index}>
-        {getParagraphContent(elementObject)}
-      </p>
-    );
+    return <p key={index}>{getParagraphContent(elementObject)}</p>;
   } else {
     const paragraphArray = getParagraphArray(elementObject);
     const paragraphChildren = Map(parsePregnantParagraph, paragraphArray);
     const PregnantParagraph = (
-      <p family="serif" key={index}>
-        {Map((x) => x, paragraphChildren)}
-      </p>
+      <p key={index}>{Map((x) => x, paragraphChildren)}</p>
     );
     return PregnantParagraph;
   }
 };
 
-const parsePregnantParagraph = (contentObject, index) => {
+const parsePregnantParagraph = (contentObject, index: number) => {
   if (contentObject.href !== null) {
     return (
       <BlogLink
@@ -76,63 +77,64 @@ const parsePregnantParagraph = (contentObject, index) => {
   return contentObject.plain_text;
 };
 
-const renderProcedure = (elementObject, index) => {
-  if (getElementType(elementObject) == "paragraph") {
-    return parseParagraph(elementObject, index);
-  }
+const renderProcedure = (elementObject: Content, index: number) => {
+  const elementType: ContentType = getElementType(elementObject);
 
-  if (getElementType(elementObject) == "heading_1") {
-    return (
-      <h1 key={index}>{getContent(HEADING_CONTENT_PATH(1))(elementObject)}</h1>
-    );
-  }
-
-  if (getElementType(elementObject) == "heading_2") {
-    return (
-      <h2 key={index}>{getContent(HEADING_CONTENT_PATH(2))(elementObject)}</h2>
-    );
-  }
-
-  if (getElementType(elementObject) == "heading_3") {
-    return (
-      <h3 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h3>
-    );
-  }
-
-  if (getElementType(elementObject) == "heading_4") {
-    return (
-      <h4 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h4>
-    );
-  }
-
-  if (getElementType(elementObject) == "heading_5") {
-    return (
-      <h5 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h5>
-    );
-  }
-
-  if (getElementType(elementObject) == "heading_6") {
-    return (
-      <h6 key={index}>{getContent(HEADING_CONTENT_PATH(3))(elementObject)}</h6>
-    );
-  }
-
-  if (getElementType(elementObject) == "bulleted_list_item") {
-    return (
-      <li key={index}>{getContent(BULLET_LIST_ITEM_PATH)(elementObject)}</li>
-    );
-  }
-
-  if (getElementType(elementObject) == "code") {
-    return <code key={index}>{getContent(CODE_ITEM_PATH)(elementObject)}</code>;
-  }
-
-  if (getElementType(elementObject) == "quote") {
-    return (
-      <blockquote key={index}>
-        <p>{getContent(QUOTE_CONTENT_PATH)(elementObject)}</p>
-      </blockquote>
-    );
+  switch (elementType) {
+    case "paragraph":
+      return parseParagraph(elementObject, index);
+    case "heading_1":
+      return (
+        <h1 key={index}>
+          {getContent(HEADING_CONTENT_PATH(1))(elementObject)}
+        </h1>
+      );
+    case "heading_2":
+      return (
+        <h2 key={index}>
+          {getContent(HEADING_CONTENT_PATH(2))(elementObject)}
+        </h2>
+      );
+    case "heading_3":
+      return (
+        <h3 key={index}>
+          {getContent(HEADING_CONTENT_PATH(3))(elementObject)}
+        </h3>
+      );
+    case "heading_4":
+      return (
+        <h4 key={index}>
+          {getContent(HEADING_CONTENT_PATH(4))(elementObject)}
+        </h4>
+      );
+    case "heading_5":
+      return (
+        <h5 key={index}>
+          {getContent(HEADING_CONTENT_PATH(5))(elementObject)}
+        </h5>
+      );
+    case "heading_6":
+      return (
+        <h6 key={index}>
+          {getContent(HEADING_CONTENT_PATH(6))(elementObject)}
+        </h6>
+      );
+    case "bulleted_list_item":
+      return (
+        <li key={index}>{getContent(BULLET_LIST_ITEM_PATH)(elementObject)}</li>
+      );
+    case "code":
+      return (
+        <code key={index}>{getContent(CODE_ITEM_PATH)(elementObject)}</code>
+      );
+    case "quote":
+      return (
+        <blockquote key={index}>
+          <p>{getContent(QUOTE_CONTENT_PATH)(elementObject)}</p>
+        </blockquote>
+      );
+    default:
+      return "";
   }
 };
 

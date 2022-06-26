@@ -1,7 +1,20 @@
 import React from "react";
 import Text from "./Text";
 import TextScramble from "@/helpers/scramble";
+import type * as Stitches from "@stitches/react";
+import { styled, css } from "stitches.config";
+import Rounded from "./Rounded";
 import { canUseDOM } from "@/helpers/DOM";
+
+const NamasteContainer = styled("div", {
+  position: "fixed",
+  top: "var(--space-m)",
+  left: "var(--space)",
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  length: 0,
+});
 
 const useIsomorphicLayoutEffect = canUseDOM()
   ? React.useLayoutEffect
@@ -24,18 +37,11 @@ export default function Namaste() {
   });
 
   return (
-    <Text
-      as="a"
-      family="sans"
-      type="link"
-      ref={scrambleElement}
-      css={{
-        position: "absolute",
-        top: "var(--space-m)",
-        left: "var(--space)",
-      }}
-    >
-      Franklin Jezreel
-    </Text>
+    <NamasteContainer>
+      <Rounded />
+      <Text as="a" family="sans" type="link" ref={scrambleElement}>
+        Franklin Jezreel
+      </Text>
+    </NamasteContainer>
   );
 }

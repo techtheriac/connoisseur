@@ -1,7 +1,7 @@
 import { styled, css } from "stitches.config";
 import Text from "./Text";
 
-const _Subscribe = styled("form", {
+const StyledSubscribe = styled("form", {
   width: "100%",
   display: "grid",
   gridTemplateColumns: "3fr 1fr",
@@ -11,12 +11,12 @@ const _Subscribe = styled("form", {
 
 export default function Subscribe() {
   return (
-    <_Subscribe>
+    <StyledSubscribe>
       <Input placeholder="Enter your email address"></Input>
       <Button>
         <Text>DingBat!</Text>
       </Button>
-    </_Subscribe>
+    </StyledSubscribe>
   );
 }
 

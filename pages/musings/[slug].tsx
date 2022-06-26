@@ -23,6 +23,7 @@ const Date = styled(Text, {
   marginBottom: "var(--space-s)",
   fontFamily: "$serifDisplayRegular",
   gridColumn: "2",
+  length: 0,
 });
 
 const Title = styled(Text, {
@@ -32,6 +33,7 @@ const Title = styled(Text, {
   marginBottom: "var(--space-s)",
   fontFamily: "$serifDisplayRegular",
   gridColumn: "2",
+  length: 0,
 });
 
 const ArticleMain = styled(Main, {
@@ -94,6 +96,7 @@ const ArticleMain = styled(Main, {
   "> p + p": {
     marginTop: "var(--space-s)",
   },
+  length: 0,
 });
 
 const Musing = ({ postId, postData, hearts, postContent, date }) => {

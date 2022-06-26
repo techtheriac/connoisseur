@@ -1,7 +1,6 @@
 import React from "react";
 import { styled, css } from "stitches.config";
 import Text from "./Text";
-import Rounded from "./Rounded";
 import { useTagsContext } from "./TagsProvider";
 import { tags } from "BlogInfrastructure";
 
@@ -9,8 +8,7 @@ export default function Filter() {
   const [tagName, handlers] = useTagsContext();
 
   return (
-    <_Filter>
-      <Rounded />
+    <StyledFilter>
       {tags.map((tag, index) => {
         return (
           <Text
@@ -26,12 +24,13 @@ export default function Filter() {
           </Text>
         );
       })}
-    </_Filter>
+    </StyledFilter>
   );
 }
 
-const _Filter = styled("div", {
+const StyledFilter = styled("div", {
   display: "flex",
   flexDirection: "column",
   gap: "var(--space-s)",
+  length: 0,
 });
