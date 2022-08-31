@@ -2,7 +2,7 @@ import React from "react";
 import Animations from "@/helpers/Events";
 import { useIsomorphicLayoutEffect } from "@/helpers/DOM";
 
-const Context = React.createContext();
+const Context = React.createContext([]);
 
 export function TagsProvider({ children }) {
   const [activeTag, setActiveTag] = React.useState("");
