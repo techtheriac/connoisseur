@@ -24,16 +24,16 @@ $interpolate-max: 1366px;
     --idealArticleParagraphSize,
     $interpolate-min,
     $interpolate-max,
-    20px,
-    24px
+    16px,
+    20px
   );
 
   @include interpolate(
     --idealHeadingOne,
     $interpolate-min,
     $interpolate-max,
-    30px,
-    40px
+    40px,
+    50px
   );
 
   @include interpolate(

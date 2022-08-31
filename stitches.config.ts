@@ -5,7 +5,7 @@ export const { styled, getCssText, css } = createStitches({
     fonts: {
       serifDisplayRegular: "Financier Display Regular",
       serifDisplayLight: "Financier Display Light",
-      serifText: "Financier Regular",
+      serifText: "Magnet",
       sansText: "National Regular",
       magnet: "Magnet",
       magnetHeadline: "Magnet Headline",

@@ -50,9 +50,6 @@ const getParagraphArray = getContent(PARAGRAPH_PATH);
 const getElementType = getContent(ELEMENT_TYPE_PATH);
 const paragraphHasChildren = elementHasChildren(PARAGRAPH_PATH);
 
-// If paragraph has children, call renderProcedure.
-// Cover for cases where element is an unordered list or a link
-
 const parseParagraph = (elementObject, index: number) => {
   if (!paragraphHasChildren(elementObject)) {
     return <p key={index}>{getParagraphContent(elementObject)}</p>;

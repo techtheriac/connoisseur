@@ -3,7 +3,7 @@ import { styled, css } from "stitches.config";
 import Link from "next/link";
 import Text from "./Text";
 
-const _Navigation = styled("div", {
+const StyledNavigation = styled("div", {
   display: "flex",
   flexDirection: "column",
   gap: "var(--space-s)",
@@ -13,7 +13,7 @@ const _Navigation = styled("div", {
 
 export default function Navigation() {
   return (
-    <_Navigation>
+    <StyledNavigation>
       <Link href="/">
         <Text as="a" family="sans" type="link">
           About
@@ -29,6 +29,6 @@ export default function Navigation() {
           Garden
         </Text>
       </Link>
-    </_Navigation>
+    </StyledNavigation>
   );
 }
