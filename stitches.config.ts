@@ -3,16 +3,12 @@ import { createStitches } from "@stitches/react";
 export const { styled, getCssText, css } = createStitches({
   theme: {
     fonts: {
-      serifDisplayRegular: "Dover Serif Dislpay",
+      serifDisplayRegular: "Financier Display Regular",
       serifDisplayLight: "Financier Display Light",
-      serifText: "Dover Serif Text",
-      sansText: "Dover Sans Text",
-
-      //--------------------
-      // serifDisplayRegular: "Financier Display Regular",
-      // serifDisplayLight: "Financier Display Light",
-      // serifText: "Financier Regular",
-      // sansText: "National Regular",
+      serifText: "Financier Regular",
+      sansText: "National Regular",
+      magnet: "Magnet",
+      magnetHeadline: "Magnet Headline",
     },
     space: {},
     sizes: {},
@@ -24,8 +20,11 @@ export const { styled, getCssText, css } = createStitches({
       5: "30px",
     },
     fontWeights: {
-      regular: 400,
       light: 300,
+      regular: 400,
+      meduim: 500,
+      bold: 700,
+      black: 900,
     },
     lineHeights: {},
     letterSpacings: {},

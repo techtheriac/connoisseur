@@ -1,11 +1,57 @@
+$interpolate-min: 640px;
+$interpolate-max: 1366px;
+
 :root {
-  @include interpolate(--space, 320px, 1366px, 25px, 40px);
-  @include interpolate(--idealSansFontSize, 640px, 1366px, 16px, 20px);
-  @include interpolate(--idealListingFontSize, 640px, 1366px, 20px, 30px);
-  @include interpolate(--idealArticleParagraphSize, 640px, 1366px, 20px, 24px);
-  @include interpolate(--idealHeadingOne, 640px, 1366px, 30px, 40px);
-  @include interpolate(--idealHeadingTwo, 640px, 1366px, 25px, 30px);
-  @include interpolate(--idealHeadingThree, 640px, 1366px, 20px, 25px);
+  @include interpolate(--space, $interpolate-min, $interpolate-max, 25px, 40px);
+
+  @include interpolate(
+    --idealSansFontSize,
+    $interpolate-min,
+    $interpolate-max,
+    16px,
+    20px
+  );
+
+  @include interpolate(
+    --idealListingFontSize,
+    $interpolate-min,
+    $interpolate-max,
+    20px,
+    30px
+  );
+
+  @include interpolate(
+    --idealArticleParagraphSize,
+    $interpolate-min,
+    $interpolate-max,
+    20px,
+    24px
+  );
+
+  @include interpolate(
+    --idealHeadingOne,
+    $interpolate-min,
+    $interpolate-max,
+    30px,
+    40px
+  );
+
+  @include interpolate(
+    --idealHeadingTwo,
+    $interpolate-min,
+    $interpolate-max,
+    25px,
+    30px
+  );
+
+  @include interpolate(
+    --idealHeadingThree,
+    $interpolate-min,
+    $interpolate-max,
+    20px,
+    25px
+  );
+
   --space-s: calc(var(--space) / 2);
   --space-m: calc(var(--space) * 2);
   --html-color: hsla(10, 68%, 46%, 100%);
