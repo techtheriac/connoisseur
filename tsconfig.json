@@ -3,6 +3,7 @@
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "strictNullChecks": true,
     "lib": [
       "dom",
       "es2015"

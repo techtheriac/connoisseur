@@ -52,7 +52,7 @@ const ArticleMain = styled(Main, {
     lineHeight: "1.1",
     hyphens: "auto",
     hyphenateLimitChars: "10 3 4",
-    fontWeight: 300,
+    fontWeight: 350,
   },
 
   "p, h1, h2, h3, h4, h5, h6": {

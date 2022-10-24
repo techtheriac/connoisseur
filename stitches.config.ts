@@ -5,10 +5,10 @@ export const { styled, getCssText, css } = createStitches({
     fonts: {
       serifDisplayRegular: "Financier Display Regular",
       serifDisplayLight: "Financier Display Light",
-      serifText: "Magnet",
+      serifText: "Switzer-Variable",
       sansText: "National Regular",
       magnet: "Magnet",
-      magnetHeadline: "Magnet Headline",
+      magnetHeadline: "BespokeSerif-Variable",
     },
     space: {},
     sizes: {},
