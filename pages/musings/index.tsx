@@ -1,4 +1,4 @@
-import { getPosts } from "BlogInfrastructure";
+import { getPosts } from "infrastructure/BlogInfrastructure";
 
 const PostsPage = ({ posts }) => {
   const sections = [

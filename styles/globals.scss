@@ -3,11 +3,8 @@
 @import "./util/custom-properties";
 @import "./util/resets";
 
-@import "./font/financier";
-@import "./font/national";
-@import "./font/magnet";
 @import "./font/bespoke";
-@import "./font/switzer";
+@import "./font/plein";
 
 html,
 body {
@@ -15,6 +12,5 @@ body {
 }
 
 body {
-  min-height: var(--100vh);
   scroll-behavior: smooth;
 }

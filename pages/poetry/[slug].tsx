@@ -4,7 +4,7 @@ import {
   getPostContent,
   getPost,
   getPoetrySlugs,
-} from "BlogInfrastructure";
+} from "infrastructure/BlogInfrastructure";
 import { useEffect } from "react";
 import { ContentRenderer } from "@/components/ContentRenderer";
 

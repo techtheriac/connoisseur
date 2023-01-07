@@ -17,65 +17,92 @@ const links = [
   },
 ];
 
-const _Footer = styled("div", {
-  display: "grid",
-  gridAutoRows: "max-content",
-  alignContent: "end",
-  gap: "var(--space-s)",
+const Salutation = styled(Text, {
+  fontSize: "var(--idealHeadingTwo)",
+  textTransform: "capitalize",
+});
+
+const FooterCopy = styled(Text, {
+  maxWidth: "35ch",
+  fontSize: "var(--idealArticleParagraphSize)",
+  lineHeight: 1.2,
+});
+
+const FlexBase = styled("div", {
+  display: "flex",
+});
+
+const FlexColumns = styled(FlexBase, {
+  flexDirection: "column",
+});
+
+const FlexRows = styled(FlexBase, {
+  flexDirection: "row",
+  justifyContent: "space-between",
+});
+
+const StyledFooter = styled("div", {
+  gridArea: "footer",
+  display: "inherit",
+  gridTemplateColumns: "inherit",
+  gridColumnGap: "inherit",
+
   variants: {
-    gridColumn: {
-      gridColumnBase: {
-        gridColumn: "6 / -1",
+    gridLayoutDefinition: {
+      footerSmall: {
+        gridTemplateAreas: `
+        'salute salute salute salute'
+        'subscribe subscribe subscribe subscribe'
+        'links links links links'
+        `,
+        gridTemplateColumns: "repeat(4, 1fr)",
       },
-      gridColumnSm: {
-        gridColumn: "1 / -1",
+      footerLarge: {
+        gridTemplateAreas: `
+        'salute salute salute . subscribe subscribe subscribe subscribe'
+        '. . . . links links links links'
+        `,
+        gridTemplateColumns: "repeat(8, 1fr)",
       },
     },
   },
-  length: 0,
-});
-
-const Flex = styled("div", {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "baseline",
-  length: 0,
-});
-
-const Others = styled("div", {
-  width: "100%",
-  display: "grid",
-  gridTemplateColumns: "2fr 3fr",
-  length: 0,
 });
 
 const FooterLink = styled(Text, {
   textDecoration: "none",
-  length: 0,
 });
 
 export default function Footer() {
   return (
-    <_Footer
-      gridColumn={{
-        "@initial": "gridColumnSm",
-        "@sm": "gridColumnBase",
+    <StyledFooter
+      gridLayoutDefinition={{
+        "@initial": "footerSmall",
+        "@sm": "footerLarge",
+        "@lg": "footerLarge",
       }}
     >
-      <Text
-        family="serif"
+      <FlexColumns
         css={{
-          fontSize: "var(--idealListingFontSize)",
+          gridArea: "salute",
+          "> * + *": {
+            marginTop: "var(--space-s)",
+          },
         }}
       >
-        Favouring the relationship between things over their intrinsic
-        properties.
-      </Text>
+        <Salutation family="serif">stay in the loop</Salutation>
+
+        <FooterCopy family="serif">
+          I will occasionally send you an unhealthy curation of my ruminations.
+        </FooterCopy>
+      </FlexColumns>
 
       <Subscribe />
 
-      <Others>
+      <FlexRows
+        css={{
+          gridArea: "links",
+        }}
+      >
         <Text
           type="link"
           family="sans"
@@ -88,9 +115,9 @@ export default function Footer() {
           RSS
         </Text>
 
-        <Flex
+        <FlexRows
           css={{
-            gridColumn: "2",
+            width: "60%",
           }}
         >
           {links.map(({ name, link }, index) => {
@@ -107,8 +134,8 @@ export default function Footer() {
               </Text>
             );
           })}
-        </Flex>
-      </Others>
-    </_Footer>
+        </FlexRows>
+      </FlexRows>
+    </StyledFooter>
   );
 }

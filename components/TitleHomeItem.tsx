@@ -2,7 +2,7 @@ import { styled, css } from "stitches.config";
 
 const TitleHomeItem = styled("span", {
   color: "white",
-  fontFamily: "$serifDisplayRegular",
+  fontFamily: "$serif",
   fontSize: "var(--idealListingFontSize)",
   lineHeight: 1.5,
   textDecoration: "none",
@@ -36,7 +36,6 @@ const TitleHomeItem = styled("span", {
       },
     },
   },
-  length: 0,
 });
 
 export default TitleHomeItem;

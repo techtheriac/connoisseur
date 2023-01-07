@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useIsomorphicLayoutEffect } from "@/helpers/DOM";
 import Namaste from "./Namaste";
 import Grid from "./Grid";
 import Main from "./Main";
-import { TagsProvider } from "./TagsProvider";
 import toggleBackground from "@/helpers/toggleBackground";
+import Navigation from "./Navigation";
+
+
 
 const setDefaultHeight = () =>
   document.documentElement.style.setProperty(
@@ -22,27 +23,18 @@ export default function Layout({ children }) {
   }, []);
 
   return (
-    <TagsProvider>
       <Grid
-        grid={{
-          "@initial": "gridSm",
-          "@sm": "gridBase",
+        gridAreas={{
+          "@initial": "gridBase",
+          "@sm": "gridSm"
         }}
         background="tomato"
         data-layout="true"
       >
-        <Namaste />
-        <Navbar />
-        <Main
-          gridColumn={{
-            "@initial": "gridColumnSm",
-            "@sm": "gridColumnBase",
-          }}
-        >
-          {children}
-        </Main>
+      <Namaste />
+      <Navigation />
+        {children}
         <Footer />
       </Grid>
-    </TagsProvider>
   );
 }

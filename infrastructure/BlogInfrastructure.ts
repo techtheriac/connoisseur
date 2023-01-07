@@ -20,6 +20,8 @@ export const updateLikes = async (postId: string): Promise<Boolean> => {
   if (updateResponse) {
     return true;
   }
+
+  return false;
 };
 
 export const getPosts = async () => {
@@ -147,4 +149,4 @@ export const getAllAvailablePostTags = async () => {
   return flattenedArray.filter((x, i) => flattenedArray.indexOf(x) === i);
 };
 
-export const tags = ["poetry", "musings", "engineering"];
+export const tags = ["poetry", "musings", "engineering", "more"];

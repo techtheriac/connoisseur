@@ -2,33 +2,39 @@ import React from "react";
 import { styled, css } from "stitches.config";
 import Link from "next/link";
 import Text from "./Text";
+import Rounded from "./Rounded";
+
+const NavigationText = styled(Text, {
+  textTransform: "uppercase",
+});
 
 const StyledNavigation = styled("div", {
   display: "flex",
-  flexDirection: "column",
   gap: "var(--space-s)",
-  marginRight: "20px",
-  length: 0,
+  gridArea: "nav",
+  justifySelf: "end",
+  alignSelf: "end",
 });
 
 export default function Navigation() {
   return (
     <StyledNavigation>
       <Link href="/">
-        <Text as="a" family="sans" type="link">
-          About
-        </Text>
+        <NavigationText as="a" family="sans" type="link">
+          cv
+        </NavigationText>
       </Link>
       <Link href="/musings">
-        <Text as="a" family="sans" type="link">
-          Projects
-        </Text>
+        <NavigationText as="a" family="sans" type="link">
+          projects
+        </NavigationText>
       </Link>
       <Link href="/garden">
-        <Text as="a" family="sans" type="link">
+        <NavigationText as="a" family="sans" type="link">
           Garden
-        </Text>
+        </NavigationText>
       </Link>
+      <Rounded />
     </StyledNavigation>
   );
 }

@@ -2,38 +2,48 @@ import { styled, css } from "stitches.config";
 import Text from "./Text";
 
 const StyledSubscribe = styled("form", {
-  width: "100%",
-  display: "grid",
-  gridTemplateColumns: "3fr 1fr",
-  gap: "10px",
-  length: 0,
+  height: "45px",
+  display: "flex",
+  alignItems: "center",
+  gridArea: "subscribe",
 });
 
 export default function Subscribe() {
   return (
     <StyledSubscribe>
-      <Input placeholder="Enter your email address"></Input>
+      <Input placeholder="Your email"></Input>
       <Button>
-        <Text>DingBat!</Text>
+        <Text family="sans">Submit</Text>
       </Button>
     </StyledSubscribe>
   );
 }
 
 const Input = styled("input", {
-  borderRadius: "$base",
-  borderColor: "$tomato200",
+  appearance: "none",
+  width: "100%",
+  height: "100%",
+  border: 0,
+  borderStyle: "none",
   borderWidth: "2px",
-  padding: "20px",
-  backgroundColor: "transparent",
-  fontFamily: "$sansText",
   fontSize: "var(--idealSansFontSize)",
   color: "white",
-  appearance: "none",
   outline: "none",
-
+  fontFamily: "$sansSerif",
+  padding: "10px 5px",
+  backgroundColor: "#00000014",
+  clipPath: `polygon(
+    8px 0%,
+    0% 8px,
+    0% calc(100% - 8px),
+    8px 100%,
+    calc(100% - 8px) 100%,
+    100% calc(100% - 8px),
+    100% 8px,
+    calc(100% - 8px) 0%
+  )`,
   "&::placeholder": {
-    fontFamily: "$sansText",
+    fontFamily: "$sansSerif",
     fontSize: "var(--idealSansFontSize)",
     color: "$tomato200",
   },
@@ -41,20 +51,16 @@ const Input = styled("input", {
 });
 
 const Button = styled("button", {
-  display: "inline-block",
   border: "none",
   borderRadius: "$base",
   borderColor: "$tomato200",
   borderWidth: "2px",
-  paddingTop: "10px",
-  paddingBottom: "10px",
-  paddingLeft: "5px",
-  paddingRight: "5px",
   backgroundColor: "$tomato300",
+  padding: "10px 20px",
   color: "white",
   outline: "none",
   boxShadow: "none",
-
+  marginLeft: "-95px",
   "&:hover": {
     backgroundColor: "$tomato400",
   },

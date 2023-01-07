@@ -12,7 +12,7 @@ import {
   getPosts,
   getMusingsSlugs,
   updateLikes,
-} from "BlogInfrastructure";
+} from "infrastructure/BlogInfrastructure";
 
 import { ContentRenderer } from "@/components/ContentRenderer";
 

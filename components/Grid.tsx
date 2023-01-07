@@ -5,29 +5,39 @@ const Grid = styled("div", {
   minHeight: "100vh",
   paddingLeft: "var(--space)",
   paddingRight: "var(--space)",
-  paddingTop: "var(--space-m)",
+  paddingTop: "var(--space-xs)",
   paddingBottom: "var(--space-s)",
-
+  gridGap: "var(--space-s)",
   variants: {
-    grid: {
-      gridBase: {
-        gridTemplateColumns: "repeat(12, 1fr)",
-        gridGap: "var(--space-s)",
-      },
-      gridSm: {
+    gridLayoutDefinition: {
+      homeSmall: {
+        gridTemplateAreas: `
+             'nav nav nav nav'
+             'name name name name'
+             'bio bio bio bio'
+             'musings musings musings musings'
+             'spotify spotify spotify spotify'
+             'footer footer footer footer'`,
         gridTemplateColumns: "repeat(4, 1fr)",
-        gridGap: "var(--space-s)",
       },
-      articleGrid: {
-        gridTemplateColumns: "1fr",
+      homeLarge: {
+        gridTemplateAreas: `
+            'name name name . . nav nav nav'
+            'bio bio bio . . . . .'
+            'filter filter . . musings musings musings musings'
+            'spotify spotify spotify spotify spotify spotify spotify spotify'
+            'footer footer footer footer footer footer footer footer'`,
+        gridTemplateColumns: "repeat(8, 1fr)",
       },
-      gardenGrid: {
-        gridGap: "1rem",
-        gridTemplateColumns:
-          "repeat(auto-fit, minmax(min(100%, var(15ch)), 1fr));",
+      articleSmall: {
+        gridTemplateAreas: "$articleGridAreasSmall",
+        gridTemplateColumns: "repeat(4, 1fr)",
+      },
+      articleLarge: {
+        gridTemplateAreas: "$articleGridAreasSmall",
+        gridTemplateColumns: "repeat(8, 1fr)",
       },
     },
-
     background: {
       tomato: {
         backgroundColor: "$tomato100",
@@ -40,7 +50,6 @@ const Grid = styled("div", {
       },
     },
   },
-  length: 0,
 });
 
 export default Grid;

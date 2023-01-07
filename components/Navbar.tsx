@@ -28,7 +28,7 @@ export default function Navbar() {
 const StyledNavbar = styled("div", {
   display: "flex",
   width: "100%",
-  flexDirection: "row",
+  flexDirection: "column",
   justifyContent: "space-between",
 
   variants: {

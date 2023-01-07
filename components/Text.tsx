@@ -1,15 +1,31 @@
-import { styled, css } from "stitches.config";
+import { styled } from "stitches.config";
 
 const Text = styled("p", {
-  fontSize: "var(--idealSansFontSize)",
   color: "white",
   variants: {
     family: {
       sans: {
-        fontFamily: "$sansText",
+        fontFamily: "$sansSerif",
       },
       serif: {
-        fontFamily: "$serifText",
+        fontFamily: "$serif",
+      },
+    },
+    weight: {
+      light: {
+        fontWeight: "$light",
+      },
+      normal: {
+        fontWeight: "$regular",
+      },
+      medium: {
+        fontWeight: "$medium",
+      },
+      bold: {
+        fontWeight: "$bold",
+      },
+      black: {
+        fontWeight: "$black",
       },
     },
     type: {
@@ -27,7 +43,6 @@ const Text = styled("p", {
       },
     },
   },
-  length: 0,
 });
 
 export default Text;
