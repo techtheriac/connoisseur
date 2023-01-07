@@ -33,7 +33,7 @@ export const { styled, getCssText, css } = createStitches({
       tomato200: "hsla(10,69%,75%, 100%)",
       tomato300: "hsla(10,52%,56%, 100%)",
       tomato400: "hsla(10,69%,75%, 72%)",
-      tomato500: "hsla(10, 69%, 75%, 100%)",
+      tomato500: "hsla(10, 69%, 75%, 65%)",
       saffron100: "hsla(35, 100%, 71%, 100%)",
       garden100: "hsla(116,19%,29%, 1)",
     },

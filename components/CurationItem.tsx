@@ -1,13 +1,13 @@
 import { styled, css } from "stitches.config";
 
-const TitleHomeItem = styled("span", {
+const CurationItem = styled("span", {
   color: "white",
   fontFamily: "$serif",
-  fontSize: "var(--idealListingFontSize)",
+  fontSize: "var(--idealArticleParagraphSize)",
   lineHeight: 1.5,
   textDecoration: "none",
   transitionProperty: "color",
-  transitionDuration: "0.3s",
+  transitionDuration: "0.2s",
   transitionTimingFunction: "ease-in",
 
   "&:hover": {
@@ -38,4 +38,4 @@ const TitleHomeItem = styled("span", {
   },
 });
 
-export default TitleHomeItem;
+export default CurationItem;

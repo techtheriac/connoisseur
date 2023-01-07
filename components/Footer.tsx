@@ -56,6 +56,9 @@ const StyledFooter = styled("div", {
         'links links links links'
         `,
         gridTemplateColumns: "repeat(4, 1fr)",
+        "> * + *": {
+          marginBlockStart: "var(--space-m)",
+        },
       },
       footerLarge: {
         gridTemplateAreas: `
@@ -63,6 +66,9 @@ const StyledFooter = styled("div", {
         '. . . . links links links links'
         `,
         gridTemplateColumns: "repeat(8, 1fr)",
+        "> * + *": {
+          marginBlockStart: "initial",
+        },
       },
     },
   },
@@ -92,7 +98,8 @@ export default function Footer() {
         <Salutation family="serif">stay in the loop</Salutation>
 
         <FooterCopy family="serif">
-          I will occasionally send you an unhealthy curation of my ruminations.
+          I will occasionally send you an unhealthy curation of my ruminations
+          if you input your email and click submit.
         </FooterCopy>
       </FlexColumns>
 
@@ -117,7 +124,7 @@ export default function Footer() {
 
         <FlexRows
           css={{
-            width: "60%",
+            width: "45%",
           }}
         >
           {links.map(({ name, link }, index) => {

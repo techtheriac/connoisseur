@@ -5,7 +5,7 @@ const Grid = styled("div", {
   minHeight: "100vh",
   paddingLeft: "var(--space)",
   paddingRight: "var(--space)",
-  paddingTop: "var(--space-xs)",
+  paddingTop: "var(--space-m)",
   paddingBottom: "var(--space-s)",
   gridGap: "var(--space-s)",
   variants: {
@@ -13,21 +13,25 @@ const Grid = styled("div", {
       homeSmall: {
         gridTemplateAreas: `
              'nav nav nav nav'
-             'name name name name'
              'bio bio bio bio'
              'musings musings musings musings'
              'spotify spotify spotify spotify'
              'footer footer footer footer'`,
         gridTemplateColumns: "repeat(4, 1fr)",
+        "> * + *": {
+          marginBlockStart: "var(--space-m)",
+        },
       },
       homeLarge: {
         gridTemplateAreas: `
-            'name name name . . nav nav nav'
-            'bio bio bio . . . . .'
-            'filter filter . . musings musings musings musings'
+            'bio bio bio . . nav nav nav'            
+            'musings musings musings musings musings musings musings musings'
             'spotify spotify spotify spotify spotify spotify spotify spotify'
             'footer footer footer footer footer footer footer footer'`,
         gridTemplateColumns: "repeat(8, 1fr)",
+        "> * + *": {
+          marginBlockStart: "initial",
+        },
       },
       articleSmall: {
         gridTemplateAreas: "$articleGridAreasSmall",

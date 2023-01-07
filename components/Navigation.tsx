@@ -10,15 +10,17 @@ const NavigationText = styled(Text, {
 
 const StyledNavigation = styled("div", {
   display: "flex",
+  flexDirection: "column",
   gap: "var(--space-s)",
   gridArea: "nav",
   justifySelf: "end",
-  alignSelf: "end",
+  alignSelf: "start",
 });
 
 export default function Navigation() {
   return (
     <StyledNavigation>
+      <Rounded />
       <Link href="/">
         <NavigationText as="a" family="sans" type="link">
           cv
@@ -34,7 +36,6 @@ export default function Navigation() {
           Garden
         </NavigationText>
       </Link>
-      <Rounded />
     </StyledNavigation>
   );
 }

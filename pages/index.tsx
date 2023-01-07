@@ -4,9 +4,8 @@ import Navigation from "@/components/Navigation";
 import Namaste from "@/components/Namaste";
 import Footer from "@/components/Footer";
 import Bio from "@/components/Bio";
-import TitlesHome from "@/components/TitlesHome";
+import { Curation, StyledCurationGroup } from "@/components/Curation";
 import Spotify from "@/components/Spotify";
-import Filter from "@/components/Filter";
 
 import {
   getHomePageListing,
@@ -20,9 +19,17 @@ import {
 
 export default function Home({ posts, tags }) {
   return (
-    <>
-      <TitlesHome posts={posts} />
-    </>
+    <StyledCurationGroup
+      gridLayoutDefinition={{
+        "@initial": "flow",
+        "@sm": "collapsed",
+        "@lg": "collapsed",
+      }}
+    >
+      {tags.map((tag) => {
+        return <Curation key={tag} posts={posts} filter={tag} />;
+      })}
+    </StyledCurationGroup>
   );
 }
 
@@ -36,9 +43,7 @@ Home.getLayout = function getLayout(page) {
       }}
     >
       <Navigation />
-      <Namaste />
       <Bio />
-      <Filter />
       <Spotify />
       {page}
       <Footer />
