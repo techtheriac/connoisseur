@@ -28,7 +28,7 @@ export default function Navigation() {
       </Link>
       <Link href="/musings">
         <NavigationText as="a" family="sans" type="link">
-          projects
+          Doings
         </NavigationText>
       </Link>
       <Link href="/garden">
