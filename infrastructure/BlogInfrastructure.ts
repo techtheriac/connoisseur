@@ -1,3 +1,5 @@
+import { forEach } from "ramda";
+
 const { Client } = require("@notionhq/client");
 const _ = require("lodash");
 
@@ -126,7 +128,15 @@ export const getPoetrySlugs = async () => {
 
 // _____________ USER INTERFACE ____________________
 
-export const getHomePageListing = async () => {
+type NormalizedHomePageItem = {
+  dateCreated: string,
+  slug: string,
+  title: string,
+  tags: string[]
+}
+
+type GetNormalizedHomepageListing = () => Promise<NormalizedHomePageItem[]>;
+export const getNormalizedHomePageListing : GetNormalizedHomepageListing = async () => {
   const res = await getPosts();
   return res.results.map((post) => {
     return {
@@ -140,13 +150,28 @@ export const getHomePageListing = async () => {
   });
 };
 
-export const getAllAvailablePostTags = async () => {
-  const res = await getPosts();
-  const tags = res.results.map((post) => {
-    return [...post.properties.Tags.multi_select.map((tag) => tag.name)];
+
+type GetDistinctTags = (posts : NormalizedHomePageItem[]) => string[];
+export const getDistinctTags: GetDistinctTags = (posts) => {
+  const tags = posts.map((post) => {
+    return [...post.tags];
   });
   const flattenedArray = tags.flat();
   return flattenedArray.filter((x, i) => flattenedArray.indexOf(x) === i);
 };
+
+
+export const getHomepageListing = async () => {
+  const posts = await getNormalizedHomePageListing();
+  const distinctTags = getDistinctTags(posts);
+  
+  let tagMap = {};
+
+  distinctTags.forEach(item => {
+    tagMap[item] = posts.filter(post => post.tags.includes(item));
+  });
+
+  return tagMap;
+}
 
 export const tags = ["poetry", "musings", "engineering"];

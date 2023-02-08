@@ -1,23 +1,14 @@
 import React from "react";
 import Grid from "@/components/Grid";
 import Navigation from "@/components/Navigation";
-import Namaste from "@/components/Namaste";
 import Footer from "@/components/Footer";
 import Bio from "@/components/Bio";
 import { Curation, StyledCurationGroup } from "@/components/Curation";
 import Spotify from "@/components/Spotify";
 
-import {
-  getHomePageListing,
-  getAllAvailablePostTags,
-} from "infrastructure/BlogInfrastructure";
+import { getHomepageListing } from "infrastructure/BlogInfrastructure";
 
-import {
-  getSpotifyTokenFromNotion,
-  // updateSpotifyTokenNotion,
-} from "infrastructure/Spotify";
-
-export default function Home({ posts, tags }) {
+export default function Home({ posts }) {
   return (
     <StyledCurationGroup
       gridLayoutDefinition={{
@@ -26,9 +17,9 @@ export default function Home({ posts, tags }) {
         "@lg": "collapsed",
       }}
     >
-      {tags.map((tag) => {
-        return <Curation key={tag} posts={posts} filter={tag} />;
-      })}
+    <Curation title="musings & notes" posts={posts.musings} />
+    <Curation title="on engineering" posts={posts.engineering} />
+    <Curation title="selected poems" posts={posts.poetry} />
     </StyledCurationGroup>
   );
 }
@@ -52,15 +43,12 @@ Home.getLayout = function getLayout(page) {
 };
 
 export async function getStaticProps() {
-  const posts = await getHomePageListing();
-  const tags = await getAllAvailablePostTags();
-  const token = await getSpotifyTokenFromNotion();
+  const posts = await getHomepageListing();
 
-  console.log("token res", token);
+  console.log("posts", posts);
   return {
     props: {
       posts,
-      tags,
     },
     revalidate: 60,
   };

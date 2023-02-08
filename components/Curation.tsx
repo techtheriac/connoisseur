@@ -43,16 +43,12 @@ export const StyledCuration = styled("div", {
   },
 });
 
-export function Curation({ posts, filter }) {
-  console.log(posts.map((x) => x.title));
+// Filter represents all unique tags
+export function Curation({ posts, title}) {
   return (
     <StyledCuration>
       <StyledCurationTitle as="h3" family="serif">
-        {filter === "musings"
-          ? "musings & notes"
-          : filter === "poetry"
-          ? "selected poems"
-          : "on engineering"}
+      {title}
       </StyledCurationTitle>
       <HorizontalLine />
       <div>
