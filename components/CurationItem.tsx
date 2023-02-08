@@ -1,4 +1,4 @@
-import { styled, css } from "stitches.config";
+import { styled } from "stitches.config";
 
 const CurationItem = styled("span", {
   color: "white",

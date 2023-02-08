@@ -3,7 +3,8 @@ import { createStitches } from "@stitches/react";
 export const { styled, getCssText, css } = createStitches({
   theme: {
     fonts: {
-      serif: "BespokeSerif Variable",
+      serif: "Grenette Regular",
+      serifLight: "Grenette Light",
       sansSerif: "Plein Variable",
     },
     space: {},
