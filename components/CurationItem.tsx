@@ -1,6 +1,6 @@
 import { styled } from "stitches.config";
 
-const CurationItem = styled("span", {
+const CurationItem = styled("a", {
   color: "white",
   fontFamily: "$serif",
   fontSize: "var(--idealArticleParagraphSize)",

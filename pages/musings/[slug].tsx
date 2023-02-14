@@ -5,13 +5,13 @@ import { styled, css } from "stitches.config";
 import Main from "@/components/Main";
 import parseISO from "date-fns/parseISO";
 import format from "date-fns/format";
+import Grid from "@/components/Grid"
 
 import {
   getPost,
   getPostContent,
   getPosts,
   getMusingsSlugs,
-  updateLikes,
 } from "infrastructure/BlogInfrastructure";
 
 import { ContentRenderer } from "@/components/ContentRenderer";
@@ -105,22 +105,20 @@ const Musing = ({ postId, postData, hearts, postContent, date }) => {
     console.log(postContent);
   });
 
-  const [heartCount, setHeartCount] = useState(hearts);
-
   return (
     <>
-      <ArticleMain
+      <Grid
         id="main"
         as="article"
-        articleColumn={{
-          "@initial": "gridColumnSm",
-          "@sm": "gridColumnBase",
+        gridLayoutDefinition={{
+          "@initial": "articleSmall",
+          "@sm": "articleLarge",
         }}
       >
         <Date>{date}</Date>
         <Title as="h1">{postData.properties.Name.title[0].plain_text}</Title>
         <ContentRenderer postContent={postContent} />
-      </ArticleMain>
+      </Grid>
     </>
   );
 };

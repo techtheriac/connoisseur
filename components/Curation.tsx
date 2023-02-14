@@ -1,10 +1,11 @@
 import { styled, css } from "stitches.config";
+import Link from "next/link"
 import CurationItem from "./CurationItem";
 import React from "react";
 import Text from "./Text";
 import HorizontalLine from "./HorizontalLine";
 
-const parseUrl = (tags, slug) => {
+const parseUrl = (tags: string, slug: string) : string => {
   return tags.includes("poetry") ? `/poetry/${slug}` : `/musings/${slug}`;
 };
 
@@ -54,14 +55,15 @@ export function Curation({ posts, title}) {
       <div>
         {posts.map((post, index) => {
           return (
+          <Link key={index} href={parseUrl(post.tags, post.slug)}>
             <CurationItem
-              key={index}
               status={
                 post.title.split("a").length % 2 == 0 ? "active" : "inactive"
               }
             >
               {post.title}
             </CurationItem>
+            </Link>
           );
         })}
       </div>
