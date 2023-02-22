@@ -5,7 +5,8 @@ import { styled, css } from "stitches.config";
 import Main from "@/components/Main";
 import parseISO from "date-fns/parseISO";
 import format from "date-fns/format";
-import Grid from "@/components/Grid"
+import Grid from "@/components/Grid";
+import Head from "next/head";
 
 import {
   getPost,
@@ -101,12 +102,12 @@ const ArticleMain = styled(Main, {
 });
 
 const Musing = ({ postId, postData, hearts, postContent, date }) => {
-  useEffect(() => {
-    console.log(postContent);
-  });
-
+  const title = postData.properties.Name.title[0].plain_text;
   return (
     <>
+    <Head>
+      <title>Musings | {title}</title>
+    </Head>
       <Grid
         id="main"
         as="article"
@@ -116,7 +117,7 @@ const Musing = ({ postId, postData, hearts, postContent, date }) => {
         }}
       >
         <Date>{date}</Date>
-        <Title as="h1">{postData.properties.Name.title[0].plain_text}</Title>
+        <Title as="h1">{title}</Title>
         <ContentRenderer postContent={postContent} />
       </Grid>
     </>

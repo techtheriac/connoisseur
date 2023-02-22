@@ -7,8 +7,6 @@ import Main from "./Main";
 import toggleBackground from "@/helpers/toggleBackground";
 import Navigation from "./Navigation";
 
-
-
 const setDefaultHeight = () =>
   document.documentElement.style.setProperty(
     "--100vh",
@@ -23,18 +21,18 @@ export default function Layout({ children }) {
   }, []);
 
   return (
-      <Grid
-        gridAreas={{
-          "@initial": "gridBase",
-          "@sm": "gridSm"
-        }}
-        background="tomato"
-        data-layout="true"
-      >
+    <Grid
+      gridAreas={{
+        "@initial": "gridBase",
+        "@sm": "gridSm",
+      }}
+      background="tomato"
+      data-layout="true"
+    >
       <Namaste />
       <Navigation />
-        {children}
-        <Footer />
-      </Grid>
+      {children}
+      <Footer />
+    </Grid>
   );
 }

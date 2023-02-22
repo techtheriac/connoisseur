@@ -1,3 +1,6 @@
+// Add a Grid variant called layout to represent a persistent layout structure.
+// or create a new Layout component for that purpose and parameterize grid to serve per page requirement
+
 import { styled } from "stitches.config";
 
 const Grid = styled("div", {

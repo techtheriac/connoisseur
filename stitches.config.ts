@@ -3,7 +3,7 @@ import { createStitches } from "@stitches/react";
 export const { styled, getCssText, css } = createStitches({
   theme: {
     fonts: {
-      serif: "Grenette Regular",
+      serif: "BespokeSerif Variable",
       serifLight: "Grenette Light",
       sansSerif: "Plein Variable",
     },
@@ -30,7 +30,8 @@ export const { styled, getCssText, css } = createStitches({
     },
     zIndices: {},
     colors: {
-      tomato100: "hsla(10,68%,46%, 100%)",
+      // tomato100: "hsla(10,68%,46%, 100%)",
+      tomato100: "#97361F",
       tomato200: "hsla(10,69%,75%, 100%)",
       tomato300: "hsla(10,52%,56%, 100%)",
       tomato400: "hsla(10,69%,75%, 72%)",

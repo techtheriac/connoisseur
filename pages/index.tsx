@@ -44,8 +44,6 @@ Home.getLayout = function getLayout(page) {
 
 export async function getStaticProps() {
   const posts = await getHomepageListing();
-
-  console.log("posts", posts);
   return {
     props: {
       posts,

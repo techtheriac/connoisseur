@@ -1,5 +1,3 @@
-import { forEach } from "ramda";
-
 const { Client } = require("@notionhq/client");
 const _ = require("lodash");
 
@@ -54,9 +52,10 @@ export const getPostContent = async (id: string) => {
     page_size: 100,
   };
 
-  let results = [];
+  let results : unknown[] = [];
   let postContent = await notion.blocks.children.list(baseQuery);
   results = [...postContent.results];
+  console.log(results)
   while (postContent.has_more) {
     postContent = await notion.blocks.children.list({
       ...baseQuery,
