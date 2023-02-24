@@ -1,5 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
-import { styled, css } from "stitches.config";
+import { styled } from "stitches.config";
 import Link from "next/link";
 import Text from "./Text";
 import Rounded from "./Rounded";
@@ -28,7 +27,9 @@ const links: Navigation[] = [
 
 const StyledNavigationText = styled(Text, {
   textTransform: "uppercase",
-  ":hover": {},
+  ":hover": {
+    cursor: "pointer",
+  },
 });
 
 const StyledNavigation = styled("div", {

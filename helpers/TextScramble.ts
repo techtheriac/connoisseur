@@ -40,7 +40,7 @@ export default class TextSrcamble {
             node.textContent = originalText;
           }
           iterations += 1;
-        }, 50);
+        }, 45);
       });
     });
   }

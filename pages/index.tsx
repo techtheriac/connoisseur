@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Bio from "@/components/Bio";
 import { Curation, StyledCurationGroup } from "@/components/Curation";
-import Spotify from "@/components/Spotify";
+import Now from "@/components/Now";
 
 import { getHomepageListing } from "infrastructure/BlogInfrastructure";
 
@@ -17,9 +17,9 @@ export default function Home({ posts }) {
         "@lg": "collapsed",
       }}
     >
-    <Curation title="musings & notes" posts={posts.musings} />
-    <Curation title="on engineering" posts={posts.engineering} />
-    <Curation title="selected poems" posts={posts.poetry} />
+      <Curation title="musings & notes" posts={posts.musings} />
+      <Curation title="on engineering" posts={posts.engineering} />
+      <Curation title="selected poems" posts={posts.poetry} />
     </StyledCurationGroup>
   );
 }
@@ -35,7 +35,7 @@ Home.getLayout = function getLayout(page) {
     >
       <Navigation />
       <Bio />
-      <Spotify />
+      <Now />
       {page}
       <Footer />
     </Grid>
