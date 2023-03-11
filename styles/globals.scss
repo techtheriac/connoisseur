@@ -6,10 +6,13 @@
 @import "./font/bespoke";
 @import "./font/grenette.scss";
 @import "./font/plein";
+@import "./font/offbit";
+@import "./font/neuepixel";
 
 html,
 body {
   background-color: var(--html-color);
+  overflow: hidden;
 }
 
 body {

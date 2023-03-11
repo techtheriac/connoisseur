@@ -1,11 +1,11 @@
 import { styled, css } from "stitches.config";
-import Link from "next/link"
+import Link from "next/link";
 import CurationItem from "./CurationItem";
 import React from "react";
 import Text from "./Text";
 import HorizontalLine from "./HorizontalLine";
 
-const parseUrl = (tags: string, slug: string) : string => {
+const parseUrl = (tags: string, slug: string): string => {
   return tags.includes("poetry") ? `/poetry/${slug}` : `/musings/${slug}`;
 };
 
@@ -33,7 +33,7 @@ export const StyledCurationGroup = styled("div", {
 
 export const StyledCurationTitle = styled(Text, {
   fontSize: "var(--idealHeadingTwo)",
-  textTransform: "capitalize",
+  textTransform: "uppercase",
 });
 
 export const StyledCuration = styled("div", {
@@ -45,24 +45,24 @@ export const StyledCuration = styled("div", {
 });
 
 // Filter represents all unique tags
-export function Curation({ posts, title}) {
+export function Curation({ posts, title }) {
   return (
     <StyledCuration>
-      <StyledCurationTitle as="h3" family="serif">
-      {title}
+      <StyledCurationTitle as="h3" family="pixel">
+        {title}
       </StyledCurationTitle>
       <HorizontalLine />
       <div>
         {posts.map((post, index) => {
           return (
-          <Link key={index} href={parseUrl(post.tags, post.slug)}>
-            <CurationItem
-              status={
-                post.title.split("a").length % 2 == 0 ? "active" : "inactive"
-              }
-            >
-              {post.title}
-            </CurationItem>
+            <Link key={index} href={parseUrl(post.tags, post.slug)}>
+              <CurationItem
+                status={
+                  post.title.split("a").length % 2 == 0 ? "active" : "inactive"
+                }
+              >
+                {post.title}
+              </CurationItem>
             </Link>
           );
         })}

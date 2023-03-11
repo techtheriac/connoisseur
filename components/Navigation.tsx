@@ -30,12 +30,14 @@ const StyledNavigationText = styled(Text, {
   ":hover": {
     cursor: "pointer",
   },
+  fontSize: "var(--idealListingFontSize)",
 });
 
 const StyledNavigation = styled("div", {
   display: "flex",
+  alignItems: "flex-end",
   flexDirection: "row",
-  gap: "var(--space-s)",
+  gap: "var(--space)",
   gridArea: "nav",
   justifySelf: "end",
   alignSelf: "start",
@@ -53,7 +55,7 @@ export default function Navigation() {
     <StyledNavigation>
       {links.map((link) => (
         <Link key={link.link} href={link.link}>
-          <StyledNavigationText as="a" family="sans" data-navigation-item>
+          <StyledNavigationText as="a" family="pixel" data-navigation-item>
             {link.name}
           </StyledNavigationText>
         </Link>

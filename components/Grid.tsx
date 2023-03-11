@@ -16,6 +16,7 @@ const Grid = styled("div", {
       homeSmall: {
         gridTemplateAreas: `
              'nav nav nav nav'
+             'glitch glitch glitch glitch'
              'bio bio bio bio'
              'musings musings musings musings'
              'spotify spotify spotify spotify'
@@ -27,11 +28,14 @@ const Grid = styled("div", {
       },
       homeLarge: {
         gridTemplateAreas: `
-            'bio bio bio . . nav nav nav'            
+            '. . . . nav nav nav nav'            
+            'glitch glitch glitch glitch glitch glitch glitch glitch'
+            'bio bio bio bio bio bio bio bio'
             'musings musings musings musings musings musings musings musings'
             'spotify spotify spotify spotify spotify spotify spotify spotify'
             'footer footer footer footer footer footer footer footer'`,
         gridTemplateColumns: "repeat(8, 1fr)",
+        rowGap: "var(--space-m)",
         "> * + *": {
           marginBlockStart: "initial",
         },
@@ -46,8 +50,8 @@ const Grid = styled("div", {
       },
     },
     background: {
-      tomato: {
-        backgroundColor: "$tomato100",
+      dark: {
+        backgroundColor: "$black100",
       },
       transparent: {
         backgroundColor: "transparent",

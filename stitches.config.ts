@@ -7,6 +7,8 @@ export const { styled, getCssText, css } = createStitches({
       // serif: "BespokeSerif Variable",
       serifLight: "Grenette Light",
       sansSerif: "Plein Variable",
+      bit: "Offbit",
+      pixel: "NeuePixel Grotesk",
     },
     space: {},
     sizes: {},
@@ -39,6 +41,7 @@ export const { styled, getCssText, css } = createStitches({
       tomato500: "hsla(10, 69%, 75%, 65%)",
       saffron100: "hsla(35, 100%, 71%, 100%)",
       garden100: "hsla(116,19%,29%, 1)",
+      black100: "#07070b",
     },
   },
   media: {

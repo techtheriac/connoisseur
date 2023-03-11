@@ -2,7 +2,7 @@ import { styled } from "stitches.config";
 
 const CurationItem = styled("a", {
   color: "white",
-  fontFamily: "$serif",
+  fontFamily: "$pixel",
   fontSize: "var(--idealArticleParagraphSize)",
   lineHeight: 1.5,
   textDecoration: "none",

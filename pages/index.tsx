@@ -5,8 +5,11 @@ import Footer from "@/components/Footer";
 import Bio from "@/components/Bio";
 import { Curation, StyledCurationGroup } from "@/components/Curation";
 import Now from "@/components/Now";
+import { useIsomorphicLayoutEffect } from "@/helpers/DOM";
 
 import { getHomepageListing } from "infrastructure/BlogInfrastructure";
+import Glitch from "@/components/Glitch";
+import Scroll from "@/helpers/Scroll";
 
 export default function Home({ posts }) {
   return (
@@ -19,12 +22,19 @@ export default function Home({ posts }) {
     >
       <Curation title="musings & notes" posts={posts.musings} />
       <Curation title="on engineering" posts={posts.engineering} />
-      <Curation title="selected poems" posts={posts.poetry} />
+      <Curation title="poems" posts={posts.poetry} />
     </StyledCurationGroup>
   );
 }
 
 Home.getLayout = function getLayout(page) {
+  useIsomorphicLayoutEffect(() => {
+    const scrollContainer = document.querySelector(
+      '[data-scroll-container="true"]'
+    );
+
+    new Scroll({ container: scrollContainer });
+  }, []);
   return (
     <Grid
       gridLayoutDefinition={{
@@ -32,12 +42,15 @@ Home.getLayout = function getLayout(page) {
         "@sm": "homeLarge",
         "@lg": "homeLarge",
       }}
+      background="dark"
+      data-scroll-container
     >
       <Navigation />
+      <Glitch />
       <Bio />
-      <Now />
       {page}
-      <Footer />
+      <Now />
+      {/* <Footer /> */}
     </Grid>
   );
 };

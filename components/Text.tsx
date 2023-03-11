@@ -10,6 +10,12 @@ const Text = styled("p", {
       serif: {
         fontFamily: "$serif",
       },
+      bit: {
+        fontFamily: "$bit",
+      },
+      pixel: {
+        fontFamily: "$pixel",
+      },
     },
     weight: {
       light: {

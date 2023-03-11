@@ -52,8 +52,8 @@ $interpolate-max: 1366px;
     25px
   );
 
-  --space-xs: calc(var(--space-s) / 2);
   --space-s: calc(var(--space) / 2);
+  --space-xs: calc(var(--space-s) / 2);
   --space-m: calc(var(--space) * 2);
   --html-color: hsla(10, 68%, 46%, 100%);
 }
