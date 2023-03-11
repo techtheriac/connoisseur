@@ -46,40 +46,10 @@ const StyledSpotifyMedia = styled("div", {
 
 const Now = () => {
   useIsomorphicLayoutEffect(() => {
-    const targets = document.querySelectorAll("[data-clickable=true]");
-
-    const expand = (item: HTMLElement, i) => {
-      targets.forEach((it, ind) => {
-        if (i === ind) return;
-        it.setAttribute("data-item-clicked", "false");
-      });
-
-      gsap.to(targets, {
-        width: item.getAttribute("data-item-clicked") == "true" ? "20%" : "15%",
-        duration: 2,
-        ease: "elastic(1, .6)",
-      });
-
-      if (item.getAttribute("data-item-clicked") == "false") {
-        item.setAttribute("data-item-clicked", "true");
-      }
-
-      if (item.getAttribute("data-item-clicked") == "true") {
-        item.setAttribute("data-item-clicked", "false");
-      }
-
-      gsap.to(item, {
-        width:
-          item.getAttribute("data-item-clicked") == "false" ? "40%" : "15%",
-        duration: 2.5,
-        ease: "elastic(1, .3)",
-      });
-    };
-
-    targets.forEach((item: HTMLElement, index) => {
-      item.setAttribute("data-item-clicked", "false");
-      item.addEventListener("click", () => expand(item, index));
-    });
+    const targets: NodeListOf<Clickable> = document.querySelectorAll(
+      "[data-clickable=true]"
+    );
+    new Bouncible({ elements: targets }).animate();
   }, []);
 
   return (

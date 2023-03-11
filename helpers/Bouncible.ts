@@ -1,12 +1,8 @@
 import gsap from "gsap";
 
-export class Clickable extends HTMLDivElement {
-  public clicked: boolean;
-  constructor() {
-    super();
-  }
+export interface Clickable extends HTMLElement {
+  clicked: boolean;
 }
-customElements.define("clickable-div", Clickable, { extends: "div" });
 
 export class Bouncible {
   nodeList: NodeListOf<Clickable>;
@@ -17,19 +13,19 @@ export class Bouncible {
     }
   }
 
-  expand(item, i) {
+  expand(item: Clickable, i) {
     this.nodeList.forEach((it, ind) => {
       if (i === ind) return;
       it.clicked = false;
     });
     gsap.to(this.nodeList, {
-      width: item.clicked ? "15vw" : "8vw",
+      width: item.clicked ? "20%" : "15%",
       duration: 2,
       ease: "elastic(1, .6)",
     });
     item.clicked = !item.clicked;
     gsap.to(item, {
-      width: item.clicked ? "42vw" : "15vw",
+      width: item.clicked ? "40%" : "15%",
       duration: 2.5,
       ease: "elastic(1, .3)",
     });
