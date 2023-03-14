@@ -8,11 +8,12 @@
 @import "./font/plein";
 @import "./font/offbit";
 @import "./font/neuepixel";
+@import "./font/lausanne";
 
 html,
 body {
   background-color: var(--html-color);
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 body {

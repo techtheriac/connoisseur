@@ -6,7 +6,7 @@ export const { styled, getCssText, css } = createStitches({
       serif: "Plein Variable",
       // serif: "BespokeSerif Variable",
       serifLight: "Grenette Light",
-      sansSerif: "Plein Variable",
+      sansSerif: "Lausanne",
       bit: "Offbit",
       pixel: "NeuePixel Grotesk",
     },

@@ -1,10 +1,10 @@
-import { styled } from "stitches.config";
+import { styled, css } from "stitches.config";
 import Link from "next/link";
-import Text from "./Text";
+import { Text } from "./Text";
 import Rounded from "./Rounded";
 import { useIsomorphicLayoutEffect } from "@/helpers/DOM";
 import TextSrcamble from "@/helpers/TextScramble";
-
+import { HybridText, vowelize } from "./HybridText";
 type Navigation = {
   link: string;
   name: string;
@@ -49,15 +49,21 @@ export default function Navigation() {
       '[data-navigation-item="true"]'
     );
 
-    new TextSrcamble({ elements: navigationItems }).animate();
+    // new TextSrcamble({ elements: navigationItems }).animate();
   }, []);
   return (
     <StyledNavigation>
       {links.map((link) => (
         <Link key={link.link} href={link.link}>
-          <StyledNavigationText as="a" family="pixel" data-navigation-item>
-            {link.name}
-          </StyledNavigationText>
+          <HybridText
+            textContent={link.name}
+            contentType="a"
+            randomizer={vowelize}
+            css={{
+              fontSize: "var(--idealListingFontSize)",
+              textTransform: "uppercase",
+            }}
+          />
         </Link>
       ))}
       <Rounded />

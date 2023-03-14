@@ -33,7 +33,7 @@ Home.getLayout = function getLayout(page) {
       '[data-scroll-container="true"]'
     );
 
-    new Scroll({ container: scrollContainer });
+    // new Scroll({ container: scrollContainer });
   }, []);
   return (
     <Grid

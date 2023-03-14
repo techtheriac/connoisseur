@@ -2,7 +2,8 @@ import { styled, css } from "stitches.config";
 import Link from "next/link";
 import CurationItem from "./CurationItem";
 import React from "react";
-import Text from "./Text";
+import { Text } from "./Text";
+import { HybridText, vowelize } from "./HybridText";
 import HorizontalLine from "./HorizontalLine";
 
 const parseUrl = (tags: string, slug: string): string => {
@@ -48,9 +49,15 @@ export const StyledCuration = styled("div", {
 export function Curation({ posts, title }) {
   return (
     <StyledCuration>
-      <StyledCurationTitle as="h3" family="pixel">
-        {title}
-      </StyledCurationTitle>
+      <HybridText
+        textContent={title}
+        contentType="h3"
+        randomizer={vowelize}
+        css={{
+          textTransform: "uppercase",
+          fontSize: "var(--idealHeadingTwo)",
+        }}
+      />
       <HorizontalLine />
       <div>
         {posts.map((post, index) => {

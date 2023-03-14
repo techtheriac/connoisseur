@@ -52,10 +52,10 @@ export const getPostContent = async (id: string) => {
     page_size: 100,
   };
 
-  let results : unknown[] = [];
+  let results: unknown[] = [];
   let postContent = await notion.blocks.children.list(baseQuery);
   results = [...postContent.results];
-  console.log(results)
+  console.log(results);
   while (postContent.has_more) {
     postContent = await notion.blocks.children.list({
       ...baseQuery,
@@ -128,29 +128,31 @@ export const getPoetrySlugs = async () => {
 // _____________ USER INTERFACE ____________________
 
 type NormalizedHomePageItem = {
-  dateCreated: string,
-  slug: string,
-  title: string,
-  tags: string[]
-}
-
-type GetNormalizedHomepageListing = () => Promise<NormalizedHomePageItem[]>;
-export const getNormalizedHomePageListing : GetNormalizedHomepageListing = async () => {
-  const res = await getPosts();
-  return res.results.map((post) => {
-    return {
-      dateCreated: post.created_time,
-      slug: post.properties.slug.rich_text[0].plain_text,
-      title: post.properties.Name.title[0].plain_text,
-      tags: post.properties.Tags.multi_select.map((tag) => {
-        return tag.name;
-      }),
-    };
-  });
+  dateCreated: string;
+  slug: string;
+  title: string;
+  tags: string[];
 };
 
+type GetNormalizedHomepageListing = () => Promise<NormalizedHomePageItem[]>;
+export const getNormalizedHomePageListing: GetNormalizedHomepageListing =
+  async () => {
+    const res = await getPosts();
+    return res.results.map((post) => {
+      return {
+        dateCreated: post.created_time,
+        slug: post.properties.slug.rich_text[0].plain_text,
+        title: post.properties.Name.title[0].plain_text,
+        tags: post.properties.Tags.multi_select.map((tag) => {
+          return tag.name;
+        }),
+      };
+    });
+  };
 
-type GetDistinctTags = (posts : NormalizedHomePageItem[]) => string[];
+type GetDistinctTags = (
+  posts: Awaited<ReturnType<typeof getNormalizedHomePageListing>>
+) => string[];
 export const getDistinctTags: GetDistinctTags = (posts) => {
   const tags = posts.map((post) => {
     return [...post.tags];
@@ -159,18 +161,17 @@ export const getDistinctTags: GetDistinctTags = (posts) => {
   return flattenedArray.filter((x, i) => flattenedArray.indexOf(x) === i);
 };
 
-
 export const getHomepageListing = async () => {
   const posts = await getNormalizedHomePageListing();
   const distinctTags = getDistinctTags(posts);
-  
+
   let tagMap = {};
 
-  distinctTags.forEach(item => {
-    tagMap[item] = posts.filter(post => post.tags.includes(item));
+  distinctTags.forEach((item) => {
+    tagMap[item] = posts.filter((post) => post.tags.includes(item));
   });
 
   return tagMap;
-}
+};
 
 export const tags = ["poetry", "musings", "engineering"];

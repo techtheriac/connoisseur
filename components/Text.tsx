@@ -1,6 +1,5 @@
 import { styled } from "stitches.config";
-
-const Text = styled("p", {
+const textConfig = {
   color: "white",
   variants: {
     family: {
@@ -15,6 +14,11 @@ const Text = styled("p", {
       },
       pixel: {
         fontFamily: "$pixel",
+      },
+    },
+    fontSizes: {
+      idealParagraphSize: {
+        fontSize: "$1",
       },
     },
     weight: {
@@ -49,6 +53,7 @@ const Text = styled("p", {
       },
     },
   },
-});
+};
 
-export default Text;
+export const Text = styled("p", textConfig);
+export const Span = styled("span", textConfig);
