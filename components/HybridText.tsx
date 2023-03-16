@@ -21,13 +21,15 @@ export type RandomizerSeed = {
   characterFamily: CharacterFamily;
 };
 
-export type Randomizer = (characters: string) => RandomizerSeed[];
-export const vowelize: Randomizer = (characters) => {
-  const vowels = ["a", "e", "i", "o", "u"];
+export type Randomizer = (
+  characters: string,
+  seed?: string
+) => RandomizerSeed[];
+export const vowelize: Randomizer = (characters, seed = "aeiou&") => {
   return characters.split("").map((char) => {
     return {
       character: char,
-      characterFamily: vowels.includes(char) ? "pixel" : "sans",
+      characterFamily: seed.includes(char) ? "pixel" : "sans",
     };
   });
 };
@@ -36,6 +38,7 @@ type HybrizierProps = {
   textContent: string;
   contentType: HybridizerWrapper;
   randomizer: Randomizer;
+  seed?: string;
   css?: CSSProperties;
 };
 
@@ -45,9 +48,10 @@ export const HybridText: CreateHybridNode = ({
   textContent,
   contentType,
   randomizer,
+  seed,
   css,
 }) => {
-  const characters = randomizer(textContent);
+  const characters = randomizer(textContent, seed);
   const Wrapper = styled(contentType, {
     "> *": {
       ...css,

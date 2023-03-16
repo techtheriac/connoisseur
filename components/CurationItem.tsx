@@ -2,7 +2,7 @@ import { styled } from "stitches.config";
 
 const CurationItem = styled("a", {
   color: "white",
-  fontFamily: "$pixel",
+  fontFamily: "$sansSerif",
   fontSize: "var(--idealArticleParagraphSize)",
   lineHeight: 1.5,
   textDecoration: "none",
@@ -18,6 +18,7 @@ const CurationItem = styled("a", {
     content: `/`,
     marginLeft: "10px",
     marginRight: "10px",
+    fontFamily: "$pixel",
   },
 
   variants: {
@@ -25,11 +26,11 @@ const CurationItem = styled("a", {
       active: {
         color: "white",
         "&:hover": {
-          color: "$tomato200",
+          color: "white",
         },
       },
       inactive: {
-        color: "$tomato400",
+        color: "white",
         "&:hover": {
           color: "white",
         },

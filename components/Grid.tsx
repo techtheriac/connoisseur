@@ -28,7 +28,7 @@ const Grid = styled("div", {
       },
       homeLarge: {
         gridTemplateAreas: `
-            '. . . . nav nav nav nav'            
+            'nav nav nav nav nav nav nav nav'            
             'glitch glitch glitch glitch glitch glitch glitch glitch'
             'bio bio bio bio bio bio bio bio'
             'musings musings musings musings musings musings musings musings'
@@ -57,7 +57,12 @@ const Grid = styled("div", {
         backgroundColor: "transparent",
       },
       paper: {
-        backgroundImage: "url(/images/paper.png)",
+        // backgroundImage: "url(/images/paper.png)",
+        backgroundImage: "url(/images/bg-grain-dark.png)",
+        backgroundColor: "$black100",
+        // backgroundSize: "100px 100px",
+        backgroundRepeat: "repeat",
+        // backgroundAttachment: "fixed",
       },
     },
   },

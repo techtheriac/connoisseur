@@ -35,12 +35,23 @@ const StyledNavigationText = styled(Text, {
 
 const StyledNavigation = styled("div", {
   display: "flex",
-  alignItems: "flex-end",
+  alignItems: "center",
   flexDirection: "row",
   gap: "var(--space)",
   gridArea: "nav",
-  justifySelf: "end",
-  alignSelf: "start",
+  justifyContent: "space-between",
+  position: "fixed",
+  top: "var(--space-m)",
+  left: "var(--space)",
+  right: "var(--space)",
+  // justifySelf: "end",
+  // alignSelf: "start",
+});
+
+const NavGroup = styled("div", {
+  display: "flex",
+  width: "25%",
+  justifyContent: "space-between",
 });
 
 export default function Navigation() {
@@ -49,24 +60,27 @@ export default function Navigation() {
       '[data-navigation-item="true"]'
     );
 
-    // new TextSrcamble({ elements: navigationItems }).animate();
+    new TextSrcamble({ elements: navigationItems }).animate();
   }, []);
   return (
     <StyledNavigation>
-      {links.map((link) => (
-        <Link key={link.link} href={link.link}>
-          <HybridText
-            textContent={link.name}
-            contentType="a"
-            randomizer={vowelize}
-            css={{
-              fontSize: "var(--idealListingFontSize)",
-              textTransform: "uppercase",
-            }}
-          />
-        </Link>
-      ))}
       <Rounded />
+      <NavGroup>
+        {links.map((link) => (
+          <Link key={link.link} href={link.link}>
+            <HybridText
+              textContent={link.name}
+              contentType="a"
+              randomizer={vowelize}
+              css={{
+                fontSize: "var(--idealListingFontSize)",
+                textTransform: "uppercase",
+              }}
+              data-navigation-item
+            />
+          </Link>
+        ))}
+      </NavGroup>
     </StyledNavigation>
   );
 }

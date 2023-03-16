@@ -2,8 +2,8 @@ import { styled, css } from "stitches.config";
 
 const Rounded = styled("div", {
   backgroundColor: "#BC703B",
-  width: "var(--idealSansFontSize)",
-  height: "var(--idealSansFontSize)",
+  width: "var(--idealListingFontSize)",
+  height: "var(--idealListingFontSize)",
   borderRadius: "50%",
   length: 0,
   variants: {
