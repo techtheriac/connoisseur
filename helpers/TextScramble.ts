@@ -1,3 +1,4 @@
+import gsap from "gsap";
 export default class TextSrcamble {
   nodeList: NodeListOf<Element>;
 
@@ -7,9 +8,9 @@ export default class TextSrcamble {
     }
   }
 
-  shuffle(input: string) {
-    var a = typeof input == "string" ? input.split("") : input,
-      n = a.length;
+  shuffle(input: NodeListOf<HTMLElement>) {
+    var a = gsap.utils.toArray(input);
+    var n = input.length;
 
     for (var i = n - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
@@ -24,7 +25,9 @@ export default class TextSrcamble {
     this.nodeList.forEach((node) => {
       if (!node.textContent) return;
 
-      const originalText: string = node.textContent;
+      const originalContent = gsap.utils
+        .toArray(node.querySelectorAll("span"))
+        .join("");
 
       node.addEventListener("mouseover", (event) => {
         if (!event) return;
@@ -32,12 +35,14 @@ export default class TextSrcamble {
         let iterations: number = 0;
 
         const interval = setInterval(() => {
-          if (!node.textContent) return;
-          node.textContent = this.shuffle(node.textContent);
+          if (!node) return;
+          node.innerHTML = this.shuffle(node.querySelectorAll("span"));
 
-          if (iterations >= originalText.length) {
+          console.log(node.innerHTML);
+
+          if (iterations >= originalContent.length) {
             clearInterval(interval);
-            node.textContent = originalText;
+            node.innerHTML = originalContent;
           }
           iterations += 1;
         }, 45);

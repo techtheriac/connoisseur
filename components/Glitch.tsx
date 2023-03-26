@@ -1,6 +1,6 @@
 import Techtheriac from "./Techtheriac";
 import { styled } from "stitches.config";
-import { HybridText, vowelize } from "./HybridText";
+import { HybridNode, vowelize } from "./HybridText";
 
 const StyledGlitchContainer = styled("div", {
   gridArea: "glitch",
@@ -27,7 +27,7 @@ const Name = styled("h1", {
 const Glitch = () => {
   return (
     <StyledGlitchContainer>
-      {/* <Techtheriac /> */}
+      <Techtheriac />
       {/* <HybridText
         textContent="Franklin"
         contentType="h1"
@@ -38,16 +38,16 @@ const Glitch = () => {
           textTransform: "uppercase",
         }}
       /> */}
-      <HybridText
+      {/* <HybridText
         textContent="techtheriac"
         contentType="h1"
         randomizer={vowelize}
-        seed="rt"
+        include="rt"
         css={{
           fontSize: "12rem",
           textTransform: "uppercase",
         }}
-      />
+      /> */}
     </StyledGlitchContainer>
   );
 };

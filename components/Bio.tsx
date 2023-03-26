@@ -4,9 +4,8 @@ import { StyledCurationTitle, StyledCuration } from "./Curation";
 import HorizontalLine from "./HorizontalLine";
 
 const BioText = styled(Text, {
-  fontSize: "var(--idealHeadingTwo)",
+  fontSize: "var(--idealBaseFontSize)",
   lineHeight: "1.2",
-  // textTransform: "",
 });
 
 const StyledBio = styled("div", {

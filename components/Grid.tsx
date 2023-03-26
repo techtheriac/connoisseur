@@ -11,6 +11,7 @@ const Grid = styled("div", {
   paddingTop: "var(--space-m)",
   paddingBottom: "var(--space-s)",
   gridGap: "var(--space-s)",
+  position: "relative",
   variants: {
     gridLayoutDefinition: {
       homeSmall: {

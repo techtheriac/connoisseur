@@ -4,7 +4,9 @@ import { Text } from "./Text";
 import Rounded from "./Rounded";
 import { useIsomorphicLayoutEffect } from "@/helpers/DOM";
 import TextSrcamble from "@/helpers/TextScramble";
-import { HybridText, vowelize } from "./HybridText";
+import { HybridNode, vowelize, HybridLink } from "./HybridText";
+import { forwardRef } from "react";
+
 type Navigation = {
   link: string;
   name: string;
@@ -50,36 +52,39 @@ const StyledNavigation = styled("div", {
 
 const NavGroup = styled("div", {
   display: "flex",
-  width: "25%",
+  width: "40%",
   justifyContent: "space-between",
+  gap: "var(--space-m)",
 });
 
 export default function Navigation() {
-  useIsomorphicLayoutEffect(() => {
-    const navigationItems = document.querySelectorAll(
-      '[data-navigation-item="true"]'
-    );
+  // useIsomorphicLayoutEffect(() => {
+  //   const navigationItems = document.querySelectorAll(
+  //     '[data-navigation-item="true"]'
+  //   );
 
-    new TextSrcamble({ elements: navigationItems }).animate();
-  }, []);
+  //   new TextSrcamble({ elements: navigationItems }).animate();
+  // }, []);
   return (
     <StyledNavigation>
       <Rounded />
       <NavGroup>
-        {links.map((link) => (
-          <Link key={link.link} href={link.link}>
-            <HybridText
-              textContent={link.name}
+        {links.map(({ link, name }, index) => {
+          return (
+            <HybridLink
+              key={index}
+              href={link}
+              content={name}
               contentType="a"
               randomizer={vowelize}
+              include="vna"
               css={{
-                fontSize: "var(--idealListingFontSize)",
+                fontSize: "var(--idealBaseFontSize)",
                 textTransform: "uppercase",
               }}
-              data-navigation-item
             />
-          </Link>
-        ))}
+          );
+        })}
       </NavGroup>
     </StyledNavigation>
   );

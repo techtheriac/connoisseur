@@ -5,6 +5,14 @@ $interpolate-max: 1366px;
   @include interpolate(--space, $interpolate-min, $interpolate-max, 25px, 40px);
 
   @include interpolate(
+    --idealBaseFontSize,
+    $interpolate-min,
+    $interpolate-max,
+    16px,
+    20px
+  );
+
+  @include interpolate(
     --idealSansFontSize,
     $interpolate-min,
     $interpolate-max,

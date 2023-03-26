@@ -3,7 +3,7 @@ import Link from "next/link";
 import CurationItem from "./CurationItem";
 import React from "react";
 import { Text } from "./Text";
-import { HybridText, vowelize } from "./HybridText";
+import { HybridNode, vowelize } from "./HybridText";
 import HorizontalLine from "./HorizontalLine";
 
 const parseUrl = (tags: string, slug: string): string => {
@@ -33,7 +33,7 @@ export const StyledCurationGroup = styled("div", {
 });
 
 export const StyledCurationTitle = styled(Text, {
-  fontSize: "var(--idealHeadingTwo)",
+  fontSize: "var(--idealBaseFontSize)",
   textTransform: "uppercase",
 });
 
@@ -49,9 +49,9 @@ export const StyledCuration = styled("div", {
 export function Curation({ posts, title }) {
   return (
     <StyledCuration>
-      <HybridText
-        textContent={title}
-        contentType="h3"
+      <HybridNode
+        content={title}
+        contentType="div"
         randomizer={vowelize}
         css={{
           textTransform: "uppercase",
